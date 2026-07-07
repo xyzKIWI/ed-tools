@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>急診輕微外傷性顱內出血：哪些病人可以不住院？</title>
+<style>
+  :root{
+    --navy:#16395b; --navy2:#1e4d77; --teal:#0e7490; --teal-l:#e0f2fe;
+    --ink:#1f2937; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --green:#15803d; --green-bg:#dcfce7; --green-bd:#86efac;
+    --amber:#a16207; --amber-bg:#fef9c3; --amber-bd:#fde047;
+    --red:#b91c1c;   --red-bg:#fee2e2;   --red-bd:#fca5a5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC","Segoe UI",sans-serif;
+    line-height:1.7; font-size:16px;
+  }
+  .wrap{max-width:980px; margin:0 auto; padding:0 20px 80px;}
+  header.hero{
+    background:linear-gradient(135deg,var(--navy),var(--navy2));
+    color:#fff; padding:46px 20px 38px; text-align:center;
+  }
+  header.hero h1{font-size:1.85rem; margin:0 0 10px; line-height:1.35; font-weight:700;}
+  header.hero p.sub{font-size:1.02rem; margin:0 auto; max-width:680px; color:#cfe3f4;}
+  .tags{margin-top:18px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;}
+  .tag{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); color:#fff;
+       padding:4px 13px; border-radius:99px; font-size:.8rem;}
+  h2{font-size:1.3rem; color:var(--navy); margin:44px 0 14px; padding-bottom:8px;
+     border-bottom:3px solid var(--teal); display:flex; align-items:center; gap:10px;}
+  h2 .num{background:var(--teal); color:#fff; width:30px; height:30px; border-radius:50%;
+          display:inline-flex; align-items:center; justify-content:center; font-size:.95rem; flex:none;}
+  h3{font-size:1.08rem; color:var(--navy2); margin:26px 0 8px;}
+  p{margin:10px 0;}
+  .lede{background:#fff; border:1px solid var(--line); border-left:5px solid var(--teal);
+        border-radius:10px; padding:20px 22px; margin:26px 0; box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .lede strong{color:var(--teal);}
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.93rem; background:#fff;
+        border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  th,td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--navy); color:#fff; font-weight:600; font-size:.9rem;}
+  tr:last-child td{border-bottom:none;}
+  td.c{text-align:center;}
+  /* 風險三卡 */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:20px 0;}
+  .card{border-radius:12px; padding:18px; border:2px solid; box-shadow:0 2px 6px rgba(0,0,0,.06);}
+  .card.g{background:var(--green-bg); border-color:var(--green-bd);}
+  .card.a{background:var(--amber-bg); border-color:var(--amber-bd);}
+  .card.r{background:var(--red-bg); border-color:var(--red-bd);}
+  .card h4{margin:0 0 6px; font-size:1.05rem;}
+  .card.g h4{color:var(--green);} .card.a h4{color:var(--amber);} .card.r h4{color:var(--red);}
+  .card .verdict{font-weight:700; font-size:.86rem; margin:6px 0 10px; padding:4px 10px; border-radius:6px; display:inline-block;}
+  .card.g .verdict{background:var(--green); color:#fff;}
+  .card.a .verdict{background:var(--amber); color:#fff;}
+  .card.r .verdict{background:var(--red); color:#fff;}
+  .card ul{margin:8px 0 0; padding-left:18px; font-size:.86rem;}
+  .card ul li{margin:4px 0;}
+  /* 警示框 */
+  .alert{border-radius:10px; padding:15px 18px; margin:18px 0; font-size:.95rem;}
+  .alert.danger{background:var(--red-bg); border-left:5px solid var(--red);}
+  .alert.warn{background:var(--amber-bg); border-left:5px solid var(--amber);}
+  .alert.ok{background:var(--green-bg); border-left:5px solid var(--green);}
+  .alert > b:first-child{display:block; margin-bottom:4px;}
+  /* 決策流程 */
+  .flow{margin:22px 0;}
+  .node{background:#fff; border:2px solid var(--navy2); border-radius:10px; padding:13px 16px;
+        max-width:640px; margin:0 auto; text-align:center; font-size:.92rem; box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  .node.q{background:var(--teal-l); border-color:var(--teal); font-weight:600;}
+  .node.stop{background:var(--red-bg); border-color:var(--red); color:var(--red); font-weight:700;}
+  .node.go{background:var(--green-bg); border-color:var(--green); color:var(--green); font-weight:700;}
+  .node.mid{background:var(--amber-bg); border-color:var(--amber); color:var(--amber); font-weight:700;}
+  .arrow{text-align:center; color:var(--muted); font-size:1.4rem; margin:5px 0;}
+  .branch{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:5px 0;}
+  .branch .col{flex:1; min-width:230px; max-width:300px;}
+  .lbl{text-align:center; font-weight:700; font-size:.82rem; margin:4px 0; color:var(--muted);}
+  /* 紅旗清單 */
+  .redflags{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:16px 0;}
+  .rf{background:#fff; border:1px solid var(--red-bd); border-left:4px solid var(--red);
+      border-radius:8px; padding:11px 14px; font-size:.9rem;}
+  .rf b{color:var(--red);}
+  .pill{display:inline-block; background:var(--teal); color:#fff; border-radius:6px;
+        padding:1px 8px; font-size:.78rem; font-weight:600;}
+  .refs{font-size:.85rem; color:#374151;}
+  .refs li{margin:8px 0;}
+  .refs a{color:var(--teal); word-break:break-all;}
+  cite{color:var(--muted); font-style:normal; font-size:.82rem;}
+  .footer{margin-top:50px; padding-top:18px; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted);}
+  .kb{background:#f1f5f9; border:1px dashed #94a3b8; border-radius:8px; padding:12px 16px; font-size:.85rem; color:#475569; margin:14px 0;}
+  .kb b{color:var(--navy);}
+  @media(max-width:720px){
+    .cards{grid-template-columns:1fr;} .redflags{grid-template-columns:1fr;}
+    header.hero h1{font-size:1.45rem;}
+  }
+  @media print{
+    body{background:#fff; font-size:12px;} .wrap{padding:0;}
+    header.hero{background:var(--navy)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .card,.alert,.node,table,.rf{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    h2{page-break-after:avoid;} .cards,.flow,table{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>急診輕微外傷性顱內出血<br>哪些病人可以不住院？</h1>
+  <p class="sub">以 Brain Injury Guidelines (BIG / mBIG) 為核心的風險分層與 disposition 決策</p>
+  <div class="tags">
+    <span class="tag">👥 急診主治／住院醫師</span>
+    <span class="tag">🌍 國際最新指引為主</span>
+    <span class="tag">📅 2026-06-01</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="lede">
+    <strong>一句話總結：</strong>在 <b>GCS 13–15、神經學正常、無抗凝／抗血小板藥、無中毒</b> 的前提下，
+    <b>單一微量（≤4 mm）SDH 或腦實質出血、或孤立性創傷性蜘蛛膜下腔出血（isolated tSAH）</b>，
+    經 <b>6 小時急診觀察、神經學維持 baseline、GCS 回到 15</b>，可在
+    <b>不需神外會診、不需追蹤 CT、不需住院</b> 下由可靠陪同者帶回 —— 即 <b>BIG / mBIG 的第 1 級（最低風險）</b>。
+    反之，<b>任何 EDH、任何抗凝／抗血小板者、中毒、IVH、中線偏移、移位性顱骨骨折、出血 ≥8 mm、多型出血</b> 均屬高風險（mBIG 3），不可放。
+  </div>
+
+  <!-- 1 -->
+  <h2><span class="num">1</span>先把問題定義清楚</h2>
+  <p>「輕微外傷」指 <b>mild TBI（GCS 13–15）</b>；而教科書定義中 <b>mTBI「CT 正常」才成立</b>。一旦 CT 看到出血，嚴格說已是
+  <span class="pill">complicated mild TBI</span>（複雜性輕度腦損傷）或 <b>mild traumatic intracranial hemorrhage（mild tICH）</b>。</p>
+  <p>臨床上 GCS 14–15 仍有 <b>up to 15%</b> 在 CT 看得到出血，其中 <b>&lt;1%</b> 需神外介入（Tintinalli Ch257）。本主題回答的正是：<b>這群 CT 已有出血的輕傷病人，哪些低到可以不住院。</b></p>
+  <div class="alert warn">
+    <b>⚠️ 兩個層次別混淆</b>
+    <b style="font-weight:400">CT 決策規則</b>（New Orleans Criteria、Canadian CT Head Rule）只回答「<b>要不要照 CT</b>」，<u>不能</u>用來決定住院與否，且對<b>抗凝／抗血小板者與兒童完全不適用</b>。決定「<b>出血後要不要住院</b>」的工具是 <b>BIG / mBIG</b> 與 SafeSDH。
+  </div>
+
+  <!-- 2 -->
+  <h2><span class="num">2</span>核心工具：Brain Injury Guidelines (BIG / mBIG)</h2>
+  <p>BIG 由 <b>Joseph 等人 2014 年</b>提出，目的是讓急性照護外科醫師能在<b>不逐例會診神外</b>下安全管理 tICH，減少不必要的會診、ICU 與轉院。依<b>神經學、中毒、抗凝／抗血小板、CT 特徵</b>分三級。</p>
+
+  <h3>原始 BIG 三級分類（Joseph 2014）</h3>
+  <table>
+    <thead><tr><th>面向</th><th>BIG 1（最低）</th><th>BIG 2（中度）</th><th>BIG 3（高）</th></tr></thead>
+    <tbody>
+      <tr><td>神經學檢查</td><td class="c">正常</td><td class="c">正常</td><td class="c">異常</td></tr>
+      <tr><td>中毒</td><td class="c">無</td><td class="c">無</td><td class="c">有</td></tr>
+      <tr><td>抗凝／抗血小板</td><td class="c">無</td><td class="c">無</td><td class="c">有</td></tr>
+      <tr><td>顱骨骨折</td><td class="c">無</td><td class="c">非移位性</td><td class="c">移位性</td></tr>
+      <tr><td>SDH／EDH／IPH</td><td class="c">≤ 4 mm</td><td class="c">5–7 mm</td><td class="c">≥ 8 mm</td></tr>
+      <tr><td>SAH（蛛網膜下）</td><td class="c">trace 微量</td><td class="c">localized 局限</td><td class="c">scattered 散佈</td></tr>
+      <tr><td>IVH（腦室內）</td><td class="c">無</td><td class="c">無</td><td class="c">有</td></tr>
+      <tr><td><b>處置</b></td>
+        <td class="c"><b style="color:var(--green)">6 hr 觀察→出院</b><br>不會診神外<br>不追蹤 CT</td>
+        <td class="c"><b style="color:var(--amber)">住院</b><br>不會診神外<br>不追蹤 CT</td>
+        <td class="c"><b style="color:var(--red)">住院＋神外＋追蹤 CT</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="alert warn">
+    <b>⚠️ 為什麼要修改成 mBIG？（真實的學術爭議）</b>
+    原始 BIG 是單中心、看起來零風險；但<b>多中心驗證（269 例）</b>發現 BIG 1／BIG 2 影像進展率約 <b>11%</b>，且<b>需手術的 2 例都是 EDH（被歸在 BIG 2）</b>。統計顯示 <b>EDH 與 IPH 是進展的獨立預測因子</b> → 因此修訂為 mBIG，把<b>所有 EDH 改列最高風險</b>。
+    <br><span style="font-size:.85rem;color:#7c2d12">📌 關鍵觀念：「影像些微進展」≠「需要手術」；多中心中真正需手術者仍極少且集中於 EDH。</span>
+  </div>
+
+  <h3>modified BIG（mBIG）—— 目前主流版本</h3>
+  <div class="cards">
+    <div class="card g">
+      <h4>🟢 mBIG 1</h4>
+      <span class="verdict">可不住院</span>
+      <ul>
+        <li>GCS 13–15／baseline、神經學正常</li>
+        <li>無抗凝／抗血小板、無中毒</li>
+        <li>SDH／IPH <b>≤ 4 mm</b></li>
+        <li>SAH ≤ 3 條 sulci 且 &lt; 1 mm</li>
+        <li>無 EDH／IVH／顱骨骨折</li>
+        <li><b>→ 急診觀察 6 hr（q2h）→ 穩定出院</b></li>
+        <li>不追蹤 CT、不會診神外</li>
+      </ul>
+    </div>
+    <div class="card a">
+      <h4>🟡 mBIG 2</h4>
+      <span class="verdict">短期住院</span>
+      <ul>
+        <li>GCS 13–15／baseline、神經學正常</li>
+        <li><b>可中毒（EtOH &gt; 80 mg/dL）</b>；仍須無抗凝／抗血小板</li>
+        <li>SDH／IPH <b>5–7.9 mm</b></li>
+        <li>SAH 單側或 1–3 mm</li>
+        <li>非移位性顱骨骨折；無 IVH／EDH／中線偏移</li>
+        <li><b>→ 收創傷科 24–48 hr</b></li>
+        <li>不常規追蹤 CT、不會診神外</li>
+      </ul>
+    </div>
+    <div class="card r">
+      <h4>🔴 mBIG 3</h4>
+      <span class="verdict">必須住院</span>
+      <ul>
+        <li>符合<b>任一項</b>即是：</li>
+        <li>神經學異常（GCS&lt;13／局部缺損／瞳孔）</li>
+        <li>中毒</li>
+        <li><b>抗凝／抗血小板</b>（warfarin／DOAC／clopidogrel）</li>
+        <li>SDH／IPH ≥ 8 mm、<b>任何 EDH</b></li>
+        <li>任何 IVH、雙側 SAH&gt;3 mm</li>
+        <li>多型出血、中線偏移、移位骨折</li>
+        <li><b>→ ICU／神經加護 ＋ 強制神外 ＋ 追蹤 CT</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>mBIG 對原始 BIG 的 6 項關鍵修正</h3>
+  <table>
+    <thead><tr><th>項目</th><th>原始 BIG</th><th>mBIG（修正後）</th></tr></thead>
+    <tbody>
+      <tr><td>神經學異常定義</td><td>模糊</td><td>GCS&lt;13、局部缺損、瞳孔異常</td></tr>
+      <tr><td>中毒定義</td><td>主觀</td><td><b>血中酒精 ≥ 80 mg/dL</b>（客觀）</td></tr>
+      <tr><td>抗血小板</td><td>全部高風險</td><td>單獨 aspirin 不算；DOAC／clopidogrel 才算</td></tr>
+      <tr><td><b>硬膜外血腫 EDH</b></td><td>依大小</td><td><b>任何 EDH 一律 mBIG 3</b></td></tr>
+      <tr><td>SAH 定義</td><td>trace／localized（主觀）</td><td>以 sulci 數／單側 vs 雙側量化</td></tr>
+      <tr><td>mBIG 2 住院</td><td>未明定</td><td>24–48 hr，神經學 q2h→q4h</td></tr>
+    </tbody>
+  </table>
+
+  <h3>驗證證據（為何可信任 mBIG 1 出院）</h3>
+  <table>
+    <thead><tr><th>研究</th><th>樣本</th><th>關鍵結果</th></tr></thead>
+    <tbody>
+      <tr><td>Joseph 原始衍生 (2014)</td><td>單中心</td><td>BIG 1 0% 惡化／0% 介入；需神外者全在 BIG 3</td></tr>
+      <tr><td>多中心評估（mBIG 提案）</td><td>269 例</td><td>BIG 1/2 影像進展 ~11%，需手術僅 2 例（皆 EDH）</td></tr>
+      <tr><td>Khan 多中心 mBIG 驗證 (2022)</td><td>764 例</td><td>1.6% 臨床惡化；<b>mBIG 1 0 例需神外介入</b></td></tr>
+      <tr><td>Kannan 統合分析 (2024)</td><td>13 研究／9,032 例</td><td><b>pooled 神外介入 sensitivity 1.00、specificity 0.05</b>（rule-out 工具）；pooled BIG 1 殘餘 NSI 0.98%、死亡 0.07%</td></tr>
+      <tr><td>BIG 低風險外部評估 (2024)</td><td>回溯</td><td>BIG 1 0 死亡／0 神外介入；4.7% 影像進展、2.1% 30 天再入院</td></tr>
+      <tr><td>大型驗證（ACEP Now 引用）</td><td>2,033 例</td><td>BIG 1+2（~30%）零出院後急診回診／30 天再入院</td></tr>
+    </tbody>
+  </table>
+  <div class="alert ok"><b>📊 白話結論</b>在現代 mBIG 驗證研究（AAST、Khan、Puccio）中，<b>沒有任何 mBIG 1 病人因提早出院而需緊急神外手術</b>——這是「可以不住院」最硬的實證後盾。⚠️ 惟 Kannan 統合分析（含早期原始 BIG 版本、EDH 可在 BIG 1）pooled BIG 1 仍有 0.98% 神外介入，故 <b>BIG 1 ≠ 絕對零風險</b>，返診安全網不可省。</div>
+
+  <!-- 3 -->
+  <h2><span class="num">3</span>可以「不住院」的具體情境</h2>
+  <div class="cards">
+    <div class="card g">
+      <h4>① 孤立性 tSAH（iSAH）</h4>
+      <span class="verdict">最安全</span>
+      <ul>
+        <li>輕微 tICH 中<b>預後最好</b>的一型</li>
+        <li>一研究 120 例 iSAH「一致表現良好」</li>
+        <li>不需神外會診</li>
+        <li>可於<b>非監測床</b>觀察</li>
+        <li>穩定則不需追蹤 CT</li>
+        <li>快速出院預測：iSAH OR 1.7</li>
+      </ul>
+    </div>
+    <div class="card g">
+      <h4>② 微量孤立 SDH</h4>
+      <span class="verdict">低風險</span>
+      <ul>
+        <li>≤ 4 mm（BIG 1）／&lt; 5 mm</li>
+        <li><b>SafeSDH 工具</b>低風險 = 不具下列任一：</li>
+        <li>抗凝／clopidogrel、多型血腫、SDH&gt;5 mm、中線偏移、GCS&lt;14</li>
+        <li>753 例驗證：21.5% 低風險、敏感度 99%</li>
+        <li>快速出院預測：SDH≤6 mm OR 3.1</li>
+      </ul>
+    </div>
+    <div class="card a">
+      <h4>③ 微量腦挫傷／IPH</h4>
+      <span class="verdict">需留意延遲出血</span>
+      <ul>
+        <li>≤ 4 mm、單一、無 mass effect → BIG 1</li>
+        <li>🚨 <b>延遲性出血</b>：數天內可新生 ICH</li>
+        <li>凝血異常者尤甚</li>
+        <li>→ 臨床偏好至少觀察；coagulopathy 者 serial CT</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert ok">
+    <b>✅ 共同「可出院」前提（缺一不可）</b>
+    ① GCS 15／回到 baseline、神經學正常　② <b>無抗凝／抗血小板</b>　③ 無中毒
+    ④ 出血符合 mBIG 1（微量、單一、無 EDH／IVH／中線偏移／移位骨折）
+    ⑤ 完成 ≥ 6 hr 觀察且無惡化　⑥ 可靠成人陪同　⑦ 能安排追蹤
+  </div>
+
+  <!-- 4 -->
+  <h2><span class="num">4</span>絕對不能放回家的高風險特徵（= mBIG 3）</h2>
+  <div class="redflags">
+    <div class="rf"><b>🚨 任何 EDH</b>　動脈性、數小時可腦疝；需手術者集中於此</div>
+    <div class="rf"><b>🚨 抗凝／抗血小板</b>　ICH OR 2.6、延遲出血、CT 規則不適用</div>
+    <div class="rf"><b>🚨 中毒</b>　掩蓋神經學惡化，無法可靠觀察</div>
+    <div class="rf"><b>🚨 GCS&lt;13／神經學異常／瞳孔異常</b>　已非「輕微」</div>
+    <div class="rf"><b>🚨 IVH 腦室內出血</b>　可致急性水腦</div>
+    <div class="rf"><b>🚨 中線偏移／腦疝徵象</b>　需緊急減壓</div>
+    <div class="rf"><b>🚨 移位性顱骨骨折</b>　高併發症、常需手術</div>
+    <div class="rf"><b>🚨 出血 ≥8 mm／多型出血</b>　進展與 mass effect 風險高</div>
+  </div>
+
+  <!-- 5 -->
+  <h2><span class="num">5</span>抗凝／抗血小板使用者 —— 最大的陷阱族群</h2>
+  <div class="alert danger">
+    <b>🚨 抗凝／抗血小板 ＋ 任何顱內出血 = 不適用「不住院」路徑</b>
+    <ul style="margin:6px 0 0;">
+      <li>輕傷後 ICH 勝算比（任一抗血小板）<b>OR 2.6</b></li>
+      <li><b>Warfarin + INR 升高 + ICH → 死亡率 89%</b></li>
+      <li><b>初次 CT 陰性 ≠ 安全</b>：warfarin 24 hr 內延遲出血 <b>1–8%</b></li>
+      <li>Clopidogrel 是特別強的危險因子</li>
+      <li><b>PATCH trial (2016)</b>：抗血小板相關 ICH 常規輸血小板<u>反而更差</u> → 不常規輸（手術性出血個別考量）</li>
+    </ul>
+  </div>
+  <p style="font-size:.92rem;">標準做法：<b>住院觀察 ≥ 24 hr、考慮 6–24 hr 追蹤 CT、依藥物 reversal</b>（warfarin→4-factor PCC＋Vit K；dabigatran→idarucizumab；Xa 抑制劑→andexanet alfa）。</p>
+
+  <!-- 6 -->
+  <h2><span class="num">6</span>實務決策流程</h2>
+  <div class="flow">
+    <div class="node q">GCS 13–15 ＋ CT 已顯示外傷性顱內出血（tICH）</div>
+    <div class="arrow">↓</div>
+    <div class="node q">① 有任何高風險紅旗嗎？<br><span style="font-weight:400;font-size:.85rem">抗凝／抗血小板・中毒・GCS&lt;13／神經異常・任何 EDH・IVH・中線偏移・移位骨折・≥8 mm／多型出血</span></div>
+    <div class="branch">
+      <div class="col">
+        <div class="lbl">有 ▼</div>
+        <div class="node stop">🔴 mBIG 3<br>住院＋神外會診＋追蹤 CT</div>
+      </div>
+      <div class="col">
+        <div class="lbl">無 ▼</div>
+        <div class="node q">② 出血符合 mBIG 1？<br><span style="font-weight:400;font-size:.85rem">SDH／IPH ≤4 mm；SAH ≤3 sulci 且&lt;1 mm；無 EDH／IVH／骨折</span></div>
+      </div>
+    </div>
+    <div class="branch">
+      <div class="col">
+        <div class="lbl">符合 ▼</div>
+        <div class="node go">🟢 mBIG 1：急診觀察 6 hr（q2h）</div>
+        <div class="arrow">↓</div>
+        <div class="node q">神經學維持 baseline 且 GCS 回到 15？</div>
+        <div class="arrow">↓ 是</div>
+        <div class="node go">✅ 出院<br>（可靠陪同＋返診衛教＋門診追蹤）</div>
+      </div>
+      <div class="col">
+        <div class="lbl">5–7.9 mm 等 ▼</div>
+        <div class="node mid">🟡 mBIG 2<br>收創傷科 24–48 hr<br>不會診神外・不常規追蹤 CT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <h2><span class="num">7</span>各大國際指引立場對照</h2>
+  <table>
+    <thead><tr><th>指引／工具</th><th>用途</th><th>對「tICH 不住院」立場</th></tr></thead>
+    <tbody>
+      <tr><td><b>BIG / mBIG</b>（美國）</td><td>tICH 三級風險分層</td><td><b>明確支持</b> mBIG 1 觀察 6 hr 後出院，不會診神外</td></tr>
+      <tr><td>SafeSDH</td><td>微量 SDH 低風險篩選</td><td>低風險（21.5%）可降階觀察</td></tr>
+      <tr><td><b>NICE NG232</b>（英國 2023）</td><td>頭傷評估與早期處置</td><td><b>較保守</b>：影像有顱內損傷者風險由其主導 → 傾向收治觀察</td></tr>
+      <tr><td>Scandinavian (SNC 2013)</td><td>輕度頭傷初期處置</td><td>加入 <b>S100B</b>（GCS 14–15）可減 ~30% CT；重點在 CT 決策與短期觀察</td></tr>
+      <tr><td>ACEP Now 臨床整合</td><td>急診實務</td><td>引用 BIG／SafeSDH，支持低風險（尤其 iSAH、小 SDH）觀察後出院</td></tr>
+    </tbody>
+  </table>
+  <div class="alert warn"><b>🌍 地域差異</b>美國 BIG/mBIG 較積極（支持出院）、英國 NICE 較保守（傾向收治）。差異源於神外資源可近性與訴訟文化。臨床應依<b>所在機構神外後援與追蹤可近性</b>調整門檻。</div>
+
+  <!-- 8 -->
+  <h2><span class="num">8</span>出院前的安全網與返診衛教</h2>
+  <p>即使 mBIG 1，出院是<b>有結構的流程</b>：① 觀察 ≥ 6 hr、神經學 q2h；② 交付<b>有判斷力的成人</b>（口頭＋書面雙向告知）；③ 腦震盪衛教「Rest = splinting the brain」、階梯式 return-to-activity（每階段 24 hr 無症狀才升級，急診不下最終 return-to-play 指示）；④ 安排神外／創傷門診追蹤。</p>
+  <div class="alert danger">
+    <b>🚨 返診紅旗（return precautions）—— 出現任一立即回診</b>
+    意識變差／叫不醒・混亂加重　|　持續或加劇頭痛・反覆嘔吐　|　抽搐・肢體無力或麻木・口齒不清・複視　|　行為異常／躁動　|　耳漏或鼻漏清澈液體（疑 CSF leak）
+  </div>
+
+  <h2><span class="num">9</span>重點爭議與「不要踩的雷」</h2>
+  <ul>
+    <li><b>BIG 1 ≠ 零風險</b>：仍有 ~4.7–11% 影像進展、2.1% 30 天再入院；安全網不能省。</li>
+    <li><b>「影像進展」≠「臨床惡化」</b>：mBIG 1 的安全性建立在「需神外介入」這個硬終點（敏感度 100%）。</li>
+    <li><b>延遲性出血</b>：腦挫傷可數天後新生出血，凝血異常者尤甚 → 偏向觀察＋serial CT。</li>
+    <li><b>tSAH 早期 CT 可能低估</b>：傷後 <b>6–8 hr</b> 最敏感。</li>
+    <li><b>CT 規則不能做 disposition</b>，且對抗凝族群／兒童不適用。</li>
+    <li><b>成人 BIG 不適用兒童</b>（兒童循 PECARN 等）。</li>
+  </ul>
+
+  <!-- refs -->
+  <h2><span class="num">📚</span>Reference</h2>
+  <ol class="refs">
+    <li>Joseph B, Friese RS, Sadoun M, et al. The BIG (brain injury guidelines) project: defining the management of traumatic brain injury by acute care surgeons. <cite>J Trauma Acute Care Surg. 2014;76(4):965-969.</cite> <a href="https://journals.lww.com/jtrauma/abstract/2014/04000/the_big__brain_injury_guidelines__project_.8.aspx">連結</a></li>
+    <li>Joseph B, Aziz H, Pandit V, et al. Prospective validation of the brain injury guidelines: managing traumatic brain injury without neurosurgical consultation. <cite>J Trauma Acute Care Surg. 2014;77(6):984-988.</cite> doi:10.1097/TA.0000000000000428. <a href="https://pubmed.ncbi.nlm.nih.gov/25423541/">PMID 25423541</a></li>
+    <li>Multicenter assessment of the Brain Injury Guidelines and a proposal of guideline modifications (mBIG). <cite>PMC.</cite> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7264829/">PMC7264829</a></li>
+    <li>EMOttawa Blog. Traumatic Brain Injuries: A (m)BIG Headache. 2026. <a href="https://emottawablog.com/2026/04/traumatic-brain-injuries-a-mbig-headache/">連結</a></li>
+    <li><b>Kannan S, Gillespie CS, Lee KS, Phang I, McMahon CJ. Diagnostic utility of Brain Injury Guidelines (BIG): systematic review and meta-analysis for prediction of neurosurgical intervention in traumatic brain injury. <cite>Brain Inj. 2024;38(13):1093-1100.</cite></b> doi:10.1080/02699052.2024.2375593. <a href="https://doi.org/10.1080/02699052.2024.2375593">連結（open access）</a></li>
+    <li>External validation of the updated Brain Injury Guidelines for complicated mild TBI. <cite>J Neurosurg. 2022;137(3):782.</cite> <a href="https://thejns.org/view/journals/j-neurosurg/137/3/article-p782.xml">連結</a></li>
+    <li>External evaluation of Brain Injury Guideline (BIG) low-risk criteria for TBI. 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/39418684/">PMID 39418684</a></li>
+    <li>ACEP Now. When Can You Discharge Traumatic Intracranial Hemorrhage from the Emergency Department?（BIG＋SafeSDH 整合）. <a href="https://www.acepnow.com/article/when-can-you-discharge-traumatic-intracranial-hemorrhage-from-the-emergency-department/">連結</a></li>
+    <li>Does Isolated Traumatic Subarachnoid Hemorrhage Merit a Lower Intensity Level of Observation? <cite>PMC.</cite> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4180123/">PMC4180123</a></li>
+    <li>Rapid Discharge After Interfacility Transfer for Mild Traumatic Intracranial Hemorrhage. <cite>PMC.</cite> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6404693/">PMC6404693</a>（PMID 30881551）</li>
+    <li>Management of Minor TBI in an ED Observation Unit／Identifying patients with mild tICH at low risk of decompensation safe for ED observation. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8328171/">PMC8328171</a> ／ <a href="https://pubmed.ncbi.nlm.nih.gov/27838043/">PMID 27838043</a></li>
+    <li>NICE. Head injury: assessment and early management (NG232). 2023. <a href="https://www.nice.org.uk/guidance/ng232/chapter/recommendations">連結</a></li>
+    <li>Undén J, Ingebrigtsen T, Romner B; Scandinavian Neurotrauma Committee. Scandinavian guidelines for initial management of minimal, mild and moderate head injuries in adults. <cite>BMC Med. 2013;11:50.</cite>（驗證 BMC Med. 2015）<a href="https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-015-0533-y">連結</a></li>
+    <li>抗凝族群整合自 Tintinalli 9/e Ch257 與關鍵試驗：PATCH (Lancet 2016)、RE-VERSE AD (NEJM 2017)、ANNEXA-4 (NEJM 2019)。</li>
+    <li>Tintinalli's Emergency Medicine, 9th ed. Section 21 Trauma, Ch.257 Head Trauma.</li>
+  </ol>
+
+  <div class="kb">
+    <b>📁 KB 來源頁面：</b>本教學檔整合自知識庫 wiki：Tintinalli Ch258｜Head Trauma、Mild Traumatic Brain Injury 輕度創傷性腦損傷、Traumatic Subarachnoid Hemorrhage、Subdural Hematoma、Epidural Hematoma、Cerebral Contusion、Anticoagulated Trauma Patient、New Orleans Criteria、Canadian CT Head Rule。
+  </div>
+
+  <div class="footer">
+    <b>免責聲明：</b>本檔為教學整理，依 2026-06-01 可得之國際指引與文獻彙整。臨床決策仍須依個別病人、所在機構神外資源與最新指引版本判斷。BIG/mBIG 為成人工具，不適用兒童。<br>
+    製作：Claude（KB /query 工作流）｜受眾：急診主治／住院醫師｜範圍：國際最新指引為主
+  </div>
+
+</div>
+</body>
+</html>
