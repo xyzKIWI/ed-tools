@@ -14,6 +14,7 @@
 
 ## 新增工具的標準流程
 
+0. 從模板開新 repo：[ed-tool-template](https://github.com/xyzKIWI/ed-tool-template) 按 **Use this template**（骨架含頁面、校對日頁尾、免責、README 段落，照模板 README 的 checklist 走）
 1. 一工具一 repo，名稱用 kebab-case，本地資料夾名 = repo 名
 2. Repo 必備：`README.md`（用途、資料來源、更新方法、免責聲明）、`LICENSE`（MIT）、topics（`emergency-medicine`、`clinical-tool`）、homepage 填 Pages 網址
 3. 工具頁面內必有：版本或資料最後校對日、免責聲明
