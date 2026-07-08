@@ -12,6 +12,14 @@
 | 輕微外傷性顱內出血出院準則 | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
+### 外部工具（同事 [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
+
+| 工具 | 上線網址 |
+|---|---|
+| Vancomycin / Teicoplanin 劑量計算機（高醫藥典） | <https://highker21.github.io/tools/vanco-teico-calculator.html> |
+| 類鴉片劑量換算（OME） | <https://highker21.github.io/tools/opioid-converter.html> |
+| 健保碼查詢（處置／藥品） | <https://highker21.github.io/tools/nhi-code-finder.html> |
+
 ## 新增工具的標準流程
 
 0. 從模板開新 repo：[ed-tool-template](https://github.com/xyzKIWI/ed-tool-template) 按 **Use this template**（骨架含頁面、校對日頁尾、免責、README 段落，照模板 README 的 checklist 走）
