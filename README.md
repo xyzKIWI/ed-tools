@@ -12,7 +12,7 @@
 | 輕微外傷性顱內出血出院準則 | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
-### 外部工具（同事 [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
+### 外部工具（ [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
 
 | 工具 | 上線網址 |
 |---|---|
