@@ -109,6 +109,7 @@
     <span class="tag">👥 急診主治／住院醫師</span>
     <span class="tag">🌍 國際最新指引為主</span>
     <span class="tag">📅 2026-06-01</span>
+    <span class="tag">📖 內容來源：侯勝文醫師</span>
   </div>
 </header>
 
@@ -121,6 +122,94 @@
     <b>不需神外會診、不需追蹤 CT、不需住院</b> 下由可靠陪同者帶回 —— 即 <b>BIG / mBIG 的第 1 級（最低風險）</b>。
     反之，<b>任何 EDH、任何抗凝／抗血小板者、中毒、IVH、中線偏移、移位性顱骨骨折、出血 ≥8 mm、多型出血</b> 均屬高風險（mBIG 3），不可放。
   </div>
+
+  <!-- 互動快速判定（第 6 節決策流程的點選版；邏輯與內文一致，不另創標準） -->
+  <style>
+    .wiz{background:#fff; border:2px solid var(--teal); border-radius:12px; padding:18px 20px; margin:26px 0;}
+    .wiz h2{margin:0 0 4px; border:none; padding:0;}
+    .wiz .hint{font-size:.85rem; color:var(--muted); margin:0 0 12px;}
+    .wiz-step{display:none; margin-top:10px;}
+    .wiz-step.show{display:block;}
+    .wiz-step .q{font-weight:700; color:var(--navy2); margin:6px 0 10px;}
+    .wiz .chip{display:block; width:100%; text-align:left; margin:6px 0; padding:10px 14px;
+      background:#fff; border:1.5px solid var(--red-bd); border-radius:8px; font-size:.9rem;
+      cursor:pointer; font-family:inherit; color:var(--ink); line-height:1.5;}
+    .wiz .chip:hover{background:var(--red-bg);}
+    .wiz .chip small{color:var(--muted);}
+    .wiz .opt{display:block; width:100%; text-align:left; margin:8px 0; padding:12px 14px;
+      background:#fff; border:2px solid var(--line); border-radius:8px; font-size:.9rem;
+      cursor:pointer; font-family:inherit; color:var(--ink); line-height:1.5;}
+    .wiz .opt:hover{border-color:var(--teal); background:var(--teal-l);}
+    .wiz .go-btn{display:inline-block; margin:10px 6px 0 0; padding:10px 20px; border:none;
+      border-radius:8px; background:var(--teal); color:#fff; font-size:.95rem; font-weight:700;
+      cursor:pointer; font-family:inherit;}
+    .wiz .go-btn.gray{background:var(--muted);}
+    .wiz label.ck{display:block; margin:8px 0; font-size:.92rem; cursor:pointer;}
+    .wiz label.ck input{margin-right:8px; transform:scale(1.2);}
+    #wizResult{display:none; margin-top:14px;}
+    #wizResult.show{display:block;}
+    #wizResult .alert{margin:0 0 10px;}
+    #wizResult ul{margin:8px 0 0; padding-left:20px; font-size:.88rem;}
+    .wiz .foot{font-size:.78rem; color:var(--muted); margin-top:12px; border-top:1px solid var(--line); padding-top:8px;}
+  </style>
+  <div class="wiz" id="wiz">
+    <h2>⚡ 快速判定（點選版）</h2>
+    <p class="hint">前提：GCS 13–15 ＋ CT 已顯示外傷性顱內出血（tICH）、成人。此為下方第 6 節決策流程的互動版，點一點直接得到分級。</p>
+
+    <div class="wiz-step show" id="wStep1">
+      <div class="q">① 有任何高風險紅旗嗎？（點選任一項 = 直接判定 mBIG 3；全部沒有就按下方綠鈕）</div>
+      <button class="chip" onclick="wizRed(this)">抗凝／抗血小板 <small>（warfarin／DOAC／clopidogrel；mBIG 修正：單獨 aspirin 不算）</small></button>
+      <button class="chip" onclick="wizRed(this)">中毒 <small>（掩蓋神經學惡化，無法可靠觀察）</small></button>
+      <button class="chip" onclick="wizRed(this)">GCS&lt;13／神經學異常／瞳孔異常</button>
+      <button class="chip" onclick="wizRed(this)">任何 EDH（硬膜外血腫）</button>
+      <button class="chip" onclick="wizRed(this)">IVH（腦室內出血）</button>
+      <button class="chip" onclick="wizRed(this)">中線偏移／腦疝徵象</button>
+      <button class="chip" onclick="wizRed(this)">移位性顱骨骨折</button>
+      <button class="chip" onclick="wizRed(this)">出血 ≥8 mm／多型出血／雙側 SAH&gt;3 mm</button>
+      <button class="go-btn" onclick="wizShow('wStep2')">以上皆無 →</button>
+    </div>
+
+    <div class="wiz-step" id="wStep2">
+      <div class="q">② 出血型態符合哪一項？</div>
+      <button class="opt" onclick="wizM1()">🟢 SDH／IPH <b>≤4 mm</b>，或 SAH <b>≤3 條 sulci 且 &lt;1 mm</b>（無 EDH／IVH／顱骨骨折）→ mBIG 1</button>
+      <button class="opt" onclick="wizM2()">🟡 SDH／IPH <b>5–7.9 mm</b>，或 SAH 單側 1–3 mm，或<b>非移位性</b>顱骨骨折（無 EDH／IVH／中線偏移）→ mBIG 2</button>
+      <button class="opt" onclick="wizRed(null)">🔴 超出上述（≥8 mm／EDH／IVH／多型出血…）→ mBIG 3</button>
+    </div>
+
+    <div class="wiz-step" id="wStep3">
+      <div class="q">③ mBIG 1：急診觀察 6 小時（神經學 q2h）後——神經學維持 baseline 且 GCS 回到 15？</div>
+      <button class="go-btn" onclick="wizShow('wStep4')">是 →</button>
+      <button class="go-btn gray" onclick="wizObsFail()">否／觀察中惡化</button>
+    </div>
+
+    <div class="wiz-step" id="wStep4">
+      <div class="q">④ 出院前提最後確認（缺一不可）：</div>
+      <label class="ck"><input type="checkbox" id="wCk1">有<b>可靠成人陪同</b>（口頭＋書面雙向告知返診紅旗）</label>
+      <label class="ck"><input type="checkbox" id="wCk2">能安排<b>神外／創傷門診追蹤</b></label>
+      <button class="go-btn" onclick="wizFinal()">判定</button>
+    </div>
+
+    <div id="wizResult"></div>
+    <div class="foot">互動版僅重排第 6 節流程供快速點選，完整條件、證據與抗凝 reversal 見下文各節；BIG/mBIG 為成人工具，兒童請循 PECARN。</div>
+  </div>
+  <script>
+    function wizHideSteps(){document.querySelectorAll('.wiz-step').forEach(function(s){s.classList.remove('show');});}
+    function wizShow(id){wizHideSteps(); document.getElementById('wizResult').classList.remove('show'); document.getElementById(id).classList.add('show');}
+    function wizResult(html){wizHideSteps(); var r=document.getElementById('wizResult'); r.innerHTML=html+'<button class="go-btn gray" onclick="wizReset()">↺ 重新判定</button>'; r.classList.add('show'); r.scrollIntoView({behavior:'smooth',block:'nearest'});}
+    function wizReset(){document.getElementById('wCk1').checked=false; document.getElementById('wCk2').checked=false; document.getElementById('wizResult').classList.remove('show'); wizShow('wStep1');}
+    function wizRed(el){var extra=(el&&el.textContent.indexOf('抗凝')>-1)?'<br>抗凝／抗血小板者之 reversal 與延遲出血注意事項見第 5 節。':'';
+      wizResult('<div class="alert danger"><b>🔴 mBIG 3 —— 必須住院</b>住院（ICU／神經加護）＋ <b>強制神外會診</b> ＋ 追蹤 CT。'+extra+'</div>');}
+    function wizM2(){wizResult('<div class="alert warn"><b>🟡 mBIG 2 —— 短期住院</b>收創傷科 24–48 小時（神經學 q2h→q4h）；不會診神外、不常規追蹤 CT。</div>');}
+    function wizM1(){wizShow('wStep3');}
+    function wizObsFail(){wizResult('<div class="alert danger"><b>🔴 不可出院</b>觀察期間神經學未維持 baseline／GCS 未回 15 → 出院前提不成立，收治並重新評估。</div>');}
+    function wizFinal(){
+      if(document.getElementById('wCk1').checked && document.getElementById('wCk2').checked){
+        wizResult('<div class="alert ok"><b>✅ 符合 mBIG 1 出院條件</b>不需神外會診、不需追蹤 CT、不需住院。出院衛教：階梯式 return-to-activity（每階段 24 hr 無症狀才升級）。<ul><li><b>返診紅旗（書面交付，出現任一立即回診）：</b>意識變差／叫不醒、混亂加重；持續或加劇頭痛、反覆嘔吐；抽搐、肢體無力麻木、口齒不清、複視；行為異常／躁動；耳鼻漏清澈液體（疑 CSF leak）</li></ul></div>');
+      } else {
+        wizResult('<div class="alert warn"><b>🟡 出院前提缺項</b>「可靠成人陪同」與「能安排追蹤」缺一不可（前提⑥⑦）——補齊前先延長觀察或收治。</div>');
+      }
+    }
+  </script>
 
   <!-- 1 -->
   <h2><span class="num">1</span>先把問題定義清楚</h2>
@@ -392,7 +481,7 @@
 
   <div class="footer">
     <b>免責聲明：</b>本檔為教學整理，依 2026-06-01 可得之國際指引與文獻彙整。臨床決策仍須依個別病人、所在機構神外資源與最新指引版本判斷。BIG/mBIG 為成人工具，不適用兒童。<br>
-    製作：Claude（KB /query 工作流）｜受眾：急診主治／住院醫師｜範圍：國際最新指引為主
+    內容來源：侯勝文醫師｜整理：Claude（KB /query 工作流）｜受眾：急診主治／住院醫師｜範圍：國際最新指引為主
   </div>
 
 </div>
