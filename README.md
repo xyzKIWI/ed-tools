@@ -1,6 +1,11 @@
 # ed-tools — 急診臨床小工具統一入口
 
-急診第一線速查／速算工具的入口清單頁。**入口網址：<https://xyzkiwi.github.io/ed-tools/>**
+急診第一線速查／速算工具的入口清單頁。
+
+**入口網址：<https://tools.kiwi-ai.uk/>**（好記版，給同事用這個）
+備用：<https://xyzkiwi.github.io/ed-tools/>（GitHub Pages 原址，內容相同）
+
+> 好記版由 `worker/` 內的 Cloudflare Worker 反向代理 GitHub Pages 而成；`npx wrangler deploy`（在 `worker/` 目錄）即可更新 Worker 本身，頁面內容照常只要 push 本 repo。
 
 ## 收錄工具
 

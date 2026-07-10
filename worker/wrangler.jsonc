@@ -1,0 +1,9 @@
+{
+  "name": "ed-tools",
+  "main": "worker.js",
+  "compatibility_date": "2024-12-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "tools.kiwi-ai.uk", "custom_domain": true }
+  ]
+}
