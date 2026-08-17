@@ -9,11 +9,29 @@ const TOOLS = {
 };
 const HUB = "https://xyzkiwi.github.io/ed-tools";
 
+// 下載類：代理 GitHub Release 的固定檔名資產，讓安裝包也走本網域（院內網擋 github.io）
+// 用 releases/latest/download/ 永久連結，發新版不必回來改這裡，
+// 但每次發 release 都要記得附一份固定檔名（不帶版號）的 zip，否則這條會 404。
+const DOWNLOADS = {
+  "/medcloud.zip":
+    "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
+};
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
     let origin = HUB;
     let path = url.pathname;
+
+    const download = DOWNLOADS[path];
+    if (download) {
+      const resp = await fetch(download, { redirect: "follow" });
+      const out = new Response(resp.body, resp);
+      out.headers.set("Content-Disposition", `attachment; filename="${download.split("/").pop()}"`);
+      out.headers.set("Cache-Control", "public, max-age=300");
+      return out;
+    }
+
     for (const [prefix, target] of Object.entries(TOOLS)) {
       if (path === prefix) {
         // 少了尾斜線會讓頁內相對路徑解析錯層，先補上再進來

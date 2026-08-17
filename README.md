@@ -15,6 +15,7 @@
 | 急診 ICD-10-CM 診斷碼速查 | [icd10-ed-quickref](https://github.com/xyzKIWI/icd10-ed-quickref) | <https://tools.kiwi-ai.uk/icd10/> | <https://xyzkiwi.github.io/icd10-ed-quickref/> |
 | 兒科藥物劑量速算 | [peds-dose](https://github.com/xyzKIWI/peds-dose) | <https://tools.kiwi-ai.uk/peds/> | <https://xyzkiwi.github.io/peds-dose/> |
 | Heparin aPTT 調整計算 | [heparin-tool](https://github.com/xyzKIWI/heparin-tool) | <https://tools.kiwi-ai.uk/heparin/> | <https://xyzkiwi.github.io/heparin-tool/> |
+| 雲端藥歷整理小幫手（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
@@ -35,6 +36,16 @@
 4. 部署：main 分支根目錄 → GitHub Pages（Settings → Pages → Deploy from a branch）
 5. 上線後回到本 repo：`index.html` 加一張卡片（名稱、一句話、資料校對日、連結），README 表格加一列
 6. 在 `worker/worker.js` 的 `TOOLS` 加一條短路徑對應（如 `"/xxx": "https://xyzkiwi.github.io/xxx-tool"`），`worker/` 目錄下 `npx wrangler deploy`；卡片連結用 `https://tools.kiwi-ai.uk/xxx/`（院內網擋 `github.io`，直連會失敗）
+
+⚠️ **第 6 步不做等於沒上線**：程式碼推上 GitHub、Pages 也建好了，`tools.kiwi-ai.uk/xxx/` 還是會 404 —— Worker 跑的是上次 deploy 的版本，`worker.js` 進 repo 不會自動生效。驗收句是 `curl -o /dev/null -w "%{http_code}" https://tools.kiwi-ai.uk/xxx/` 拿到 200，不是「GitHub 上有檔案」。
+
+### 下載型工具（瀏覽器擴充功能等）
+
+不是網頁、要下載安裝的工具，走 `worker.js` 的 `DOWNLOADS` 對應表，代理到 GitHub Release 資產：
+
+- 對應目標用 `releases/latest/download/<固定檔名>.zip` 永久連結，發新版不必改 Worker
+- **但每次發 release 都要附一份「不帶版號」的固定檔名 zip**，否則這條路由會 404。帶版號的那份照發，兩份內容相同
+- 卡片放在「瀏覽器擴充功能（需下載安裝）」區，`<h2>` 加 `⬇` 讓人知道點下去是下載不是開頁面
 
 ## 免責聲明
 
