@@ -14,6 +14,7 @@
 | 抗微生物藥腎功能劑量速查 | [abx-tool](https://github.com/xyzKIWI/abx-tool) | <https://tools.kiwi-ai.uk/abx/> | <https://xyzkiwi.github.io/abx-tool/> |
 | 急診 ICD-10-CM 診斷碼速查 | [icd10-ed-quickref](https://github.com/xyzKIWI/icd10-ed-quickref) | <https://tools.kiwi-ai.uk/icd10/> | <https://xyzkiwi.github.io/icd10-ed-quickref/> |
 | 兒科藥物劑量速算 | [peds-dose](https://github.com/xyzKIWI/peds-dose) | <https://tools.kiwi-ai.uk/peds/> | <https://xyzkiwi.github.io/peds-dose/> |
+| Heparin aPTT 調整計算 | [heparin-tool](https://github.com/xyzKIWI/heparin-tool) | <https://tools.kiwi-ai.uk/heparin/> | <https://xyzkiwi.github.io/heparin-tool/> |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
