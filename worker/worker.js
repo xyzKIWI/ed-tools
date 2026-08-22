@@ -6,6 +6,7 @@ const TOOLS = {
   "/abx": "https://xyzkiwi.github.io/abx-tool",
   "/peds": "https://xyzkiwi.github.io/peds-dose",
   "/heparin": "https://xyzkiwi.github.io/heparin-tool",
+  "/calc": "https://xyzkiwi.github.io/ed-calc",
 };
 const HUB = "https://xyzkiwi.github.io/ed-tools";
 
