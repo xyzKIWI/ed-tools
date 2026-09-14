@@ -4,127 +4,286 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>急診臨床小工具 ED Tools</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23C8102E'/%3E%3Ctext x='16' y='23' font-size='19' font-weight='700' text-anchor='middle' fill='white' font-family='sans-serif'%3E%E6%80%A5%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    --navy:#16395b; --navy2:#1e4d77; --teal:#0e7490; --teal-l:#e0f2fe;
-    --ink:#1f2937; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --sign:#C8102E; --ink:#1B2126; --body:#3A444C; --muted:#5B6770;
+    --line:#D9DEE2; --bg:#F6F7F5; --paper:#FFFFFF; --warn:#B45309;
   }
   *{box-sizing:border-box;}
-  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.7; font-size:16px;
+  [hidden]{display:none !important;}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16px;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC","Segoe UI",sans-serif;}
-  header{background:linear-gradient(135deg,var(--navy),var(--navy2)); color:#fff;
-    padding:42px 20px 34px; text-align:center;}
-  header h1{font-size:1.7rem; margin:0 0 8px; font-weight:700;}
-  header p{margin:0 auto; max-width:640px; color:#cfe3f4; font-size:.98rem;}
-  .wrap{max-width:760px; margin:0 auto; padding:28px 20px 60px;}
-  .card{display:block; background:#fff; border:1px solid var(--line); border-left:5px solid var(--teal);
-    border-radius:10px; padding:16px 20px; margin:14px 0; text-decoration:none; color:inherit;
-    box-shadow:0 1px 3px rgba(0,0,0,.05); transition:box-shadow .15s;}
-  .card:hover{box-shadow:0 3px 10px rgba(0,0,0,.10);}
-  .card h2{margin:0 0 4px; font-size:1.08rem; color:var(--navy);}
-  .card p{margin:0 0 6px; font-size:.92rem; color:var(--ink);}
-  .card .meta{font-size:.8rem; color:var(--muted);}
-  .section-label{margin:30px 0 4px; font-size:.85rem; font-weight:700; color:var(--muted);
-    text-transform:uppercase; letter-spacing:.05em;}
-  .card.planned{border-left-color:#cbd5e1; opacity:.75;}
-  .card.planned h2{color:var(--muted);}
-  footer{max-width:760px; margin:0 auto; padding:0 20px 50px; font-size:.8rem; color:var(--muted);}
-  footer .disclaimer{background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 18px;}
-  footer p{margin:8px 0 0;}
-  footer a{color:var(--teal);}
+  a{color:inherit;}
+  a:focus-visible,input:focus-visible{outline:2px solid var(--ink); outline-offset:2px;}
+  .vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+  .wrap{max-width:880px; margin:0 auto; padding-inline:16px;}
+
+  /* 頁首：仿醫院門口的「急診」燈箱 */
+  .top{padding-block:22px 4px;}
+  .top h1{margin:0; font-size:1.55rem; line-height:1.3; font-weight:800; display:flex; align-items:center; flex-wrap:wrap; gap:.2em .45em;}
+  .sign{background:var(--sign); color:#fff; padding:.1em .38em .12em; border-radius:4px; letter-spacing:.06em;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);}
+  .top h1 .en{font-weight:600; color:var(--muted); font-size:.72em;}
+  .top p{margin:6px 0 0; color:var(--muted); font-size:.92rem; max-width:40em;}
+
+  /* 搜尋列：捲動時黏在頂端 */
+  .searchbar{position:sticky; top:0; z-index:5; background:var(--bg); padding-block:14px 6px;}
+  .searchbar input{width:100%; font:inherit; font-size:1rem; color:var(--ink); background:var(--paper);
+    border:1.5px solid #B9C1C7; border-radius:6px; padding:11px 14px 11px 40px; -webkit-appearance:none; appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235B6770' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:13px center;}
+  .searchbar input:focus,.searchbar input:focus-visible{outline:none; border-color:var(--ink); box-shadow:0 0 0 1px var(--ink);}
+  .searchbar input::placeholder{color:#8A949B;}
+  .status{margin:6px 2px 0; min-height:1.3em; font-size:.84rem; color:var(--muted);}
+
+  /* 區塊 */
+  .sec{margin-top:22px;}
+  .searchbar + .sec{margin-top:6px;}
+  .sec h2{margin:0 0 10px; font-size:1.02rem; font-weight:700; color:var(--ink);}
+  .sec h2 small{margin-left:.6em; font-size:.8rem; font-weight:400; color:var(--muted);}
+
+  /* 常用工具：大字格子 */
+  .tiles{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;}
+  .tile{display:flex; flex-direction:column; gap:5px; min-height:8.2rem; padding:14px 14px 12px;
+    background:var(--paper); border:1px solid var(--line); border-radius:6px; text-decoration:none;}
+  .tile.wide{grid-column:span 2; min-height:0;}
+  .tile:hover{border-color:var(--ink);}
+  .tile .name{font-size:1.22rem; font-weight:800; line-height:1.3;}
+  .tile .desc{font-size:.87rem; line-height:1.55; color:var(--body);}
+  .tile .meta{margin-top:auto; padding-top:4px;}
+
+  /* 其他區塊：一行一列 */
+  .rows{background:var(--paper); border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+  .row{display:block; padding:12px 14px; text-decoration:none; border-top:1px solid var(--line);}
+  .row:first-child{border-top:none;}
+  a.row:hover{background:#FAFBFA;}
+  a.row:hover .name{text-decoration:underline; text-underline-offset:3px;}
+  .row .name{display:block; font-weight:700; line-height:1.45;}
+  .row .desc{display:block; margin-top:2px; font-size:.9rem; line-height:1.6; color:var(--body);}
+  .row .meta{display:block; margin-top:3px;}
+  .row.planned .name,.row.planned .desc{color:var(--muted);}
+  .tag{display:inline-block; margin-left:.5em; padding:0 .45em; font-size:.74rem; font-weight:700; line-height:1.6;
+    border:1px solid var(--ink); border-radius:3px; vertical-align:.12em;}
+
+  .meta{font-size:.78rem; color:var(--muted); font-variant-numeric:tabular-nums;}
+  .stale{display:block; color:var(--warn); font-weight:700;}
+
+  footer{padding-block:34px 48px; font-size:.82rem; color:var(--muted);}
+  footer .disclaimer{background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:12px 14px; color:var(--body);}
+  footer p{margin:10px 0 0;}
+  footer a{color:var(--ink);}
+
+  @media (min-width:720px){
+    .top{padding-block:34px 6px;}
+    .top h1{font-size:1.85rem;}
+    .tiles{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .sec{margin-top:28px;}
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>急診臨床小工具 ED Tools</h1>
-  <p>急診第一線使用的速查與速算工具集。各工具皆為離線可用的單頁網頁，資料來源與校對日標注於各頁。</p>
+<header class="wrap top">
+  <h1><span class="sign">急診</span>臨床小工具<span class="en">ED Tools</span></h1>
+  <p>值班用的速查與速算工具。資料來源與校對日標注於各工具頁。</p>
 </header>
-<div class="wrap">
 
-  <div class="section-label">速查 / 速算</div>
-
-  <a class="card" href="https://tools.kiwi-ai.uk/abx/">
-    <h2>抗微生物藥腎功能劑量速查</h2>
-    <p>89 種抗微生物藥依腎功能（CrCl / 透析）調整劑量，急診開藥即查。</p>
-    <div class="meta">資料校對：2026-06-29｜abx-tool</div>
-  </a>
-
-  <a class="card" href="https://tools.kiwi-ai.uk/icd10/">
-    <h2>急診 ICD-10-CM 診斷碼速查</h2>
-    <p>英中關鍵字查 ICD-10-CM 碼與官方繁中名稱，含外傷字母索引同義詞；純搜尋不組碼。</p>
-    <div class="meta">資料校對：2026-07-10｜icd10-ed-quickref</div>
-  </a>
-
-  <a class="card" href="https://tools.kiwi-ai.uk/peds/">
-    <h2>兒科藥物劑量速算</h2>
-    <p>輸入體重／年齡自動算 mg・mL・顆數；含 URI、鎮靜、抗生素、退燒情境與 PALS 急救流程（AHA/AAP 2025）。</p>
-    <div class="meta">資料校對：2026-05-10｜peds-dose</div>
-  </a>
-
-  <a class="card" href="https://tools.kiwi-ai.uk/heparin/">
-    <h2>Heparin dose 調整計算</h2>
-    <p>輸入體重、aPTT 與目前流速，依高醫 ICU protocol 計算 ACS 或 VTE/PE 的 heparin pump 流速。</p>
-    <div class="meta">資料校對：2026-08-18｜heparin-tool</div>
-  </a>
-
-  <a class="card" href="https://tools.kiwi-ai.uk/calc/">
-    <h2>急診臨床計算機</h2>
-    <p>72 個急診評分／公式／決策規則（Wells、PERC、PECARN、NIHSS、RACE、NEWS2、GCS、tPA 與 NAC 院內劑量…），9 個離線單頁；決策規則先問適用條件，每項標示原始文獻。</p>
-    <div class="meta">資料校對：2026-08-22｜ed-calc</div>
-  </a>
-
-  <div class="section-label">瀏覽器擴充功能（需下載安裝）</div>
-
-  <a class="card" href="https://tools.kiwi-ai.uk/medcloud.zip">
-    <h2>雲端藥歷整理小幫手 ⬇</h2>
-    <p>把健保雲端查詢系統的用藥、檢驗、影像病理、手術、出院病摘與過敏紀錄彙整成可核對、可貼入病歷的摘要。完全不連外，病人資料只在該分頁記憶體處理。</p>
-    <div class="meta">v1.3.1（2026-08-17）｜點擊下載 zip，解壓後在 Edge／Chrome 載入解壓縮；安裝說明在壓縮檔內｜CloudMedicationHelper</div>
-  </a>
-
-  <div class="section-label">臨床決策參考</div>
-
-  <a class="card" href="mtbi-ich-discharge.html">
-    <h2>輕微外傷性顱內出血：出院準則速覽</h2>
-    <p>哪些輕微外傷性顱內出血病人可以不住院？風險分層、紅旗徵象與決策流程，內建點選式快速判定（mBIG 分級）。</p>
-    <div class="meta">內容來源：侯勝文醫師｜資料日期：2026-06-01</div>
-  </a>
-
-  <div class="section-label">外部工具（同事製作，內容由原作者維護）</div>
-
-  <a class="card" href="https://highker21.github.io/tools/vanco-teico-calculator.html">
-    <h2>Vancomycin / Teicoplanin 劑量計算機</h2>
-    <p>依腎功能算 loading／maintenance dose，以高醫藥典為基準——補上 abx-tool 不涵蓋的 TDM 藥物。</p>
-    <div class="meta">作者：highker21｜外部連結</div>
-  </a>
-
-  <a class="card" href="https://highker21.github.io/tools/opioid-converter.html">
-    <h2>類鴉片劑量換算（口服嗎啡當量 OME）</h2>
-    <p>不同類鴉片藥物之間的等效劑量換算，止痛藥調整／轉換時用。</p>
-    <div class="meta">作者：highker21｜外部連結</div>
-  </a>
-
-  <a class="card" href="https://highker21.github.io/tools/nhi-code-finder.html">
-    <h2>健保碼查詢（處置／藥品）</h2>
-    <p>關鍵字查健保處置碼與藥品碼，申報用——與 ICD-10 診斷碼速查互補。</p>
-    <div class="meta">作者：highker21｜外部連結</div>
-  </a>
-
-  <div class="section-label">規劃中</div>
-
-  <div class="card planned">
-    <h2>note2icd — 病歷自動抽 ICD 碼</h2>
-    <p>貼上去識別化病歷 → 本機 LLM 抽診斷 → 官方候選碼 → 醫師確認。規格已定案，等院內環境。</p>
-    <div class="meta">尚未上線</div>
+<main class="wrap">
+  <div class="searchbar">
+    <label for="q" class="vh">搜尋工具或計算機項目</label>
+    <input id="q" type="search" placeholder="工具或計算機，如 Wells、腎功能" autocomplete="off" enterkeyhint="go">
+    <p id="status" class="status" aria-live="polite"></p>
   </div>
 
-</div>
-<footer>
+  <section class="sec" data-sec>
+    <h2>速查／速算</h2>
+    <div class="tiles">
+      <a class="tile item" href="https://tools.kiwi-ai.uk/abx/" data-reviewed="2026-06-29"
+         title="抗微生物藥腎功能劑量速查：89 種抗微生物藥依腎功能（CrCl / 透析）調整劑量，急診開藥即查。"
+         data-kw="抗微生物藥腎功能劑量速查 抗生素 抗菌 antibiotic antimicrobial renal kidney 腎功能 CrCl eGFR 透析 dialysis HD CRRT">
+        <span class="name">抗生素腎劑量</span>
+        <span class="desc">89 種抗微生物藥依 CrCl／透析調整劑量</span>
+        <span class="meta">資料校對 2026-06-29</span>
+      </a>
+      <a class="tile item" href="https://tools.kiwi-ai.uk/icd10/" data-reviewed="2026-07-10"
+         title="急診 ICD-10-CM 診斷碼速查：英中關鍵字查 ICD-10-CM 碼與官方繁中名稱，含外傷字母索引同義詞；純搜尋不組碼。"
+         data-kw="急診 ICD-10-CM 診斷碼速查 ICD10 診斷 diagnosis code 外傷 字母索引 同義詞 申報">
+        <span class="name">ICD-10 診斷碼</span>
+        <span class="desc">英中關鍵字查碼與官方繁中名稱；純搜尋不組碼</span>
+        <span class="meta">資料校對 2026-07-10</span>
+      </a>
+      <a class="tile item" href="https://tools.kiwi-ai.uk/peds/" data-reviewed="2026-05-10"
+         title="兒科藥物劑量速算：輸入體重／年齡自動算 mg・mL・顆數；含 URI、鎮靜、抗生素、退燒情境與 PALS 急救流程（AHA/AAP 2025）。"
+         data-kw="兒科藥物劑量速算 兒童 小兒 小孩 pediatric peds dose 劑量 體重 年齡 URI 鎮靜 抗生素 退燒 PALS 急救 AHA AAP">
+        <span class="name">兒科劑量</span>
+        <span class="desc">體重／年齡算 mg・mL・顆數；含 PALS 流程（AHA/AAP 2025）</span>
+        <span class="meta">資料校對 2026-05-10</span>
+      </a>
+      <a class="tile item" href="https://tools.kiwi-ai.uk/heparin/" data-reviewed="2026-08-18"
+         title="Heparin dose 調整計算：輸入體重、aPTT 與目前流速，依高醫 ICU protocol 計算 ACS 或 VTE/PE 的 heparin pump 流速。"
+         data-kw="Heparin dose 調整計算 肝素 UFH aPTT pump 流速 體重 ACS VTE PE 肺栓塞 抗凝 ICU protocol">
+        <span class="name">Heparin 流速</span>
+        <span class="desc">依高醫 ICU protocol 算 ACS、VTE/PE 的 pump 流速</span>
+        <span class="meta">資料校對 2026-08-18</span>
+      </a>
+      <a class="tile wide item" href="https://tools.kiwi-ai.uk/calc/" data-reviewed="2026-08-22"
+         data-kw="急診臨床計算機 calculator 評分 score 公式 決策規則 核心十項 外傷 心血管 神經 兒科 檢傷 呼吸 感染 中毒 精神 腸胃">
+        <span class="name">臨床計算機</span>
+        <span class="desc">72 個急診評分／公式／決策規則（Wells、PERC、PECARN、NIHSS、RACE、NEWS2、GCS、tPA 與 NAC 院內劑量…），9 個離線單頁；決策規則先問適用條件，每項標示原始文獻。</span>
+        <span class="meta">資料校對 2026-08-22</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" id="calcResults" hidden>
+    <h2>計算機項目<small>點選開啟所在分頁，再用頁內搜尋找到該項</small></h2>
+    <div class="rows" id="calcList"></div>
+  </section>
+
+  <section class="sec" data-sec>
+    <h2>瀏覽器擴充功能<small>需下載安裝</small></h2>
+    <div class="rows">
+      <a class="row item" href="https://tools.kiwi-ai.uk/medcloud.zip"
+         data-kw="雲端藥歷 健保雲端 藥歷 用藥 檢驗 影像 病理 手術 出院病摘 過敏 擴充功能 extension Chrome Edge 下載">
+        <span class="name">雲端藥歷整理小幫手<span class="tag">下載 zip</span></span>
+        <span class="desc">把健保雲端查詢系統的用藥、檢驗、影像病理、手術、出院病摘與過敏紀錄彙整成可核對、可貼入病歷的摘要。完全不連外，病人資料只在該分頁記憶體處理。</span>
+        <span class="meta">v1.3.1（2026-08-17）｜點擊下載 zip，解壓後在 Edge／Chrome 載入解壓縮；安裝說明在壓縮檔內</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" data-sec>
+    <h2>臨床決策參考</h2>
+    <div class="rows">
+      <a class="row item" href="mtbi-ich-discharge.html"
+         data-kw="輕微外傷性顱內出血 出院準則 mTBI TBI ICH 頭部外傷 顱內出血 腦出血 mBIG BIG 侯勝文">
+        <span class="name">輕微外傷性顱內出血：出院準則速覽</span>
+        <span class="desc">哪些輕微外傷性顱內出血病人可以不住院？風險分層、紅旗徵象與決策流程，內建點選式快速判定（mBIG 分級）。</span>
+        <span class="meta">內容來源：侯勝文醫師｜資料日期：2026-06-01</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" data-sec>
+    <h2>外部工具<small>同事製作，內容由原作者維護</small></h2>
+    <div class="rows">
+      <a class="row item" href="https://highker21.github.io/tools/vanco-teico-calculator.html"
+         data-kw="Vancomycin Teicoplanin vanco teico TDM 萬古黴素 loading maintenance 劑量 腎功能 高醫藥典 highker21">
+        <span class="name">Vancomycin / Teicoplanin 劑量計算機</span>
+        <span class="desc">依腎功能算 loading／maintenance dose，以高醫藥典為基準——補上 abx-tool 不涵蓋的 TDM 藥物。</span>
+        <span class="meta">作者：highker21｜外部連結</span>
+      </a>
+      <a class="row item" href="https://highker21.github.io/tools/opioid-converter.html"
+         data-kw="類鴉片 opioid OME 口服嗎啡當量 嗎啡 morphine 止痛 換算 等效劑量 highker21">
+        <span class="name">類鴉片劑量換算（口服嗎啡當量 OME）</span>
+        <span class="desc">不同類鴉片藥物之間的等效劑量換算，止痛藥調整／轉換時用。</span>
+        <span class="meta">作者：highker21｜外部連結</span>
+      </a>
+      <a class="row item" href="https://highker21.github.io/tools/nhi-code-finder.html"
+         data-kw="健保碼 處置碼 藥品碼 健保 申報 NHI highker21">
+        <span class="name">健保碼查詢（處置／藥品）</span>
+        <span class="desc">關鍵字查健保處置碼與藥品碼，申報用——與 ICD-10 診斷碼速查互補。</span>
+        <span class="meta">作者：highker21｜外部連結</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" data-sec>
+    <h2>規劃中</h2>
+    <div class="rows">
+      <div class="row item planned" data-kw="note2icd ICD 病歷 抽碼 LLM 診斷碼">
+        <span class="name">note2icd — 病歷自動抽 ICD 碼</span>
+        <span class="desc">貼上去識別化病歷 → 本機 LLM 抽診斷 → 官方候選碼 → 醫師確認。規格已定案，等院內環境。</span>
+        <span class="meta">尚未上線</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
   <div class="disclaimer">
     <b>免責聲明</b>：本站工具僅供臨床決策「輔助參考」，不取代臨床判斷、官方仿單與最新指引。
     劑量與診斷碼請以原始資料來源為準，使用前請自行核對；作者不對使用結果負責。
   </div>
-  <p>🔗 外部資源：<a href="https://highker21.github.io/">highker21 工具與教學總站</a>（上方三個外部工具之外的完整清單：GLP-1、InBody、甲狀腺、教學投影片等）</p>
-  <p>最後更新：2026-08-18｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
+  <p>外部資源：<a href="https://highker21.github.io/">highker21 工具與教學總站</a>（上方三個外部工具之外的完整清單：GLP-1、InBody、甲狀腺、教學投影片等）</p>
+  <p>最後更新：2026-09-14｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
 </footer>
+
+<script>
+(function(){
+  // ed-calc 72 項清單（來源：ed-calc/index.html 分類卡片；ed-calc 增刪項目時要同步更新）
+  const CALC = [{"n": "MAP", "c": "核心十項", "p": "calc-ten.html"}, {"n": "休克指數", "c": "核心十項", "p": "calc-ten.html"}, {"n": "Parkland", "c": "核心十項", "p": "calc-ten.html"}, {"n": "4-2-1", "c": "核心十項", "p": "calc-ten.html"}, {"n": "qSOFA", "c": "核心十項", "p": "calc-ten.html"}, {"n": "CRB-65", "c": "核心十項", "p": "calc-ten.html"}, {"n": "NEXUS 頸椎", "c": "核心十項", "p": "calc-ten.html"}, {"n": "Ottawa 膝", "c": "核心十項", "p": "calc-ten.html"}, {"n": "sPESI", "c": "核心十項", "p": "calc-ten.html"}, {"n": "ABCD²", "c": "核心十項", "p": "calc-ten.html"}, {"n": "ABC Score 大量輸血預測", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Head CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Pittsburgh 膝關節準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "九則法 Rule of Nines 燒傷面積", "c": "外傷", "p": "calc-trauma.html"}, {"n": "STUMBL / Battle 肋骨骨折評分", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Canadian C-Spine Rule 頸椎影像決策", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Canadian CT Head Rule 頭部 CT 決策", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Modified Denver 準則（鈍性腦血管損傷 BCVI）", "c": "外傷", "p": "calc-trauma.html"}, {"n": "New Orleans 頭部 CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Chest CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Chest 鈍性胸傷影像準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Ottawa 踝關節準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "4PEPS 四階肺栓塞臨床機率", "c": "心血管", "p": "calc-cardio.html"}, {"n": "CHA₂DS₂-VASc 心房顫動中風風險", "c": "心血管", "p": "calc-cardio.html"}, {"n": "校正 QT 間期 QTc", "c": "心血管", "p": "calc-cardio.html"}, {"n": "HEAR Score（胸痛，不含 troponin）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Killip 分級（急性心肌梗塞心衰竭）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "PERC 肺栓塞排除準則", "c": "心血管", "p": "calc-cardio.html"}, {"n": "PESI 肺栓塞嚴重度指數", "c": "心血管", "p": "calc-cardio.html"}, {"n": "TIMI 風險評分（STEMI）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "ADD-RS 主動脈剝離風險評分", "c": "心血管", "p": "calc-cardio.html"}, {"n": "修正 Geneva 評分（肺栓塞）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Wells 準則（深部靜脈栓塞 DVT）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Wells 準則（肺栓塞 PE）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Modified Rankin Scale（神經功能失能）", "c": "神經", "p": "calc-neuro.html"}, {"n": "RACE 大血管阻塞評估", "c": "神經", "p": "calc-neuro.html"}, {"n": "tPA (alteplase) 中風劑量", "c": "神經", "p": "calc-neuro.html"}, {"n": "ABC/2 腦出血體積估算", "c": "神經", "p": "calc-neuro.html"}, {"n": "GCS 昏迷指數", "c": "神經", "p": "calc-neuro.html"}, {"n": "Hunt-Hess 蛛網膜下腔出血分級", "c": "神經", "p": "calc-neuro.html"}, {"n": "ICH Score 腦出血預後", "c": "神經", "p": "calc-neuro.html"}, {"n": "NIHSS 中風量表", "c": "神經", "p": "calc-neuro.html"}, {"n": "Ottawa SAH 準則（頭痛）", "c": "神經", "p": "calc-neuro.html"}, {"n": "BRUE 2.0 風險預測", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童頸椎損傷影像決策", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童腹內傷風險", "c": "兒科", "p": "calc-peds.html"}, {"n": "BRUE 準則（嬰兒不明原因短暫事件）", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童頭部外傷影像決策", "c": "兒科", "p": "calc-peds.html"}, {"n": "兒童氣管內管尺寸", "c": "兒科", "p": "calc-peds.html"}, {"n": "兒童外傷評分 PTS", "c": "兒科", "p": "calc-peds.html"}, {"n": "Westley 咳吼嚴重度", "c": "兒科", "p": "calc-peds.html"}, {"n": "理想體重 IBW / 校正體重 ABW", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "MEWS 早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "NEWS 國家早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "NEWS2 國家早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "尿量 / 體液平衡", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "RASS 鎮靜躁動量表", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "氣管內管深度與潮氣容積", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "HEAVEN 困難插管預測", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "SpO₂/FiO₂ 比值", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "修正 Centor（McIsaac）咽炎評分", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "ROX Index（HFNC 插管風險）", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "BAWS 簡式酒精戒斷量表", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "CIWA-Ar 酒精戒斷評估", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "C-SSRS 哥倫比亞自殺嚴重度量表", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "HEADS-ED 兒少心理社會篩檢", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "Acetaminophen 過量 NAC 劑量", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "Rockall 評分（完整版）", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "Rockall 評分（內視鏡前）", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "West Haven 肝性腦病分級", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "Burch-Wartofsky 甲狀腺風暴評分", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "TWIST 睪丸扭轉評分", "c": "腸胃／其他", "p": "calc-gi.html"}];
+  const CALC_BASE = "https://tools.kiwi-ai.uk/calc/";
+  const STALE_DAYS = 90;
+
+  // 校對日超過 90 天就提醒
+  const now = Date.now();
+  document.querySelectorAll('[data-reviewed]').forEach(el => {
+    const days = Math.floor((now - new Date(el.dataset.reviewed + 'T00:00:00+08:00')) / 864e5);
+    if (days > STALE_DAYS) {
+      const s = document.createElement('span');
+      s.className = 'stale';
+      s.textContent = '已 ' + days + ' 天未重新校對';
+      el.querySelector('.meta').appendChild(s);
+    }
+  });
+
+  // 搜尋
+  const norm = s => s.normalize('NFKC').toLowerCase().replace(/[\s・·／\/\-–—()（）]/g, '');
+  const q = document.getElementById('q');
+  const status = document.getElementById('status');
+  const calcSec = document.getElementById('calcResults');
+  const calcList = document.getElementById('calcList');
+  const secs = [...document.querySelectorAll('[data-sec]')];
+  const items = [...document.querySelectorAll('.item')].map(el => ({
+    el, t: norm(el.textContent + ' ' + (el.title || '') + ' ' + (el.dataset.kw || ''))
+  }));
+  const calcs = CALC.map(c => ({ ...c, t: norm(c.n + ' ' + c.c) }));
+
+  function run(){
+    const raw = q.value.trim();
+    const toks = raw.split(/\s+/).map(norm).filter(Boolean);
+    calcList.textContent = '';
+    if (!toks.length) {
+      items.forEach(i => i.el.hidden = false);
+      secs.forEach(s => s.hidden = false);
+      calcSec.hidden = true;
+      status.textContent = '';
+      return;
+    }
+    const hit = t => toks.every(k => t.includes(k));
+    let n = 0;
+    items.forEach(i => { const h = hit(i.t); i.el.hidden = !h; if (h) n++; });
+    secs.forEach(s => s.hidden = !s.querySelector('.item:not([hidden])'));
+    const found = calcs.filter(c => hit(c.t));
+    found.forEach(c => {
+      const a = document.createElement('a');
+      a.className = 'row';
+      a.href = CALC_BASE + c.p;
+      const nm = document.createElement('span'); nm.className = 'name'; nm.textContent = c.n;
+      const mt = document.createElement('span'); mt.className = 'meta'; mt.textContent = '在「' + c.c + '」分頁';
+      a.append(nm, mt);
+      calcList.appendChild(a);
+    });
+    calcSec.hidden = !found.length;
+    const total = n + found.length;
+    status.textContent = total
+      ? '找到 ' + total + ' 項'
+      : '找不到「' + raw + '」。可試英文縮寫（如 PERC）或中文關鍵字（如 腎功能）。';
+  }
+
+  q.addEventListener('input', run);
+  q.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const first = document.querySelector('main a.item:not([hidden]), #calcList a');
+      if (first && q.value.trim()) first.click();
+    } else if (e.key === 'Escape') {
+      q.value = ''; run();
+    }
+  });
+  if (matchMedia('(pointer:fine)').matches) q.focus({ preventScroll: true });
+})();
+</script>
 </body>
 </html>

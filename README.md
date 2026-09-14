@@ -36,6 +36,8 @@
 3. 工具頁面內必有：版本或資料最後校對日、免責聲明
 4. 部署：main 分支根目錄 → GitHub Pages（Settings → Pages → Deploy from a branch）
 5. 上線後回到本 repo：`index.html` 加一張卡片（名稱、一句話、資料校對日、連結），README 表格加一列
+   - 「速查／速算」區用 `.tile` 格子：`data-reviewed="YYYY-MM-DD"`（超過 90 天自動標琥珀色提醒）、`data-kw`（搜尋關鍵字，中英同義詞都放）、`title`（完整名稱與說明）；其他區用 `.row`
+   - ⚠️ 主頁搜尋框內建 ed-calc 的 72 項清單（`index.html` 底部 `const CALC`，由 ed-calc `index.html` 的分類卡片抽出）。**ed-calc 增刪項目時要同步重抽**，否則搜尋找不到新項目
 6. 在 `worker/worker.js` 的 `TOOLS` 加一條短路徑對應（如 `"/xxx": "https://xyzkiwi.github.io/xxx-tool"`），`worker/` 目錄下 `npx wrangler deploy`；卡片連結用 `https://tools.kiwi-ai.uk/xxx/`（院內網擋 `github.io`，直連會失敗）
 
 ⚠️ **第 6 步不做等於沒上線**：程式碼推上 GitHub、Pages 也建好了，`tools.kiwi-ai.uk/xxx/` 還是會 404 —— Worker 跑的是上次 deploy 的版本，`worker.js` 進 repo 不會自動生效。驗收句是 `curl -o /dev/null -w "%{http_code}" https://tools.kiwi-ai.uk/xxx/` 拿到 200，不是「GitHub 上有檔案」。
@@ -46,7 +48,7 @@
 
 - 對應目標用 `releases/latest/download/<固定檔名>.zip` 永久連結，發新版不必改 Worker
 - **但每次發 release 都要附一份「不帶版號」的固定檔名 zip**，否則這條路由會 404。帶版號的那份照發，兩份內容相同
-- 卡片放在「瀏覽器擴充功能（需下載安裝）」區，`<h2>` 加 `⬇` 讓人知道點下去是下載不是開頁面
+- 卡片放在「瀏覽器擴充功能（需下載安裝）」區，名稱後加 `<span class="tag">下載 zip</span>` 讓人知道點下去是下載不是開頁面
 
 ## 免責聲明
 
