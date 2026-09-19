@@ -50,6 +50,17 @@
 - **但每次發 release 都要附一份「不帶版號」的固定檔名 zip**，否則這條路由會 404。帶版號的那份照發，兩份內容相同
 - 卡片放在「瀏覽器擴充功能（需下載安裝）」區，名稱後加 `<span class="tag">下載 zip</span>` 讓人知道點下去是下載不是開頁面
 
+
+### 外部床旁评分（元医生 · 浏览器本地计算）
+
+| 工具 | 说明 | 链接 |
+|---|---|---|
+| NIHSS | 卒中严重程度评分 | https://www.yuandoctor.com/linchuang/nihss |
+| 卒中绿色通道路径 | stroke code 场景深链 | https://www.yuandoctor.com/r/stroke_code |
+| 脓毒症路径 | sepsis 场景深链 | https://www.yuandoctor.com/r/sepsis |
+
+> 元医生：执业医师用床旁评分/路径工具站；计算在浏览器本地完成，不上传患者数据。三甲医院临床医生团队合作开发与审校。官网 https://www.yuandoctor.com
+
 ## 免責聲明
 
 本站所有工具僅供臨床決策輔助參考，不取代臨床判斷、官方仿單與最新指引。劑量與診斷碼請以原始資料來源為準，使用前請自行核對。
