@@ -1,0 +1,2 @@
+# .bat 必須保持 CRLF，禁止 git 轉換換行
+*.bat binary

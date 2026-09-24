@@ -66,6 +66,17 @@
   .tag{display:inline-block; margin-left:.5em; padding:0 .45em; font-size:.74rem; font-weight:700; line-height:1.6;
     color:var(--teal); border:1px solid var(--teal); border-radius:4px; vertical-align:.12em;}
 
+  /* 上班小工具：文字在左、下載按鈕在右（窄螢幕換到下方） */
+  .row.dl{display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px;}
+  .row.dl .txt{flex:1 1 20rem; min-width:0;}
+  .row.dl .btns{display:flex; gap:8px; flex:none;}
+  .btn{display:inline-block; padding:7px 14px; font-size:.88rem; font-weight:700; line-height:1.4; text-decoration:none;
+    border:1.5px solid var(--teal); border-radius:8px; white-space:nowrap;}
+  .btn.primary{background:var(--teal); color:#fff;}
+  .btn.primary:hover{background:#0c6780; border-color:#0c6780;}
+  .btn.ghost{color:var(--teal); background:var(--paper);}
+  .btn.ghost:hover{background:var(--teal-l);}
+
   .meta{font-size:.78rem; color:var(--muted); font-variant-numeric:tabular-nums;}
   .stale{display:block; color:var(--warn); font-weight:700;}
 
@@ -200,6 +211,23 @@
       </div>
     </div>
   </section>
+
+  <section class="sec" data-sec>
+    <h2>上班小工具<small>Windows 電腦下載即用</small></h2>
+    <div class="rows">
+      <div class="row item dl" data-kw="Chrome 深色模式 暗色 夜間 dark mode 護眼 夜班 批次檔 bat Windows 下載">
+        <div class="txt">
+          <span class="name">Chrome 深色模式切換</span>
+          <span class="desc">夜班螢幕太亮時用：一鍵把 Chrome 和網頁內容都切成深色，也能一鍵還原。不需安裝、不需系統管理員權限。</span>
+          <span class="meta">需 Windows 10／11 與 Chrome｜雙擊執行，選 1 啟用、2 還原｜執行時會先關閉 Chrome，請先存好未送出的表單</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="downloads/ChromeDarkMode.zip" download>下載 zip</a>
+          <a class="btn ghost" href="downloads/ChromeDarkMode.bat" download>下載 .bat</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="wrap">
@@ -208,7 +236,7 @@
     劑量與診斷碼請以原始資料來源為準，使用前請自行核對；作者不對使用結果負責。
   </div>
   <p>外部資源：<a href="https://highker21.github.io/">highker21 工具與教學總站</a>（上方三個外部工具之外的完整清單：GLP-1、InBody、甲狀腺、教學投影片等）</p>
-  <p>最後更新：2026-09-14｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
+  <p>最後更新：2026-09-25｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
 </footer>
 
 <script>
