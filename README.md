@@ -18,7 +18,7 @@
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [ed-calc](https://github.com/xyzKIWI/ed-calc) | <https://tools.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/ed-calc/> |
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
-| Chrome 深色模式切換（Windows 批次檔，上班小工具） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（私人，副本放本 repo `downloads/`） | <https://tools.kiwi-ai.uk/downloads/ChromeDarkMode.zip>（另有 `.bat`） | — |
+| Chrome 深色模式切換（Windows 可攜式程式，上班小工具） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | <https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe>（直接下載） | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
 ### 外部工具（ [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
@@ -51,12 +51,12 @@
 - **但每次發 release 都要附一份「不帶版號」的固定檔名 zip**，否則這條路由會 404。帶版號的那份照發，兩份內容相同
 - 卡片放在「瀏覽器擴充功能（需下載安裝）」區，名稱後加 `<span class="tag">下載 zip</span>` 讓人知道點下去是下載不是開頁面
 
-### 上班小工具（Windows 批次檔等）
+### 上班小工具（Windows 可攜式程式）
 
-來源 repo 是私人的，所以不走 Release 代理，直接把檔案**複製**進本 repo 的 `downloads/`，經 Worker 預設路徑提供（不用改 `worker.js`、不用 wrangler deploy）：
+公開來源 repo 的下載檔走 `worker.js` 的 `DOWNLOADS` 對應表，代理到 GitHub Release 的固定檔名資產：
 
-- 來源更新後要手動重新複製 `.bat` 並重包 zip（zip 內含 `.bat`＋`README.txt`），推上去後比對 md5
-- `.gitattributes` 設 `*.bat binary`：批次檔必須保持 CRLF 換行，不能讓 git 轉換
+- 每次發 release 都要附一份不帶版本號的固定檔名資產，例如 `ChromeDarkModeTool.exe`
+- 網站使用固定的 `tools.kiwi-ai.uk` 下載網址；更新 latest release 後不必修改卡片
 - 卡片放頁面最下方「上班小工具」區，用 `.row.dl` 版型（右側下載按鈕）
 
 ## 免責聲明

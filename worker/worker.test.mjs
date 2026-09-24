@@ -277,3 +277,27 @@ test("download proxy keeps range support while stripping credentials", async () 
   assert.equal(response.headers.get("set-cookie"), null);
   assertGenericSecurityHeaders(response);
 });
+
+test("Chrome dark mode download proxies the latest executable release", async () => {
+  const calls = stubFetch(() =>
+    new Response("portable executable", {
+      status: 200,
+      headers: { "Content-Type": "application/x-msdownload" },
+    }),
+  );
+
+  const response = await worker.fetch(
+    new Request("https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe"),
+  );
+
+  assert.equal(response.status, 200);
+  assert.equal(
+    calls[0].input,
+    "https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkModeTool.exe",
+  );
+  assert.equal(
+    response.headers.get("content-disposition"),
+    'attachment; filename="ChromeDarkModeTool.exe"',
+  );
+  assertGenericSecurityHeaders(response);
+});

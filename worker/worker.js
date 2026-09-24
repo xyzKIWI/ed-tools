@@ -117,10 +117,12 @@ function badGateway(pathname) {
 
 // 下載類：代理 GitHub Release 的固定檔名資產，讓安裝包也走本網域（院內網擋 github.io）
 // 用 releases/latest/download/ 永久連結，發新版不必回來改這裡，
-// 但每次發 release 都要記得附一份固定檔名（不帶版號）的 zip，否則這條會 404。
+// 但每次發 release 都要記得附一份固定檔名（不帶版號）的資產，否則這條會 404。
 const DOWNLOADS = {
   "/medcloud.zip":
     "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
+  "/ChromeDarkModeTool.exe":
+    "https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkModeTool.exe",
 };
 
 export default {
