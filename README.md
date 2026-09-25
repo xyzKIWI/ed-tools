@@ -18,7 +18,7 @@
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [ed-calc](https://github.com/xyzKIWI/ed-calc) | <https://tools.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/ed-calc/> |
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
-| Chrome 深色模式切換（Windows 可攜式程式，上班小工具） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | <https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe>（主要下載）；[`.bat` 備用檔](downloads/ChromeDarkMode.bat) | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
+| 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 可攜式程式） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | <https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe>（主要下載）；[`.bat` 備用檔](downloads/ChromeDarkMode.bat) | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
 ### 外部工具（ [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
