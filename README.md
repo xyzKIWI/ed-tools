@@ -6,7 +6,7 @@
 備用：<https://xyzkiwi.github.io/ed-tools/>（GitHub Pages 原址；**2026-09-27 起院內卡巴斯基封鎖 tools.kiwi-ai.uk，院內改用這個**）
 備援：<https://kiwi-ed-tools.pages.dev/>（Cloudflare Pages 跑同一支 Worker，網址路徑與 tools.kiwi-ai.uk 相同）
 
-> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），pages.dev 版換成同站路徑。「上班小工具」區**只在 github.io 版顯示**（`#work-tools` 預設 hidden），主網域與 pages.dev 不放下載程式。
+> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），pages.dev 版換成同站路徑。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 版顯示**，主網域與 pages.dev 不放下載程式。每張下載卡統一兩顆按鈕：［下載檔案］＋［到 GitHub 下載］（Release 頁）。
 
 > 好記版由 `worker/` 內的 Cloudflare Worker 反向代理 GitHub Pages 而成；`npx wrangler deploy`（在 `worker/` 目錄）即可更新 Worker 本身，頁面內容照常只要 push 本 repo。各工具另有短路徑代理（`/icd10`、`/abx`、`/peds`）——醫院等會封鎖 `github.io` 的內網，一律走 `tools.kiwi-ai.uk` 就能用。
 
