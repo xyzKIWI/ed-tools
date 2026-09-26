@@ -19,6 +19,7 @@
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 可攜式程式） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | <https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe>（主要下載）；[`.bat` 備用檔](downloads/ChromeDarkMode.bat) | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
+| Windows 暫存與快取清理（Clean.exe） | 本 repo（`downloads/Clean.exe.b64`，Worker 下載時解回 exe） | <https://tools.kiwi-ai.uk/Clean.exe> | — |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
 ### 外部工具（ [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
@@ -60,6 +61,7 @@
 - `downloads/ChromeDarkMode.bat` 保留為備用與原始碼檢查用途；主要下載按鈕仍只提供 `.exe`
 - 上游 `ChromeDarkMode.bat` 有修改時，需同步更新此處的備用副本
 - 卡片放頁面最下方「上班小工具」區，用 `.row.dl` 版型（右側下載按鈕）
+- `Clean.exe` 的檔案本體放在 `downloads/Clean.exe.b64`。`/Clean.exe` 會在 Worker 裡解回原始執行檔，所以這條路由改過程式，發新版後仍要 `npx wrangler deploy`
 
 ## 免責聲明
 
