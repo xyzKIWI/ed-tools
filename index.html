@@ -212,7 +212,7 @@
     </div>
   </section>
 
-  <section class="sec" data-sec>
+  <section class="sec" data-sec id="work-tools" hidden>
     <h2>上班小工具<small>Windows 電腦下載即用</small></h2>
     <div class="rows">
       <div class="row item dl" data-kw="多瀏覽器 Chrome Comet Edge IE 深色模式 暗色 夜間 dark mode 護眼 夜班 exe Windows 下載">
@@ -236,14 +236,14 @@
           <a class="btn ghost" href="https://github.com/xyzKIWI/MouseJiggle">原始碼</a>
         </div>
       </div>
-      <div class="row item dl" data-kw="清理 暫存 Temp 快取 Windows Update Prefetch 資源回收筒 DNS 清理 exe Windows 下載">
+      <div class="row item dl" data-kw="清理 暫存 Temp 快取 Windows Update Prefetch 資源回收筒 DNS 清理 bat 批次檔 Windows 下載">
         <div class="txt">
           <span class="name">Windows 暫存與快取清理</span>
-          <span class="desc">清理 Windows Update 下載快取、Temp、Prefetch、當機 dump、縮圖快取與資源回收筒，並清除 DNS 快取。執行過程不用按鍵，完成後視窗會自己關閉。</span>
-          <span class="meta">需 Windows｜需要系統管理員權限｜免安裝｜會短暫暫停 Windows Update 服務，完成後自動開回</span>
+          <span class="desc">雙擊執行清理自己的暫存、網頁與縮圖快取、資源回收筒與 DNS 快取；按右鍵「以系統管理員身分執行」會再清 Windows Update 下載快取、系統 Temp、Prefetch 與系統當機 dump。完成後按任意鍵關閉。</span>
+          <span class="meta">需 Windows｜.bat 批次檔，可先用記事本打開檢查｜免安裝｜系統管理員模式會短暫暫停 Windows Update 服務，完成後自動開回</span>
         </div>
         <div class="btns">
-          <a class="btn primary" href="https://tools.kiwi-ai.uk/Clean.exe" download>下載 .exe</a>
+          <a class="btn primary" href="https://github.com/xyzKIWI/windows-clean/releases/latest">到 GitHub 下載</a>
         </div>
       </div>
     </div>
@@ -263,8 +263,11 @@
 (function(){
   // ed-calc 72 項清單（來源：ed-calc/index.html 分類卡片；ed-calc 增刪項目時要同步更新）
   const CALC = [{"n": "MAP", "c": "核心十項", "p": "calc-ten.html"}, {"n": "休克指數", "c": "核心十項", "p": "calc-ten.html"}, {"n": "Parkland", "c": "核心十項", "p": "calc-ten.html"}, {"n": "4-2-1", "c": "核心十項", "p": "calc-ten.html"}, {"n": "qSOFA", "c": "核心十項", "p": "calc-ten.html"}, {"n": "CRB-65", "c": "核心十項", "p": "calc-ten.html"}, {"n": "NEXUS 頸椎", "c": "核心十項", "p": "calc-ten.html"}, {"n": "Ottawa 膝", "c": "核心十項", "p": "calc-ten.html"}, {"n": "sPESI", "c": "核心十項", "p": "calc-ten.html"}, {"n": "ABCD²", "c": "核心十項", "p": "calc-ten.html"}, {"n": "ABC Score 大量輸血預測", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Head CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Pittsburgh 膝關節準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "九則法 Rule of Nines 燒傷面積", "c": "外傷", "p": "calc-trauma.html"}, {"n": "STUMBL / Battle 肋骨骨折評分", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Canadian C-Spine Rule 頸椎影像決策", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Canadian CT Head Rule 頭部 CT 決策", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Modified Denver 準則（鈍性腦血管損傷 BCVI）", "c": "外傷", "p": "calc-trauma.html"}, {"n": "New Orleans 頭部 CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Chest CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Chest 鈍性胸傷影像準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Ottawa 踝關節準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "4PEPS 四階肺栓塞臨床機率", "c": "心血管", "p": "calc-cardio.html"}, {"n": "CHA₂DS₂-VASc 心房顫動中風風險", "c": "心血管", "p": "calc-cardio.html"}, {"n": "校正 QT 間期 QTc", "c": "心血管", "p": "calc-cardio.html"}, {"n": "HEAR Score（胸痛，不含 troponin）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Killip 分級（急性心肌梗塞心衰竭）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "PERC 肺栓塞排除準則", "c": "心血管", "p": "calc-cardio.html"}, {"n": "PESI 肺栓塞嚴重度指數", "c": "心血管", "p": "calc-cardio.html"}, {"n": "TIMI 風險評分（STEMI）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "ADD-RS 主動脈剝離風險評分", "c": "心血管", "p": "calc-cardio.html"}, {"n": "修正 Geneva 評分（肺栓塞）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Wells 準則（深部靜脈栓塞 DVT）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Wells 準則（肺栓塞 PE）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Modified Rankin Scale（神經功能失能）", "c": "神經", "p": "calc-neuro.html"}, {"n": "RACE 大血管阻塞評估", "c": "神經", "p": "calc-neuro.html"}, {"n": "tPA (alteplase) 中風劑量", "c": "神經", "p": "calc-neuro.html"}, {"n": "ABC/2 腦出血體積估算", "c": "神經", "p": "calc-neuro.html"}, {"n": "GCS 昏迷指數", "c": "神經", "p": "calc-neuro.html"}, {"n": "Hunt-Hess 蛛網膜下腔出血分級", "c": "神經", "p": "calc-neuro.html"}, {"n": "ICH Score 腦出血預後", "c": "神經", "p": "calc-neuro.html"}, {"n": "NIHSS 中風量表", "c": "神經", "p": "calc-neuro.html"}, {"n": "Ottawa SAH 準則（頭痛）", "c": "神經", "p": "calc-neuro.html"}, {"n": "BRUE 2.0 風險預測", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童頸椎損傷影像決策", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童腹內傷風險", "c": "兒科", "p": "calc-peds.html"}, {"n": "BRUE 準則（嬰兒不明原因短暫事件）", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童頭部外傷影像決策", "c": "兒科", "p": "calc-peds.html"}, {"n": "兒童氣管內管尺寸", "c": "兒科", "p": "calc-peds.html"}, {"n": "兒童外傷評分 PTS", "c": "兒科", "p": "calc-peds.html"}, {"n": "Westley 咳吼嚴重度", "c": "兒科", "p": "calc-peds.html"}, {"n": "理想體重 IBW / 校正體重 ABW", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "MEWS 早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "NEWS 國家早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "NEWS2 國家早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "尿量 / 體液平衡", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "RASS 鎮靜躁動量表", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "氣管內管深度與潮氣容積", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "HEAVEN 困難插管預測", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "SpO₂/FiO₂ 比值", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "修正 Centor（McIsaac）咽炎評分", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "ROX Index（HFNC 插管風險）", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "BAWS 簡式酒精戒斷量表", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "CIWA-Ar 酒精戒斷評估", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "C-SSRS 哥倫比亞自殺嚴重度量表", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "HEADS-ED 兒少心理社會篩檢", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "Acetaminophen 過量 NAC 劑量", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "Rockall 評分（完整版）", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "Rockall 評分（內視鏡前）", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "West Haven 肝性腦病分級", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "Burch-Wartofsky 甲狀腺風暴評分", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "TWIST 睪丸扭轉評分", "c": "腸胃／其他", "p": "calc-gi.html"}];
-  // 從 github.io 開啟時（院內防毒擋 tools.kiwi-ai.uk 的備援入口），短路徑改連 GitHub 原址
+  // 從 github.io 開啟時（院內防毒擋 tools.kiwi-ai.uk 的備援入口），短路徑改連 GitHub 原址；
+  // pages.dev 備援站跑同一支 Worker，短路徑改成同站路徑
+  const KIWI = "https://tools.kiwi-ai.uk/";
   const ON_GITHUB = location.hostname.endsWith('github.io');
+  const ON_PAGES = location.hostname.endsWith('pages.dev');
   const GH = {
     "https://tools.kiwi-ai.uk/abx/": "https://xyzkiwi.github.io/abx-tool/",
     "https://tools.kiwi-ai.uk/icd10/": "https://xyzkiwi.github.io/icd10-ed-quickref/",
@@ -273,11 +276,16 @@
     "https://tools.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/ed-calc/",
     "https://tools.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
   };
-  if (ON_GITHUB) document.querySelectorAll('a[href]').forEach(a => {
-    const to = GH[a.getAttribute('href')];
+  const remap = h => ON_GITHUB ? GH[h] : (ON_PAGES && h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
+  document.querySelectorAll('a[href]').forEach(a => {
+    const to = remap(a.getAttribute('href'));
     if (to) a.href = to;
   });
-  const CALC_BASE = ON_GITHUB ? GH["https://tools.kiwi-ai.uk/calc/"] : "https://tools.kiwi-ai.uk/calc/";
+  const CALC_BASE = remap(KIWI + 'calc/') || KIWI + 'calc/';
+
+  // 上班小工具只放 github.io 版（院內防毒因 exe 下載封了 tools.kiwi-ai.uk；主網域與 pages.dev 不放）
+  const work = document.getElementById('work-tools');
+  if (ON_GITHUB) work.hidden = false; else work.remove();
   const STALE_DAYS = 90;
 
   // 校對日超過 90 天就提醒

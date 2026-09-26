@@ -2,6 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test worker.test.mjs"
+    "test": "node --test worker.test.mjs",
+    "deploy:pages": "d=$(mktemp -d) && cp worker.js \"$d/_worker.js\" && cd \"$d\" && npx wrangler pages deploy . --project-name kiwi-ed-tools --branch main --commit-dirty=true"
   }
 }
