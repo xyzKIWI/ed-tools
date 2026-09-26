@@ -123,6 +123,10 @@ const DOWNLOADS = {
     "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
   "/ChromeDarkModeTool.exe":
     "https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkModeTool.exe",
+  "/MouseJiggle.exe":
+    "https://github.com/xyzKIWI/MouseJiggle/releases/latest/download/MouseJiggle.exe",
+  "/MouseJiggle.zip":
+    "https://github.com/xyzKIWI/MouseJiggle/releases/latest/download/MouseJiggle.zip",
   // 檔案本體以 base64 存在 repo，下載時解回原始 exe。
   "/Clean.exe":
     "https://raw.githubusercontent.com/xyzKIWI/ed-tools/main/downloads/Clean.exe.b64",

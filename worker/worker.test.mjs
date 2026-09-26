@@ -302,6 +302,43 @@ test("Chrome dark mode download proxies the latest executable release", async ()
   assertGenericSecurityHeaders(response);
 });
 
+test("MouseJiggle downloads proxy the latest fixed-name release assets", async () => {
+  const calls = stubFetch((input) =>
+    new Response(String(input).endsWith(".zip") ? "portable zip" : "portable executable", {
+      status: 200,
+      headers: { "Content-Type": "application/octet-stream" },
+    }),
+  );
+
+  const executable = await worker.fetch(
+    new Request("https://tools.kiwi-ai.uk/MouseJiggle.exe"),
+  );
+  const archive = await worker.fetch(
+    new Request("https://tools.kiwi-ai.uk/MouseJiggle.zip"),
+  );
+
+  assert.equal(executable.status, 200);
+  assert.equal(archive.status, 200);
+  assert.equal(
+    calls[0].input,
+    "https://github.com/xyzKIWI/MouseJiggle/releases/latest/download/MouseJiggle.exe",
+  );
+  assert.equal(
+    calls[1].input,
+    "https://github.com/xyzKIWI/MouseJiggle/releases/latest/download/MouseJiggle.zip",
+  );
+  assert.equal(
+    executable.headers.get("content-disposition"),
+    'attachment; filename="MouseJiggle.exe"',
+  );
+  assert.equal(
+    archive.headers.get("content-disposition"),
+    'attachment; filename="MouseJiggle.zip"',
+  );
+  assertGenericSecurityHeaders(executable);
+  assertGenericSecurityHeaders(archive);
+});
+
 test("Clean.exe download decodes the base64 file into the original bytes", async () => {
   const payload = new TextEncoder().encode("MZ-clean");
   const encoded = btoa(String.fromCharCode(...payload));

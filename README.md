@@ -19,6 +19,7 @@
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 可攜式程式） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | <https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe>（主要下載）；[`.bat` 備用檔](downloads/ChromeDarkMode.bat) | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
+| MouseJiggle 滑鼠防閒置工具（Normal／Zen，Windows 可攜式程式） | [MouseJiggle](https://github.com/xyzKIWI/MouseJiggle)（公開） | <https://tools.kiwi-ai.uk/MouseJiggle.exe>（EXE）；<https://tools.kiwi-ai.uk/MouseJiggle.zip>（可攜版） | [Releases](https://github.com/xyzKIWI/MouseJiggle/releases/latest) |
 | Windows 暫存與快取清理（Clean.exe） | 本 repo（`downloads/Clean.exe.b64`，Worker 下載時解回 exe） | <https://tools.kiwi-ai.uk/Clean.exe> | — |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
@@ -56,7 +57,7 @@
 
 公開來源 repo 的下載檔走 `worker.js` 的 `DOWNLOADS` 對應表，代理到 GitHub Release 的固定檔名資產：
 
-- 每次發 release 都要附一份不帶版本號的固定檔名資產，例如 `ChromeDarkModeTool.exe`
+- 每次發 release 都要附一份不帶版本號的固定檔名資產，例如 `ChromeDarkModeTool.exe`、`MouseJiggle.exe` 與 `MouseJiggle.zip`
 - 網站使用固定的 `tools.kiwi-ai.uk` 下載網址；更新 latest release 後不必修改卡片
 - `downloads/ChromeDarkMode.bat` 保留為備用與原始碼檢查用途；主要下載按鈕仍只提供 `.exe`
 - 上游 `ChromeDarkMode.bat` 有修改時，需同步更新此處的備用副本
