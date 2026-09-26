@@ -123,7 +123,19 @@ const DOWNLOADS = {
     "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
   "/ChromeDarkModeTool.exe":
     "https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkModeTool.exe",
+  // 檔案本體以 base64 存在 repo，下載時解回原始 exe。
+  "/Clean.exe":
+    "https://raw.githubusercontent.com/xyzKIWI/ed-tools/main/downloads/Clean.exe.b64",
 };
+
+const BASE64_DOWNLOADS = new Set(["/Clean.exe"]);
+
+function decodeBase64(encoded) {
+  const binary = atob(encoded.replace(/\s+/g, ""));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
 
 export default {
   async fetch(request) {
@@ -153,11 +165,33 @@ export default {
 
     const download = DOWNLOADS[path];
     if (download) {
+      const base64Download = BASE64_DOWNLOADS.has(path);
+      let upstream = request;
+      if (base64Download) {
+        const headers = new Headers(request.headers);
+        headers.delete("range");
+        headers.delete("if-range");
+        upstream = new Request(request.url, { method: "GET", headers });
+      }
       let resp;
       try {
-        resp = await fetchUpstream(request, download);
+        resp = await fetchUpstream(upstream, download);
       } catch {
         return badGateway(path);
+      }
+      if (base64Download && resp.ok) {
+        const bytes = decodeBase64(await resp.text());
+        const out = new Response(request.method === "HEAD" ? null : bytes, {
+          status: resp.status,
+          statusText: resp.statusText,
+          headers: resp.headers,
+        });
+        out.headers.delete("content-encoding");
+        out.headers.set("Content-Type", "application/octet-stream");
+        out.headers.set("Content-Length", String(bytes.byteLength));
+        out.headers.set("Content-Disposition", `attachment; filename="${path.slice(1)}"`);
+        out.headers.set("Cache-Control", resp.status >= 500 ? "no-store" : "public, max-age=300");
+        return securedResponse(out, path);
       }
       const out = new Response(resp.body, resp);
       out.headers.set("Content-Disposition", `attachment; filename="${download.split("/").pop()}"`);

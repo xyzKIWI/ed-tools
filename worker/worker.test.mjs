@@ -301,3 +301,30 @@ test("Chrome dark mode download proxies the latest executable release", async ()
   );
   assertGenericSecurityHeaders(response);
 });
+
+test("Clean.exe download decodes the base64 file into the original bytes", async () => {
+  const payload = new TextEncoder().encode("MZ-clean");
+  const encoded = btoa(String.fromCharCode(...payload));
+  const calls = stubFetch(() =>
+    new Response(encoded, {
+      status: 200,
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    }),
+  );
+
+  const response = await worker.fetch(
+    new Request("https://tools.kiwi-ai.uk/Clean.exe"),
+  );
+
+  assert.equal(response.status, 200);
+  assert.equal(
+    calls[0].input,
+    "https://raw.githubusercontent.com/xyzKIWI/ed-tools/main/downloads/Clean.exe.b64",
+  );
+  assert.equal(calls[0].init.method, "GET");
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  assert.deepEqual(bytes, payload);
+  assert.equal(response.headers.get("content-type"), "application/octet-stream");
+  assert.equal(response.headers.get("content-disposition"), 'attachment; filename="Clean.exe"');
+  assertGenericSecurityHeaders(response);
+});
