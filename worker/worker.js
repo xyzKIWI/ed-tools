@@ -2,7 +2,7 @@
 // 使用者網址列保持 tools.kiwi-ai.uk，內容即時來自 xyzkiwi.github.io
 // 短路徑對應各工具 repo 的 Pages；其餘路徑走 ed-tools 入口頁
 const TOOLS = {
-  "/icd10": "https://xyzkiwi.github.io/icd10-ed-quickref",
+  "/icd10": "https://xyzkiwi.github.io/icd10",
   "/abx": "https://xyzkiwi.github.io/abx-tool",
   "/peds": "https://xyzkiwi.github.io/peds-dose",
   "/heparin": "https://xyzkiwi.github.io/heparin-tool",

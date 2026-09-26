@@ -84,7 +84,7 @@ test("only allowlisted headers reach GitHub and ICD-10 HTML receives its compati
   );
 
   assert.equal(calls.length, 1);
-  assert.equal(calls[0].input, "https://xyzkiwi.github.io/icd10-ed-quickref/");
+  assert.equal(calls[0].input, "https://xyzkiwi.github.io/icd10/");
   const sent = new Headers(calls[0].init.headers);
   assert.equal(sent.get("accept"), "text/html");
   assert.equal(sent.get("if-none-match"), '"etag"');
