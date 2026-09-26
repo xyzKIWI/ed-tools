@@ -18,8 +18,8 @@
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [ed-calc](https://github.com/xyzKIWI/ed-calc) | <https://tools.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/ed-calc/> |
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
-| 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 可攜式程式） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | <https://tools.kiwi-ai.uk/ChromeDarkModeTool.exe>（主要下載）；[`.bat` 備用檔](downloads/ChromeDarkMode.bat) | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
-| MouseJiggle 滑鼠防閒置工具（Normal／Zen，Windows 可攜式程式） | [MouseJiggle](https://github.com/xyzKIWI/MouseJiggle)（公開） | <https://tools.kiwi-ai.uk/MouseJiggle.exe>（EXE）；<https://tools.kiwi-ai.uk/MouseJiggle.zip>（可攜版） | [Releases](https://github.com/xyzKIWI/MouseJiggle/releases/latest) |
+| 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 可攜式程式） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | [GitHub Release 頁](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest)（主要下載）；[`.bat` 備用檔](downloads/ChromeDarkMode.bat) | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
+| MouseJiggle 滑鼠防閒置工具（Normal／Zen，Windows 可攜式程式） | [MouseJiggle](https://github.com/xyzKIWI/MouseJiggle)（公開） | [GitHub Release 頁](https://github.com/xyzKIWI/MouseJiggle/releases/latest)（EXE／可攜版 zip） | [Releases](https://github.com/xyzKIWI/MouseJiggle/releases/latest) |
 | Windows 暫存與快取清理（Clean.exe） | 本 repo（`downloads/Clean.exe.b64`，Worker 下載時解回 exe） | <https://tools.kiwi-ai.uk/Clean.exe> | — |
 | note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
 
@@ -55,10 +55,9 @@
 
 ### 上班小工具（Windows 可攜式程式）
 
-公開來源 repo 的下載檔走 `worker.js` 的 `DOWNLOADS` 對應表，代理到 GitHub Release 的固定檔名資產：
+**.exe 不經本網域發送**（2026-09-27：院內卡巴斯基封鎖 tools.kiwi-ai.uk，疑因本網域代理未簽章 exe）：公開來源 repo 的卡片按鈕一律連到 GitHub 的 `releases/latest` 頁面，讓使用者在 GitHub 上下載，不要再加進 `worker.js` 的 `DOWNLOADS`。
 
-- 每次發 release 都要附一份不帶版本號的固定檔名資產，例如 `ChromeDarkModeTool.exe`、`MouseJiggle.exe` 與 `MouseJiggle.zip`
-- 網站使用固定的 `tools.kiwi-ai.uk` 下載網址；更新 latest release 後不必修改卡片
+- 按鈕連 `https://github.com/xyzKIWI/<repo>/releases/latest`；更新 latest release 後不必修改卡片
 - `downloads/ChromeDarkMode.bat` 保留為備用與原始碼檢查用途；主要下載按鈕仍只提供 `.exe`
 - 上游 `ChromeDarkMode.bat` 有修改時，需同步更新此處的備用副本
 - 卡片放頁面最下方「上班小工具」區，用 `.row.dl` 版型（右側下載按鈕）
