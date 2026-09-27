@@ -214,6 +214,7 @@
           <a class="btn ghost" href="https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest">到 GitHub 下載</a>
         </div>
       </div>
+      <!-- gh-only:start 以下三個程式只在 github.io 版顯示；tools.kiwi-ai.uk／pages.dev 由 Worker 整段拿掉 -->
       <div class="row item dl" data-gh-only data-kw="多瀏覽器 Chrome Comet Edge IE 深色模式 暗色 夜間 dark mode 護眼 夜班 exe Windows 下載">
         <div class="txt">
           <span class="name">多瀏覽器深色模式切換</span>
@@ -247,6 +248,7 @@
           <a class="btn ghost" href="https://github.com/xyzKIWI/windows-clean/releases/latest">到 GitHub 下載</a>
         </div>
       </div>
+      <!-- gh-only:end -->
     </div>
   </section>
 </main>
@@ -270,11 +272,11 @@
   const ON_GITHUB = location.hostname.endsWith('github.io');
   const ON_PAGES = location.hostname.endsWith('pages.dev');
   const GH = {
-    "https://tools.kiwi-ai.uk/abx/": "https://xyzkiwi.github.io/abx-tool/",
+    "https://tools.kiwi-ai.uk/abx/": "https://xyzkiwi.github.io/abx/",
     "https://tools.kiwi-ai.uk/icd10/": "https://xyzkiwi.github.io/icd10/",
-    "https://tools.kiwi-ai.uk/peds/": "https://xyzkiwi.github.io/peds-dose/",
-    "https://tools.kiwi-ai.uk/heparin/": "https://xyzkiwi.github.io/heparin-tool/",
-    "https://tools.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/ed-calc/",
+    "https://tools.kiwi-ai.uk/peds/": "https://xyzkiwi.github.io/peds/",
+    "https://tools.kiwi-ai.uk/heparin/": "https://xyzkiwi.github.io/heparin/",
+    "https://tools.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/calc/",
     "https://tools.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
   };
   const remap = h => ON_GITHUB ? GH[h] : (ON_PAGES && h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);

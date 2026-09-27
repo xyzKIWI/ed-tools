@@ -277,3 +277,32 @@ test("download proxy keeps range support while stripping credentials", async () 
   assert.equal(response.headers.get("set-cookie"), null);
   assertGenericSecurityHeaders(response);
 });
+
+test("hub index drops github.io-only blocks from the HTML source", async () => {
+  const html =
+    '<main><div>keep</div>\n<!-- gh-only:start 說明 -->\n<div data-gh-only>MouseJiggle</div>\n<!-- gh-only:end -->\n<p>tail</p></main>';
+  const calls = stubFetch(() =>
+    new Response(html, {
+      headers: { "Content-Type": "text/html; charset=utf-8", ETag: '"abc"', "Content-Length": String(html.length) },
+    }),
+  );
+
+  const response = await worker.fetch(new Request("https://tools.kiwi-ai.uk/"));
+  const body = await response.text();
+
+  assert.equal(calls[0].input, "https://xyzkiwi.github.io/ed-tools/");
+  assert.equal(response.status, 200);
+  assert.equal(body, "<main><div>keep</div>\n<p>tail</p></main>");
+  assert.equal(response.headers.get("etag"), 'W/"abc"');
+  assert.equal(response.headers.get("content-length"), null);
+  assertGenericSecurityHeaders(response);
+});
+
+test("tool pages are passed through without stripping", async () => {
+  const html = "<!-- gh-only:start --><p>x</p><!-- gh-only:end -->";
+  stubFetch(() => new Response(html, { headers: { "Content-Type": "text/html" } }));
+
+  const response = await worker.fetch(new Request("https://tools.kiwi-ai.uk/abx/"));
+
+  assert.equal(await response.text(), html);
+});

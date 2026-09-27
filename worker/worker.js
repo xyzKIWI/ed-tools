@@ -3,10 +3,10 @@
 // 短路徑對應各工具 repo 的 Pages；其餘路徑走 ed-tools 入口頁
 const TOOLS = {
   "/icd10": "https://xyzkiwi.github.io/icd10",
-  "/abx": "https://xyzkiwi.github.io/abx-tool",
-  "/peds": "https://xyzkiwi.github.io/peds-dose",
-  "/heparin": "https://xyzkiwi.github.io/heparin-tool",
-  "/calc": "https://xyzkiwi.github.io/ed-calc",
+  "/abx": "https://xyzkiwi.github.io/abx",
+  "/peds": "https://xyzkiwi.github.io/peds",
+  "/heparin": "https://xyzkiwi.github.io/heparin",
+  "/calc": "https://xyzkiwi.github.io/calc",
 };
 const HUB = "https://xyzkiwi.github.io/ed-tools";
 
@@ -88,6 +88,13 @@ function securedResponse(response, pathname) {
     statusText: response.statusText,
     headers,
   });
+}
+
+// 首頁裡 github.io 專屬的區塊（上班小程式）在這裡整段拿掉，原始碼也不留，不只靠前端 JS 隱藏
+const GH_ONLY = /<!-- gh-only:start[\s\S]*?<!-- gh-only:end -->\s*/g;
+
+function isHubIndex(origin, path) {
+  return origin === HUB && (path === "/" || path === "/index.html");
 }
 
 function redirect(location, status) {
@@ -179,6 +186,17 @@ export default {
       resp = await fetchUpstream(request, origin + path + url.search);
     } catch {
       return badGateway(url.pathname);
+    }
+    if (isHubIndex(origin, path) && resp.status === 200) {
+      const html = request.method === "HEAD" ? null : (await resp.text()).replace(GH_ONLY, "");
+      const out = new Response(html, resp);
+      out.headers.delete("content-length");
+      out.headers.delete("content-encoding");
+      // 內容與上游不同，改成弱驗證碼；If-None-Match 用弱比對，304 照常運作
+      const etag = out.headers.get("etag");
+      if (etag && !etag.startsWith("W/")) out.headers.set("etag", "W/" + etag);
+      out.headers.set("Cache-Control", "public, max-age=300");
+      return securedResponse(out, url.pathname);
     }
     // 原樣回傳（含 content-type），只補一個快取上限避免舊版黏太久
     const out = new Response(resp.body, resp);

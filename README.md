@@ -6,7 +6,9 @@
 備用：<https://xyzkiwi.github.io/ed-tools/>（GitHub Pages 原址；**2026-09-27 起院內卡巴斯基封鎖 tools.kiwi-ai.uk，院內改用這個**）
 備援：<https://kiwi-ed-tools.pages.dev/>（Cloudflare Pages 跑同一支 Worker，網址路徑與 tools.kiwi-ai.uk 相同）
 
-> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），pages.dev 版換成同站路徑。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 版顯示**，主網域與 pages.dev 不放下載程式。每張下載卡統一兩顆按鈕：［下載檔案］＋［到 GitHub 下載］（Release 頁）。
+> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），pages.dev 版換成同站路徑。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 版顯示**，主網域與 pages.dev 不放下載程式。每張下載卡統一兩顆按鈕：［下載檔案］＋［到 GitHub 下載］（Release 頁）。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
+
+> 2026-09-27 五個工具 repo 改短名對齊短路徑：`icd10-ed-quickref`→`icd10`、`abx-tool`→`abx`、`peds-dose`→`peds`、`heparin-tool`→`heparin`、`ed-calc`→`calc`。舊 github.io 網址已失效（GitHub repo 網址會自動轉址）；**不要再建立與舊名同名的 repo**，會搶走轉址。回饋表單前綴（`[peds-dose]`、`[ed-calc/頁名]`）刻意沿用舊名以保持 Sheet 資料連續。
 
 > 好記版由 `worker/` 內的 Cloudflare Worker 反向代理 GitHub Pages 而成；`npx wrangler deploy`（在 `worker/` 目錄）即可更新 Worker 本身，頁面內容照常只要 push 本 repo。各工具另有短路徑代理（`/icd10`、`/abx`、`/peds`）——醫院等會封鎖 `github.io` 的內網，一律走 `tools.kiwi-ai.uk` 就能用。
 
@@ -14,11 +16,11 @@
 
 | 工具 | Repo | 上線網址 | GitHub Pages 原址 |
 |---|---|---|---|
-| 抗微生物藥腎功能劑量速查 | [abx-tool](https://github.com/xyzKIWI/abx-tool) | <https://tools.kiwi-ai.uk/abx/> | <https://xyzkiwi.github.io/abx-tool/> |
+| 抗微生物藥腎功能劑量速查 | [abx](https://github.com/xyzKIWI/abx) | <https://tools.kiwi-ai.uk/abx/> | <https://xyzkiwi.github.io/abx/> |
 | 急診 ICD-10-CM 診斷碼速查 | [icd10](https://github.com/xyzKIWI/icd10)（2026-09-27 由 icd10-ed-quickref 改名） | <https://tools.kiwi-ai.uk/icd10/> | <https://xyzkiwi.github.io/icd10/> |
-| 兒科藥物劑量速算 | [peds-dose](https://github.com/xyzKIWI/peds-dose) | <https://tools.kiwi-ai.uk/peds/> | <https://xyzkiwi.github.io/peds-dose/> |
-| Heparin dose 調整計算 | [heparin-tool](https://github.com/xyzKIWI/heparin-tool) | <https://tools.kiwi-ai.uk/heparin/> | <https://xyzkiwi.github.io/heparin-tool/> |
-| 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [ed-calc](https://github.com/xyzKIWI/ed-calc) | <https://tools.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/ed-calc/> |
+| 兒科藥物劑量速算 | [peds](https://github.com/xyzKIWI/peds) | <https://tools.kiwi-ai.uk/peds/> | <https://xyzkiwi.github.io/peds/> |
+| Heparin dose 調整計算 | [heparin](https://github.com/xyzKIWI/heparin) | <https://tools.kiwi-ai.uk/heparin/> | <https://xyzkiwi.github.io/heparin/> |
+| 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [calc](https://github.com/xyzKIWI/calc) | <https://tools.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/calc/> |
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://tools.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 批次檔） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | [ChromeDarkMode.bat](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkMode.bat)（主要下載，GitHub Release；exe 版同一 Release 仍在） | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
@@ -61,8 +63,7 @@
 **.exe 不經本網域發送**（2026-09-27：院內卡巴斯基封鎖 tools.kiwi-ai.uk，疑因本網域代理未簽章 exe）：公開來源 repo 的卡片按鈕一律連到 GitHub 的 `releases/latest` 頁面，讓使用者在 GitHub 上下載，不要再加進 `worker.js` 的 `DOWNLOADS`。
 
 - 按鈕連 `https://github.com/xyzKIWI/<repo>/releases/latest`；更新 latest release 後不必修改卡片
-- 深色模式按鈕直接下載 GitHub Release 的 `ChromeDarkMode.bat`（2026-09-27 改回 bat；exe 只是把同一份 bat 包進 .NET 殼、解到暫存再跑）；**發新版時 Release 要附 `ChromeDarkMode.bat`**，否則按鈕 404。`downloads/ChromeDarkMode.bat` 保留為原始碼檢查副本
-- 上游 `ChromeDarkMode.bat` 有修改時，需同步更新此處的備用副本
+- 深色模式按鈕直接下載 GitHub Release 的 `ChromeDarkMode.bat`（2026-09-27 改回 bat；exe 只是把同一份 bat 包進 .NET 殼、解到暫存再跑）；**發新版時 Release 要附 `ChromeDarkMode.bat`**，否則按鈕 404。入口站 repo 不再放任何程式檔（原 `downloads/` 副本 2026-09-27 刪除）
 - 卡片放頁面最下方「上班小工具」區，用 `.row.dl` 版型（右側下載按鈕）
 - Windows 清理改為直接發佈 `.bat`（repo `windows-clean`）；原 `Clean.exe` 只是把舊版 bat 包進 .NET 殼、執行時解到暫存再跑，已停用
 
