@@ -111,35 +111,35 @@
   <section class="sec" data-sec>
     <h2>速查／速算</h2>
     <div class="tiles">
-      <a class="tile item" href="https://tools.kiwi-ai.uk/abx/" data-reviewed="2026-06-29"
+      <a class="tile item" href="https://er.kiwi-ai.uk/abx/" data-reviewed="2026-06-29"
          title="抗微生物藥腎功能劑量速查：89 種抗微生物藥依腎功能（CrCl / 透析）調整劑量，急診開藥即查。"
          data-kw="抗微生物藥腎功能劑量速查 抗生素 抗菌 antibiotic antimicrobial renal kidney 腎功能 CrCl eGFR 透析 dialysis HD CRRT">
         <span class="name">抗生素腎劑量</span>
         <span class="desc">89 種抗微生物藥依 CrCl／透析調整劑量</span>
         <span class="meta">資料校對 2026-06-29</span>
       </a>
-      <a class="tile item" href="https://tools.kiwi-ai.uk/icd10/" data-reviewed="2026-07-10"
+      <a class="tile item" href="https://er.kiwi-ai.uk/icd10/" data-reviewed="2026-07-10"
          title="急診 ICD-10-CM 診斷碼速查：英中關鍵字查 ICD-10-CM 碼與官方繁中名稱，含外傷字母索引同義詞；純搜尋不組碼。"
          data-kw="急診 ICD-10-CM 診斷碼速查 ICD10 診斷 diagnosis code 外傷 字母索引 同義詞 申報">
         <span class="name">ICD-10 診斷碼</span>
         <span class="desc">英中關鍵字查碼與官方繁中名稱；純搜尋不組碼</span>
         <span class="meta">資料校對 2026-07-10</span>
       </a>
-      <a class="tile item" href="https://tools.kiwi-ai.uk/peds/" data-reviewed="2026-09-21"
+      <a class="tile item" href="https://er.kiwi-ai.uk/peds/" data-reviewed="2026-09-21"
          title="兒科藥物劑量速算：輸入體重／年齡自動算 mg・mL・顆數；含 Ketamine 開藥量換算、供應狀態、URI、鎮靜、抗生素、退燒情境與 PALS 急救流程（AHA/AAP 2025）。"
          data-kw="兒科藥物劑量速算 兒童 小兒 小孩 pediatric peds dose 劑量 體重 年齡 Ketamine Vial amp 供應狀態 URI 鎮靜 抗生素 退燒 PALS 急救 AHA AAP">
         <span class="name">兒科劑量</span>
         <span class="desc">體重／年齡算 mg・mL・開藥量；含供應狀態與 PALS 流程</span>
         <span class="meta">資料校對 2026-09-21</span>
       </a>
-      <a class="tile item" href="https://tools.kiwi-ai.uk/heparin/" data-reviewed="2026-08-18"
+      <a class="tile item" href="https://er.kiwi-ai.uk/heparin/" data-reviewed="2026-08-18"
          title="Heparin dose 調整計算：輸入體重、aPTT 與目前流速，依高醫 ICU protocol 計算 ACS 或 VTE/PE 的 heparin pump 流速。"
          data-kw="Heparin dose 調整計算 肝素 UFH aPTT pump 流速 體重 ACS VTE PE 肺栓塞 抗凝 ICU protocol">
         <span class="name">Heparin 流速</span>
         <span class="desc">依高醫 ICU protocol 算 ACS、VTE/PE 的 pump 流速</span>
         <span class="meta">資料校對 2026-08-18</span>
       </a>
-      <a class="tile wide item" href="https://tools.kiwi-ai.uk/calc/" data-reviewed="2026-08-22"
+      <a class="tile wide item" href="https://er.kiwi-ai.uk/calc/" data-reviewed="2026-08-22"
          data-kw="急診臨床計算機 calculator 評分 score 公式 決策規則 核心十項 外傷 心血管 神經 兒科 檢傷 呼吸 感染 中毒 精神 腸胃">
         <span class="name">臨床計算機</span>
         <span class="desc">72 個急診評分／公式／決策規則（Wells、PERC、PECARN、NIHSS、RACE、NEWS2、GCS、tPA 與 NAC 院內劑量…），9 個離線單頁；決策規則先問適用條件，每項標示原始文獻。</span>
@@ -210,11 +210,11 @@
           <span class="meta">瀏覽器擴充功能 v1.5.0（2026-09-21）｜下載 zip 解壓後，在 Edge／Chrome 載入解壓縮｜更新前請先停用舊版</span>
         </div>
         <div class="btns">
-          <a class="btn primary" href="https://tools.kiwi-ai.uk/medcloud.zip">下載 .zip</a>
+          <a class="btn primary" href="https://er.kiwi-ai.uk/medcloud.zip">下載 .zip</a>
           <a class="btn ghost" href="https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest">到 GitHub 下載</a>
         </div>
       </div>
-      <!-- gh-only:start 以下三個程式只在 github.io 版顯示；tools.kiwi-ai.uk／pages.dev 由 Worker 整段拿掉 -->
+      <!-- gh-only:start 以下三個程式只在 github.io 版顯示；er／tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
       <div class="row item dl" data-gh-only data-kw="多瀏覽器 Chrome Comet Edge IE 深色模式 暗色 夜間 dark mode 護眼 夜班 exe Windows 下載">
         <div class="txt">
           <span class="name">多瀏覽器深色模式切換</span>
@@ -266,20 +266,19 @@
 (function(){
   // ed-calc 72 項清單（來源：ed-calc/index.html 分類卡片；ed-calc 增刪項目時要同步更新）
   const CALC = [{"n": "MAP", "c": "核心十項", "p": "calc-ten.html"}, {"n": "休克指數", "c": "核心十項", "p": "calc-ten.html"}, {"n": "Parkland", "c": "核心十項", "p": "calc-ten.html"}, {"n": "4-2-1", "c": "核心十項", "p": "calc-ten.html"}, {"n": "qSOFA", "c": "核心十項", "p": "calc-ten.html"}, {"n": "CRB-65", "c": "核心十項", "p": "calc-ten.html"}, {"n": "NEXUS 頸椎", "c": "核心十項", "p": "calc-ten.html"}, {"n": "Ottawa 膝", "c": "核心十項", "p": "calc-ten.html"}, {"n": "sPESI", "c": "核心十項", "p": "calc-ten.html"}, {"n": "ABCD²", "c": "核心十項", "p": "calc-ten.html"}, {"n": "ABC Score 大量輸血預測", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Head CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Pittsburgh 膝關節準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "九則法 Rule of Nines 燒傷面積", "c": "外傷", "p": "calc-trauma.html"}, {"n": "STUMBL / Battle 肋骨骨折評分", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Canadian C-Spine Rule 頸椎影像決策", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Canadian CT Head Rule 頭部 CT 決策", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Modified Denver 準則（鈍性腦血管損傷 BCVI）", "c": "外傷", "p": "calc-trauma.html"}, {"n": "New Orleans 頭部 CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Chest CT 準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "NEXUS Chest 鈍性胸傷影像準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "Ottawa 踝關節準則", "c": "外傷", "p": "calc-trauma.html"}, {"n": "4PEPS 四階肺栓塞臨床機率", "c": "心血管", "p": "calc-cardio.html"}, {"n": "CHA₂DS₂-VASc 心房顫動中風風險", "c": "心血管", "p": "calc-cardio.html"}, {"n": "校正 QT 間期 QTc", "c": "心血管", "p": "calc-cardio.html"}, {"n": "HEAR Score（胸痛，不含 troponin）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Killip 分級（急性心肌梗塞心衰竭）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "PERC 肺栓塞排除準則", "c": "心血管", "p": "calc-cardio.html"}, {"n": "PESI 肺栓塞嚴重度指數", "c": "心血管", "p": "calc-cardio.html"}, {"n": "TIMI 風險評分（STEMI）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "ADD-RS 主動脈剝離風險評分", "c": "心血管", "p": "calc-cardio.html"}, {"n": "修正 Geneva 評分（肺栓塞）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Wells 準則（深部靜脈栓塞 DVT）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Wells 準則（肺栓塞 PE）", "c": "心血管", "p": "calc-cardio.html"}, {"n": "Modified Rankin Scale（神經功能失能）", "c": "神經", "p": "calc-neuro.html"}, {"n": "RACE 大血管阻塞評估", "c": "神經", "p": "calc-neuro.html"}, {"n": "tPA (alteplase) 中風劑量", "c": "神經", "p": "calc-neuro.html"}, {"n": "ABC/2 腦出血體積估算", "c": "神經", "p": "calc-neuro.html"}, {"n": "GCS 昏迷指數", "c": "神經", "p": "calc-neuro.html"}, {"n": "Hunt-Hess 蛛網膜下腔出血分級", "c": "神經", "p": "calc-neuro.html"}, {"n": "ICH Score 腦出血預後", "c": "神經", "p": "calc-neuro.html"}, {"n": "NIHSS 中風量表", "c": "神經", "p": "calc-neuro.html"}, {"n": "Ottawa SAH 準則（頭痛）", "c": "神經", "p": "calc-neuro.html"}, {"n": "BRUE 2.0 風險預測", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童頸椎損傷影像決策", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童腹內傷風險", "c": "兒科", "p": "calc-peds.html"}, {"n": "BRUE 準則（嬰兒不明原因短暫事件）", "c": "兒科", "p": "calc-peds.html"}, {"n": "PECARN 兒童頭部外傷影像決策", "c": "兒科", "p": "calc-peds.html"}, {"n": "兒童氣管內管尺寸", "c": "兒科", "p": "calc-peds.html"}, {"n": "兒童外傷評分 PTS", "c": "兒科", "p": "calc-peds.html"}, {"n": "Westley 咳吼嚴重度", "c": "兒科", "p": "calc-peds.html"}, {"n": "理想體重 IBW / 校正體重 ABW", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "MEWS 早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "NEWS 國家早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "NEWS2 國家早期警示評分", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "尿量 / 體液平衡", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "RASS 鎮靜躁動量表", "c": "檢傷與流程", "p": "calc-triage.html"}, {"n": "氣管內管深度與潮氣容積", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "HEAVEN 困難插管預測", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "SpO₂/FiO₂ 比值", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "修正 Centor（McIsaac）咽炎評分", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "ROX Index（HFNC 插管風險）", "c": "呼吸／感染", "p": "calc-resp.html"}, {"n": "BAWS 簡式酒精戒斷量表", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "CIWA-Ar 酒精戒斷評估", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "C-SSRS 哥倫比亞自殺嚴重度量表", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "HEADS-ED 兒少心理社會篩檢", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "Acetaminophen 過量 NAC 劑量", "c": "中毒／精神", "p": "calc-tox.html"}, {"n": "Rockall 評分（完整版）", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "Rockall 評分（內視鏡前）", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "West Haven 肝性腦病分級", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "Burch-Wartofsky 甲狀腺風暴評分", "c": "腸胃／其他", "p": "calc-gi.html"}, {"n": "TWIST 睪丸扭轉評分", "c": "腸胃／其他", "p": "calc-gi.html"}];
-  // 從 github.io 開啟時（院內防毒擋 tools.kiwi-ai.uk 的備援入口），短路徑改連 GitHub 原址；
-  // pages.dev 備援站跑同一支 Worker，短路徑改成同站路徑
-  const KIWI = "https://tools.kiwi-ai.uk/";
+  // 連結一律寫 er.kiwi-ai.uk 的短路徑。從 github.io 開啟時換成 GitHub 原址（GH 表）；
+  // 其他網域（er／tools.kiwi-ai.uk、pages.dev 都跑同一支 Worker）換成同站路徑，不會跳到別的網域
+  const KIWI = "https://er.kiwi-ai.uk/";
   const ON_GITHUB = location.hostname.endsWith('github.io');
-  const ON_PAGES = location.hostname.endsWith('pages.dev');
   const GH = {
-    "https://tools.kiwi-ai.uk/abx/": "https://xyzkiwi.github.io/abx/",
-    "https://tools.kiwi-ai.uk/icd10/": "https://xyzkiwi.github.io/icd10/",
-    "https://tools.kiwi-ai.uk/peds/": "https://xyzkiwi.github.io/peds/",
-    "https://tools.kiwi-ai.uk/heparin/": "https://xyzkiwi.github.io/heparin/",
-    "https://tools.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/calc/",
-    "https://tools.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
+    "https://er.kiwi-ai.uk/abx/": "https://xyzkiwi.github.io/abx/",
+    "https://er.kiwi-ai.uk/icd10/": "https://xyzkiwi.github.io/icd10/",
+    "https://er.kiwi-ai.uk/peds/": "https://xyzkiwi.github.io/peds/",
+    "https://er.kiwi-ai.uk/heparin/": "https://xyzkiwi.github.io/heparin/",
+    "https://er.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/calc/",
+    "https://er.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
   };
-  const remap = h => ON_GITHUB ? GH[h] : (ON_PAGES && h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
+  const remap = h => ON_GITHUB ? GH[h] : (h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
   document.querySelectorAll('a[href]').forEach(a => {
     const to = remap(a.getAttribute('href'));
     if (to) a.href = to;

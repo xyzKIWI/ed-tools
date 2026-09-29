@@ -4,6 +4,7 @@
   "compatibility_date": "2024-12-01",
   "workers_dev": false,
   "routes": [
+    { "pattern": "er.kiwi-ai.uk", "custom_domain": true },
     { "pattern": "tools.kiwi-ai.uk", "custom_domain": true }
   ]
 }
