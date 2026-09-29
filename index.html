@@ -214,7 +214,7 @@
           <a class="btn ghost" href="https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest">到 GitHub 下載</a>
         </div>
       </div>
-      <!-- gh-only:start 以下三個程式只在 github.io 版顯示；er／tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
+      <!-- gh-only:start 以下三個程式只在 github.io 與 er.kiwi-ai.uk 顯示；tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
       <div class="row item dl" data-gh-only data-kw="多瀏覽器 Chrome Comet Edge IE 深色模式 暗色 夜間 dark mode 護眼 夜班 exe Windows 下載">
         <div class="txt">
           <span class="name">多瀏覽器深色模式切換</span>
@@ -285,8 +285,9 @@
   });
   const CALC_BASE = remap(KIWI + 'calc/') || KIWI + 'calc/';
 
-  // 上班小程式只放 github.io 版（院內防毒因 exe 下載封了 tools.kiwi-ai.uk）；主網域與 pages.dev 只留雲端藥歷
-  if (!ON_GITHUB) document.querySelectorAll('[data-gh-only]').forEach(el => el.remove());
+  // 上班小程式只放 github.io 與 er.kiwi-ai.uk（院內防毒因 exe 下載封了 tools.kiwi-ai.uk）；tools 與 pages.dev 只留雲端藥歷
+  const SHOW_PROGRAMS = ON_GITHUB || location.hostname === 'er.kiwi-ai.uk';
+  if (!SHOW_PROGRAMS) document.querySelectorAll('[data-gh-only]').forEach(el => el.remove());
   const STALE_DAYS = 90;
 
   // 校對日超過 90 天就提醒

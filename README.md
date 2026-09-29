@@ -7,7 +7,7 @@
 備用：<https://xyzkiwi.github.io/ed-tools/>（GitHub Pages 原址；院內可開，另有「上班小工具」三個 Windows 程式）
 備援：<https://kiwi-ed-tools.pages.dev/>（Cloudflare Pages 跑同一支 Worker，網址路徑與主網址相同）
 
-> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），其他網域（er／tools.kiwi-ai.uk、pages.dev）換成同站路徑；卡片連結一律寫 `https://er.kiwi-ai.uk/…`。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 版顯示**，主網域與 pages.dev 不放下載程式。每張下載卡統一兩顆按鈕：［下載檔案］＋［到 GitHub 下載］（Release 頁）。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
+> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），其他網域（er／tools.kiwi-ai.uk、pages.dev）換成同站路徑；卡片連結一律寫 `https://er.kiwi-ai.uk/…`。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 與 er.kiwi-ai.uk 顯示**（2026-09-30 Kiwi 要求 er 也放；下載檔都在 GitHub，本網域不發檔），tools.kiwi-ai.uk 與 pages.dev 不放。每張下載卡統一兩顆按鈕：［下載檔案］＋［到 GitHub 下載］（Release 頁）。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時，除 `PROGRAM_HOSTS`（er.kiwi-ai.uk）外整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
 
 > 2026-09-27 五個工具 repo 改短名對齊短路徑：`icd10-ed-quickref`→`icd10`、`abx-tool`→`abx`、`peds-dose`→`peds`、`heparin-tool`→`heparin`、`ed-calc`→`calc`。舊 github.io 網址已失效（GitHub repo 網址會自動轉址）；**不要再建立與舊名同名的 repo**，會搶走轉址。回饋表單前綴（`[peds-dose]`、`[ed-calc/頁名]`）刻意沿用舊名以保持 Sheet 資料連續。
 

@@ -306,3 +306,12 @@ test("tool pages are passed through without stripping", async () => {
 
   assert.equal(await response.text(), html);
 });
+
+test("er.kiwi-ai.uk keeps the work-program block on the hub index", async () => {
+  const html = "<p>a</p><!-- gh-only:start --><div data-gh-only>MouseJiggle</div><!-- gh-only:end --><p>b</p>";
+  stubFetch(() => new Response(html, { headers: { "Content-Type": "text/html" } }));
+
+  const response = await worker.fetch(new Request("https://er.kiwi-ai.uk/"));
+
+  assert.equal(await response.text(), html);
+});

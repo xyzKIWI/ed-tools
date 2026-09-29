@@ -90,7 +90,8 @@ function securedResponse(response, pathname) {
   });
 }
 
-// 首頁裡 github.io 專屬的區塊（上班小程式）在這裡整段拿掉，原始碼也不留，不只靠前端 JS 隱藏
+// 首頁裡的上班小程式區塊，除了下列網域以外都在這裡整段拿掉，原始碼也不留，不只靠前端 JS 隱藏
+const PROGRAM_HOSTS = new Set(["er.kiwi-ai.uk"]);
 const GH_ONLY = /<!-- gh-only:start[\s\S]*?<!-- gh-only:end -->\s*/g;
 
 function isHubIndex(origin, path) {
@@ -187,7 +188,7 @@ export default {
     } catch {
       return badGateway(url.pathname);
     }
-    if (isHubIndex(origin, path) && resp.status === 200) {
+    if (isHubIndex(origin, path) && resp.status === 200 && !PROGRAM_HOSTS.has(url.hostname)) {
       const html = request.method === "HEAD" ? null : (await resp.text()).replace(GH_ONLY, "");
       const out = new Response(html, resp);
       out.headers.delete("content-length");
