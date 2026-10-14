@@ -218,8 +218,8 @@
       <div class="row item dl" id="ed-overload-monitor" data-kw="急診 滿載 床位 空床 推床 留觀 監控 Chrome extension 擴充功能 zip 下載">
         <div class="txt">
           <span class="name">急診滿載監控</span>
-          <span class="desc">在已登入的院內病摘頁，每 5 分鐘（可選 10 分鐘）統計推床與空床；核對容量後，空床小於 4 床發出桌面提醒。支援留觀2開關、暫停與靜音。</span>
-          <span class="meta">Chrome 擴充功能 v0.2.2（2026-10-14）｜下載解壓後載入未封裝項目｜需保留已登入的病摘分頁</span>
+          <span class="desc">在已登入的院內病摘頁，每 5 分鐘（可選 10 分鐘）依院內已看診名單統計推床與空床；核對容量後，空床小於 4 床發出桌面提醒。支援留觀2開關、暫停與靜音。</span>
+          <span class="meta">Chrome 擴充功能 v0.2.4（2026-10-15）｜下載解壓後載入未封裝項目｜需保留已登入的病摘分頁</span>
         </div>
         <div class="btns">
           <a class="btn primary" href="https://er.kiwi-ai.uk/ed-overload-monitor.zip">下載 .zip</a>
@@ -289,7 +289,7 @@
     "https://er.kiwi-ai.uk/heparin/": "https://xyzkiwi.github.io/heparin/",
     "https://er.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/calc/",
     "https://er.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
-    "https://er.kiwi-ai.uk/ed-overload-monitor.zip": "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.2.zip",
+    "https://er.kiwi-ai.uk/ed-overload-monitor.zip": "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.4.zip",
   };
   const remap = h => ON_GITHUB ? GH[h] : (h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
   document.querySelectorAll('a[href]').forEach(a => {

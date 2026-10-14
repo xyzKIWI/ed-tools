@@ -13,7 +13,7 @@
 <a href="./#work-tools">← 回上班小工具</a>
 <h1>急診滿載監控</h1>
 <p>Chrome 擴充功能：每5分鐘（可選10分鐘）統計院內推床患者、試算空床，容量核對後提示滿載通報需求。</p>
-<p class="meta">版本0.2.2 · 2026-10-14 · 本機桌面提醒</p>
+<p class="meta">版本0.2.4 · 2026-10-15 · 本機桌面提醒</p>
 <a id="download" class="download" href="ed-overload-monitor.zip">下載 Chrome 套件 ZIP</a>
 <section class="card">
 <h2>第一次安裝</h2>
@@ -28,6 +28,7 @@
 <section class="card">
 <h2>自動更新與提醒</h2>
 <p>預設每5分鐘更新，可改10分鐘；面板顯示下次更新時間。來源分頁失效時會嘗試其他病摘分頁，所有可用分頁皆需登入時才提示重新登入。關閉面板仍會監控；Chrome需開著、病摘頁保持登入，電腦不能睡眠。</p>
+<p>「急診人數」依院內已看診名單，Z01測試資料實際出現時才排除；原生清單已排除時維持原人數。0.2.4已修正0.2.3多算空床號與測試資料的查詢問題。</p>
 <p>「尚未核對・不通知」表示資料仍在更新，但尚未啟用滿載桌面提醒。核對基本容量及排除範圍後，在「監控設定」勾選「已核對基準及排除範圍」並儲存。</p>
 <p>留觀2依現場狀態手動開放／關閉。靜音30分鐘會繼續更新；暫停監控會停止查詢。</p>
 <p class="note">預設26床是已知基本區小計，需核對C／R及走道可用容量；A隔離及17兒科小床排除，留觀2全開另加6床。現場床位、急救量能及正式通報由當班人員確認。</p>
@@ -41,7 +42,7 @@
 <footer>急診臨床小工具 · Chrome套件下載與安裝</footer>
 </main>
 <script>
-if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.2.zip";
+if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.4.zip";
 </script>
 </body>
 </html>
