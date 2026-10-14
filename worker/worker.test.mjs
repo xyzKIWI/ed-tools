@@ -315,3 +315,43 @@ test("er.kiwi-ai.uk keeps the work-program block on the hub index", async () => 
 
   assert.equal(await response.text(), html);
 });
+
+test("ED monitor ZIP route preserves GET, HEAD and range responses without forwarding credentials", async () => {
+  const bytes = Uint8Array.from([80, 75, 3, 4]);
+  for (const method of ["GET", "HEAD"]) {
+    const calls = stubFetch((_, init) => new Response(init.method === "HEAD" ? null : bytes, {
+      status: method === "HEAD" ? 200 : 206,
+      headers: { "Content-Type": "application/zip", "Set-Cookie": "synthetic=discard",
+        ...(method === "GET" ? { "Content-Range": "bytes 0-3/4" } : {}) }
+    }));
+    const response = await worker.fetch(new Request("https://er.kiwi-ai.uk/ed-overload-monitor.zip", {
+      method, headers: { Cookie: "synthetic=private", Authorization: "Bearer synthetic",
+        Range: "bytes=0-3" }
+    }));
+    assert.equal(calls[0].input,
+      "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.1.zip");
+    assert.equal(calls[0].init.method, method);
+    const sent = new Headers(calls[0].init.headers);
+    assert.equal(sent.get("cookie"), null);
+    assert.equal(sent.get("authorization"), null);
+    assert.equal(sent.get("range"), "bytes=0-3");
+    assert.equal(response.headers.get("content-type"), "application/zip");
+    assert.equal(response.headers.get("content-disposition"),
+      'attachment; filename="ed-overload-monitor-chrome-0.2.1.zip"');
+    assert.equal(response.headers.get("set-cookie"), null);
+    if (method === "GET") assert.deepEqual(new Uint8Array(await response.arrayBuffer()), bytes);
+    else assert.equal(await response.text(), "");
+  }
+});
+
+test("missing or failed monitor ZIP is not cached or offered as a ZIP attachment", async () => {
+  for (const status of [404, 500]) {
+    stubFetch(() => new Response("synthetic upstream error", {
+      status, headers: { "Content-Type": "text/html", "Content-Disposition": "attachment" }
+    }));
+    const response = await worker.fetch(new Request("https://er.kiwi-ai.uk/ed-overload-monitor.zip"));
+    assert.equal(response.status, status);
+    assert.equal(response.headers.get("cache-control"), "no-store");
+    assert.equal(response.headers.get("content-disposition"), null);
+  }
+});

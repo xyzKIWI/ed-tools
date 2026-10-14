@@ -129,6 +129,8 @@ function badGateway(pathname) {
 const DOWNLOADS = {
   "/medcloud.zip":
     "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
+  "/ed-overload-monitor.zip":
+    "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.1.zip",
 };
 
 export default {
@@ -166,6 +168,11 @@ export default {
         return badGateway(path);
       }
       const out = new Response(resp.body, resp);
+      if (resp.status >= 400) {
+        out.headers.delete("Content-Disposition");
+        out.headers.set("Cache-Control", "no-store");
+        return securedResponse(out, path);
+      }
       out.headers.set("Content-Disposition", `attachment; filename="${download.split("/").pop()}"`);
       out.headers.set("Cache-Control", resp.status >= 500 ? "no-store" : "public, max-age=300");
       return securedResponse(out, path);

@@ -201,7 +201,7 @@
   </section>
 
   <section class="sec" data-sec id="work-tools">
-    <h2>上班小工具<small>Windows 電腦下載即用</small></h2>
+    <h2>上班小工具<small>瀏覽器套件與 Windows 工具</small></h2>
     <div class="rows">
       <div class="row item dl" data-kw="雲端藥歷 健保雲端 藥歷 用藥 檢驗 影像 病理 手術 出院病摘 過敏 擴充功能 extension Chrome Edge zip 下載">
         <div class="txt">
@@ -212,6 +212,17 @@
         <div class="btns">
           <a class="btn primary" href="https://er.kiwi-ai.uk/medcloud.zip">下載 .zip</a>
           <a class="btn ghost" href="https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest">到 GitHub 下載</a>
+        </div>
+      </div>
+      <div class="row item dl" id="ed-overload-monitor" data-kw="急診 滿載 床位 空床 推床 留觀 監控 Chrome extension 擴充功能 zip 下載">
+        <div class="txt">
+          <span class="name">急診滿載監控</span>
+          <span class="desc">在已登入的院內病摘頁，每 60 秒統計推床與空床；核對容量後，空床小於 4 床發出桌面提醒。支援留觀2開關、暫停與靜音。</span>
+          <span class="meta">Chrome 擴充功能 v0.2.1（2026-10-14）｜下載解壓後載入未封裝項目｜需保留已登入的病摘分頁</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="https://er.kiwi-ai.uk/ed-overload-monitor.zip">下載 .zip</a>
+          <a class="btn ghost" href="ed-overload-monitor.html">安裝說明</a>
         </div>
       </div>
       <!-- gh-only:start 以下三個程式只在 github.io 與 er.kiwi-ai.uk 顯示；tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
@@ -259,7 +270,7 @@
     劑量與診斷碼請以原始資料來源為準，使用前請自行核對；作者不對使用結果負責。
   </div>
   <p>外部資源：<a href="https://highker21.github.io/">highker21 工具與教學總站</a>（上方三個外部工具之外的完整清單：GLP-1、InBody、甲狀腺、教學投影片等）</p>
-  <p>最後更新：2026-09-27｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
+  <p>最後更新：2026-10-14｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
 </footer>
 
 <script>
@@ -277,6 +288,7 @@
     "https://er.kiwi-ai.uk/heparin/": "https://xyzkiwi.github.io/heparin/",
     "https://er.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/calc/",
     "https://er.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
+    "https://er.kiwi-ai.uk/ed-overload-monitor.zip": "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.1.zip",
   };
   const remap = h => ON_GITHUB ? GH[h] : (h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
   document.querySelectorAll('a[href]').forEach(a => {
