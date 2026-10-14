@@ -23,7 +23,7 @@
 | Heparin dose 調整計算 | [heparin](https://github.com/xyzKIWI/heparin) | <https://er.kiwi-ai.uk/heparin/> | <https://xyzkiwi.github.io/heparin/> |
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [calc](https://github.com/xyzKIWI/calc) | <https://er.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/calc/> |
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://er.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
-| 急診滿載監控 v0.2.1（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
+| 急診滿載監控 v0.2.2（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 批次檔） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | [ChromeDarkMode.bat](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkMode.bat)（主要下載，GitHub Release；exe 版同一 Release 仍在） | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
 | MouseJiggle 滑鼠防閒置工具（Normal／Zen，Windows 可攜式程式） | [MouseJiggle](https://github.com/xyzKIWI/MouseJiggle)（公開） | [GitHub Release 頁](https://github.com/xyzKIWI/MouseJiggle/releases/latest)（EXE／可攜版 zip） | [Releases](https://github.com/xyzKIWI/MouseJiggle/releases/latest) |

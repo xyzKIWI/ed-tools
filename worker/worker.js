@@ -130,7 +130,7 @@ const DOWNLOADS = {
   "/medcloud.zip":
     "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
   "/ed-overload-monitor.zip":
-    "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.1.zip",
+    "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.2.zip",
 };
 
 export default {

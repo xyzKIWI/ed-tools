@@ -329,7 +329,7 @@ test("ED monitor ZIP route preserves GET, HEAD and range responses without forwa
         Range: "bytes=0-3" }
     }));
     assert.equal(calls[0].input,
-      "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.1.zip");
+      "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.2.zip");
     assert.equal(calls[0].init.method, method);
     const sent = new Headers(calls[0].init.headers);
     assert.equal(sent.get("cookie"), null);
@@ -337,7 +337,7 @@ test("ED monitor ZIP route preserves GET, HEAD and range responses without forwa
     assert.equal(sent.get("range"), "bytes=0-3");
     assert.equal(response.headers.get("content-type"), "application/zip");
     assert.equal(response.headers.get("content-disposition"),
-      'attachment; filename="ed-overload-monitor-chrome-0.2.1.zip"');
+      'attachment; filename="ed-overload-monitor-chrome-0.2.2.zip"');
     assert.equal(response.headers.get("set-cookie"), null);
     if (method === "GET") assert.deepEqual(new Uint8Array(await response.arrayBuffer()), bytes);
     else assert.equal(await response.text(), "");
