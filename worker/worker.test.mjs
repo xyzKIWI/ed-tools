@@ -355,3 +355,15 @@ test("missing or failed monitor ZIP is not cached or offered as a ZIP attachment
     assert.equal(response.headers.get("content-disposition"), null);
   }
 });
+
+test("/se and /se/ redirect to /se.html with security headers", async () => {
+  const response1 = await worker.fetch(new Request("https://er.kiwi-ai.uk/se"));
+  assert.equal(response1.status, 301);
+  assert.equal(response1.headers.get("location"), "https://er.kiwi-ai.uk/se.html");
+  assertGenericSecurityHeaders(response1);
+
+  const response2 = await worker.fetch(new Request("https://er.kiwi-ai.uk/se/?ref=ed"));
+  assert.equal(response2.status, 301);
+  assert.equal(response2.headers.get("location"), "https://er.kiwi-ai.uk/se.html?ref=ed");
+  assertGenericSecurityHeaders(response2);
+});

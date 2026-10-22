@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高醫急診部/神經部 癲癇重積 (Status Epilepticus) 檢核單與臨床指引</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2316395b'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='700' text-anchor='middle' fill='%2338bdf8' font-family='sans-serif'%3ESE%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #16395b;
+    --navy2: #1e4d77;
+    --navy-light: #f0f5fa;
+    --teal: #0e7490;
+    --teal-l: #e0f2fe;
+    --teal-dark: #155e75;
+    --ink: #1f2937;
+    --body: #334155;
+    --muted: #64748b;
+    --line: #cbd5e1;
+    --line-light: #e2e8f0;
+    --bg: #f8fafc;
+    --paper: #ffffff;
+    --green: #15803d;
+    --green-bg: #dcfce7;
+    --green-bd: #86efac;
+    --amber: #b45309;
+    --amber-bg: #fef3c7;
+    --amber-bd: #fde68a;
+    --red: #b91c1c;
+    --red-bg: #fee2e2;
+    --red-bd: #fca5a5;
+    --purple: #6b21a8;
+    --purple-bg: #f3e8ff;
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 16px 80px;
+  }
+
+  /* Header */
+  header.hero {
+    background: linear-gradient(135deg, var(--navy), var(--navy2));
+    color: #fff;
+    padding: 24px 20px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1040px;
+    margin: 0 auto 12px;
+  }
+  .back-link {
+    color: #93c5fd;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+  }
+  .back-link:hover { color: #fff; text-decoration: underline; }
+  .badge-hosp {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #e0f2fe;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+  }
+  header.hero h1 {
+    font-size: 1.6rem;
+    margin: 0 0 6px;
+    line-height: 1.3;
+    font-weight: 700;
+    text-align: center;
+  }
+  header.hero p.sub {
+    font-size: 0.95rem;
+    margin: 0 auto;
+    max-width: 760px;
+    color: #cfe3f4;
+    text-align: center;
+  }
+
+  /* Quick Actions Bar */
+  .toolbar {
+    background: #fff;
+    border: 1px solid var(--line-light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+  }
+  .toolbar-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+  .btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+  .btn-primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
+  .btn-danger { background: #fff; border-color: var(--red-bd); color: var(--red); }
+  .btn-danger:hover { background: var(--red-bg); }
+  .btn-sm { padding: 4px 8px; font-size: 0.8rem; border-radius: 6px; }
+
+  /* Tab View Toggle */
+  .tab-nav {
+    display: flex;
+    background: #e2e8f0;
+    padding: 3px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+  }
+  .tab-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .tab-btn.active {
+    background: #fff;
+    color: var(--navy);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Card Sections */
+  .card {
+    background: #fff;
+    border: 1px solid var(--line-light);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--navy-light);
+  }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  /* Patient & Trigger Grid */
+  .patient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .field-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .input-text, .input-select {
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fff;
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .input-text:focus, .input-select:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.15);
+  }
+  .weight-highlight {
+    background: #eff6ff;
+    border: 2px solid #60a5fa;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+  }
+
+  /* Trigger Box */
+  .trigger-box {
+    background: #fef2f2;
+    border: 1px solid var(--red-bd);
+    border-left: 5px solid var(--red);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 10px;
+  }
+  .trigger-title {
+    font-weight: 700;
+    color: var(--red);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+  .chk-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.92rem;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .chk-label input[type="checkbox"] {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    accent-color: var(--red);
+    cursor: pointer;
+  }
+
+  /* Timer Widget */
+  .timer-banner {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: var(--shadow);
+  }
+  .timer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .timer-label {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+  }
+  .timer-display {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #38bdf8;
+    line-height: 1;
+  }
+  .timer-display.running { color: #facc15; }
+  .timer-display.expired { color: #f87171; animation: pulse 1s infinite; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .timer-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-timer {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-timer:hover { background: #475569; }
+  .btn-timer-primary { background: #0284c7; border-color: #0284c7; }
+  .btn-timer-primary:hover { background: #0369a1; }
+
+  /* Flow Steps Checklist Table */
+  .flow-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .flow-table th, .flow-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line-light);
+    vertical-align: top;
+  }
+  .flow-table th {
+    background: var(--navy);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-align: left;
+  }
+  .flow-table tr:last-child td { border-bottom: none; }
+  .flow-table tr:hover { background: #f8fafc; }
+  
+  .step-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--teal);
+    width: 36px;
+    text-align: center;
+  }
+  .step-content {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .step-title {
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .dose-calc-badge {
+    background: #f0fdf4;
+    border: 1px solid var(--green-bd);
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-block;
+    margin: 4px 0;
+  }
+  .dose-calc-badge.warn {
+    background: #fffbeb;
+    border-color: var(--amber-bd);
+    color: var(--amber);
+  }
+  .check-col {
+    min-width: 220px;
+  }
+  .time-col {
+    min-width: 150px;
+  }
+
+  /* Radio pill selectors */
+  .status-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .status-btn-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+  .status-btn-label input[type="radio"] {
+    accent-color: var(--teal);
+    cursor: pointer;
+  }
+  .input-reason {
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: 0.82rem;
+  }
+
+  .time-input-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .input-time {
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    width: 95px;
+    text-align: center;
+    font-family: ui-monospace, monospace;
+  }
+
+  /* Visual Timeline / Process View */
+  .timeline-container {
+    position: relative;
+    padding: 20px 0 20px 30px;
+    border-left: 3px solid var(--line);
+    margin: 20px 10px 40px;
+  }
+  .tl-node {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .tl-node::before {
+    content: "";
+    position: absolute;
+    left: -38px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .tl-node.active::before {
+    background: #38bdf8;
+    box-shadow: 0 0 0 3px #0284c7;
+  }
+  .tl-node.urgent::before {
+    background: var(--red);
+    box-shadow: 0 0 0 3px var(--red-bd);
+  }
+  .tl-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .tl-phase-tag {
+    background: var(--navy);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .tl-card {
+    background: #fff;
+    border: 1px solid var(--line-light);
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .tl-card h4 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: var(--navy2);
+  }
+  .tl-card p {
+    margin: 4px 0;
+    font-size: 0.92rem;
+    color: var(--body);
+  }
+
+  /* Clinical Notes & Guidelines Box */
+  .guideline-accordion {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 24px 0;
+  }
+  .guideline-accordion summary {
+    font-weight: 700;
+    color: var(--navy);
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .guideline-body {
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.6;
+  }
+  .guideline-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.84rem;
+  }
+  .guideline-body th, .guideline-body td {
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    text-align: left;
+  }
+  .guideline-body th { background: #f1f5f9; font-weight: 600; }
+
+  /* EMR Note Output Box */
+  .emr-box {
+    background: #0f172a;
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px solid #334155;
+    margin-top: 10px;
+  }
+
+  /* Signatures Grid */
+  .sig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-light);
+  }
+
+  /* Print Specific Styling: Replicates 1-Page Physical Hospital Document */
+  @media print {
+    body {
+      background: #fff !important;
+      color: #000 !important;
+      font-size: 11pt !important;
+      line-height: 1.35 !important;
+    }
+    .no-print, header.hero, .toolbar, .timer-banner, .tab-nav, .emr-section, .guideline-accordion {
+      display: none !important;
+    }
+    .wrap {
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .print-sheet {
+      display: block !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    .print-header {
+      text-align: center;
+      border-bottom: 2px solid #000;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .print-header h2 {
+      margin: 0;
+      font-size: 16pt;
+      font-weight: 700;
+    }
+    .print-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+    }
+    .print-table th, .print-table td {
+      border: 1px solid #000 !important;
+      padding: 5px 6px !important;
+      vertical-align: top;
+    }
+    .print-table th {
+      background: #e2e8f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      text-align: center;
+    }
+    .print-sig {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10pt;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header.hero h1 { font-size: 1.3rem; }
+    .toolbar { flex-direction: column; align-items: stretch; }
+    .timer-banner { flex-direction: column; align-items: flex-start; }
+    .timer-controls { width: 100%; justify-content: flex-start; }
+    .flow-table th:nth-child(4), .flow-table td:nth-child(4) { min-width: 110px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-top">
+    <a href="./" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      急診臨床小工具
+    </a>
+    <span class="badge-hosp">高醫急診部 / 神經部 臨床指引協定</span>
+  </div>
+  <h1>癲癇重積 (Status Epilepticus) 檢核單</h1>
+  <p class="sub">成人（≥18歲）急診急救流程、即時動態劑量試算、5分鐘階段計時器與病歷一鍵生成</p>
+</header>
+
+<div class="wrap">
+
+  <!-- Quick Action & View Tabs Toolbar -->
+  <div class="toolbar no-print">
+    <div class="tab-nav">
+      <button class="tab-btn active" id="tabChecklistBtn" onclick="switchView('checklist')">檢核單操作模式</button>
+      <button class="tab-btn" id="tabFlowBtn" onclick="switchView('flow')">急救流程圖模式</button>
+    </div>
+    <div class="toolbar-group">
+      <button class="btn btn-primary" onclick="copyEmrNote()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        複製 EMR 紀錄
+      </button>
+      <button class="btn" onclick="window.print()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        列印紙本單
+      </button>
+      <button class="btn btn-danger" onclick="resetForm()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+        清空重置
+      </button>
+    </div>
+  </div>
+
+  <!-- Stage Timer Banner -->
+  <div class="timer-banner no-print">
+    <div class="timer-info">
+      <span class="timer-label">5 分鐘給藥後重評倒數計時器 (AES / KMUH Protocol)</span>
+      <div class="timer-display" id="timerClock">05:00</div>
+    </div>
+    <div class="timer-controls">
+      <button class="btn-timer btn-timer-primary" onclick="startTimer(5 * 60)">▶ 啟動 5 分鐘倒數</button>
+      <button class="btn-timer" onclick="startTimer(10 * 60)">+10 分鐘</button>
+      <button class="btn-timer" onclick="pauseTimer()">暫停</button>
+      <button class="btn-timer" onclick="resetTimer()">重設</button>
+      <button class="btn-timer" onclick="testChimeSound()">🔊 測試提示音</button>
+    </div>
+  </div>
+
+  <!-- Main Checklist Interactive View -->
+  <div id="checklistView">
+
+    <!-- Patient Basic Info & Triggers -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          病患基本資料與啟動條件
+        </h3>
+        <span style="font-size: 0.85rem; color: var(--muted);">成人（≥18歲）</span>
+      </div>
+
+      <div class="patient-grid">
+        <div class="field-group">
+          <label class="field-label">姓名</label>
+          <input type="text" id="ptName" class="input-text" placeholder="病人姓名" oninput="saveData(); updateEMR();">
+        </div>
+        <div class="field-group">
+          <label class="field-label">病歷號</label>
+          <input type="text" id="ptChart" class="input-text" placeholder="Chart No." oninput="saveData(); updateEMR();">
+        </div>
+        <div class="field-group">
+          <label class="field-label">生日</label>
+          <input type="date" id="ptDob" class="input-text" oninput="saveData(); updateEMR();">
+        </div>
+        <div class="field-group">
+          <label class="field-label" style="color: var(--teal); font-weight:700;">預估體重 (kg) ★連動劑量換算</label>
+          <div style="display:flex; gap:6px;">
+            <input type="number" id="ptWeight" class="input-text weight-highlight" placeholder="如 60" min="20" max="200" step="0.5" oninput="onWeightChange()">
+            <span style="align-self:center; font-weight:bold;">kg</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">案件啟動時間</label>
+          <div style="display:flex; gap:6px;">
+            <input type="datetime-local" id="activationTime" class="input-text" oninput="saveData(); updateEMR();">
+            <button class="btn btn-sm" onclick="setNowTime('activationTime')">現在</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="trigger-box">
+        <div class="trigger-title">⚠️ 啟動急診部/神經部癲癇重積處理條件（二擇一打勾）：</div>
+        <label class="chk-label">
+          <input type="checkbox" id="trig1" onchange="saveData(); updateEMR();">
+          <span><strong>抽搐 ≥ 5 分鐘合併意識喪失</strong>（符合 ILAE / AES Convulsive SE T1 門檻）</span>
+        </label>
+        <label class="chk-label">
+          <input type="checkbox" id="trig2" onchange="saveData(); updateEMR();">
+          <span><strong>於 15 分鐘內有兩次（含）以上之全身抽搐合併意識喪失，且抽搐之間意識並未回復正常</strong></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 11 Steps Checklist Table -->
+    <div class="card" style="padding:0; overflow:hidden;">
+      <table class="flow-table">
+        <thead>
+          <tr>
+            <th style="width: 48px; text-align:center;">項目</th>
+            <th>內容與劑量建議</th>
+            <th class="check-col">檢核狀態</th>
+            <th class="time-col">給予時間 / 備註</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- Step 1 -->
+          <tr>
+            <td class="step-num">1</td>
+            <td class="step-content">
+              <div class="step-title">啟動：同時通報「神經部值班 VS」與「急診 VS」，優先評估處理病人</div>
+              <div style="font-size:0.85rem; color:var(--muted);">雙線 VS 同步評估處置，維持呼吸道順暢、給氧並監測生命徵象。</div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_1" value="done" onchange="onStatusChange(1, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_1" value="undone" onchange="onStatusChange(1, 'undone')"> 未完成，原因：
+                </label>
+                <input type="text" id="reason_1" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+          <!-- Step 2 -->
+          <tr>
+            <td class="step-num">2</td>
+            <td class="step-content">
+              <div class="step-title">測量病人生命徵象，預估體重</div>
+              <div style="font-size:0.88rem; color:var(--body);">
+                預估體重：<strong id="step2WeightDisplay" style="color:var(--teal);">尚未輸入</strong> kg
+                <span style="font-size:0.82rem; color:var(--muted);">（將自動換算步驟 5、7、9 之第一、二、三線藥物劑量）</span>
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_2" value="done" onchange="onStatusChange(2, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_2" value="undone" onchange="onStatusChange(2, 'undone')"> 未完成，原因：
+                </label>
+                <input type="text" id="reason_2" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+          <!-- Step 3 -->
+          <tr>
+            <td class="step-num">3</td>
+            <td class="step-content">
+              <div class="step-title">開立「重積癲癇」抽血套案</div>
+              <div style="font-size:0.86rem; color:var(--body); line-height:1.5;">
+                ① <strong>sugar</strong>, CBC/DC, BUN, Cre, AST, ALT, VBG, Na, K, Ca, Mg, CK, CK-MB, Trop-I, D-dimer<br>
+                ② <strong>已知正在服用且可測之抗癲癇藥物濃度</strong>（如 Valproate, Phenytoin, Tegretol 等）
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_3" value="done" onchange="onStatusChange(3, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_3" value="undone" onchange="onStatusChange(3, 'undone')"> 未完成，原因：
+                </label>
+                <input type="text" id="reason_3" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+          <!-- Step 4 -->
+          <tr>
+            <td class="step-num">4</td>
+            <td class="step-content">
+              <div class="step-title">開立「重積癲癇」醫囑套案</div>
+              <div style="font-size:0.9rem; color:var(--body);">
+                給予 <strong>Thiamine 100mg + D5W ST IVD</strong>
+              </div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:3px;">
+                💡 臨床安全筆記：預防 Wernicke 腦病變；若床邊血糖測得低血糖，應立即同時補給高濃度葡萄糖（D50W），切勿因等待 Thiamine 而延誤低血糖糾正。
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_4" value="done" onchange="onStatusChange(4, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_4" value="undone" onchange="onStatusChange(4, 'undone')"> 未完成，原因：
+                </label>
+                <input type="text" id="reason_4" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+          <!-- Step 5 -->
+          <tr>
+            <td class="step-num">5</td>
+            <td class="step-content">
+              <div class="step-title">給予第一線抗癲癇藥物（請勾選實際給藥途徑）：</div>
+              
+              <div style="margin: 8px 0; display:flex; flex-direction:column; gap:6px;">
+                <label class="chk-label">
+                  <input type="radio" name="line1_drug" value="lora_lt40" onchange="saveData(); updateEMR();">
+                  <span><strong>有 IV &lt; 40 kg:</strong> Lorazepam 0.1 mg/kg (max 4mg) <span class="dose-calc-badge" id="calcLoraLt40">請先輸入體重</span></span>
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="line1_drug" value="lora_ge40" onchange="saveData(); updateEMR();">
+                  <span><strong>有 IV ≥ 40 kg:</strong> Lorazepam 4mg (2 amp) <span class="dose-calc-badge" id="calcLoraGe40">標準劑量 4mg (2 amp)</span></span>
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="line1_drug" value="mida_lt40" onchange="saveData(); updateEMR();">
+                  <span><strong>無 IV &lt; 40 kg:</strong> Midazolam 5mg (1 amp) IM</span>
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="line1_drug" value="mida_ge40" onchange="saveData(); updateEMR();">
+                  <span><strong>無 IV ≥ 40 kg:</strong> Midazolam 10mg (2 amp) IM</span>
+                </label>
+              </div>
+
+              <div style="font-size:0.82rem; color:var(--muted);">
+                註：靜脈注射以 ≤ 2 mg/min 緩慢注射，注意呼吸道抑制作業。
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_5" value="done" onchange="onStatusChange(5, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_5" value="seizure_stopped" onchange="onStatusChange(5, 'seizure_stopped')"> 未完成，因癲癇已停止
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_5" value="other" onchange="onStatusChange(5, 'other')"> 未完成，其他原因：
+                </label>
+                <input type="text" id="reason_5" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>
+              <div class="field-label" style="font-size:0.8rem;">1st 第一線給予時間：</div>
+              <div class="time-input-group">
+                <input type="time" id="time_step5" class="input-time" oninput="saveData(); updateEMR();">
+                <button class="btn btn-sm" onclick="setNowTimeStep('time_step5'); startTimer(5 * 60);">現在+計時</button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Step 6 -->
+          <tr>
+            <td class="step-num">6</td>
+            <td class="step-content">
+              <div class="step-title">第一線藥物 5 分鐘後癲癇未停止或又再發生：</div>
+              <div style="font-size:0.9rem; color:var(--body);">
+                <strong>再次步驟 5 之一第一線抗癲癇藥物</strong>；<br>
+                <span style="color:var(--amber); font-weight:700;">★ 預先開立第二線藥物 Keppra 備用</span>
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_6" value="done" onchange="onStatusChange(6, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_6" value="seizure_stopped" onchange="onStatusChange(6, 'seizure_stopped')"> 未完成，因癲癇已停止
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_6" value="other" onchange="onStatusChange(6, 'other')"> 未完成，其他原因：
+                </label>
+                <input type="text" id="reason_6" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>
+              <div class="field-label" style="font-size:0.8rem;">2nd 第一線給予時間：</div>
+              <div class="time-input-group">
+                <input type="time" id="time_step6" class="input-time" oninput="saveData(); updateEMR();">
+                <button class="btn btn-sm" onclick="setNowTimeStep('time_step6'); startTimer(5 * 60);">現在+計時</button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Step 7 -->
+          <tr>
+            <td class="step-num">7</td>
+            <td class="step-content">
+              <div class="step-title">兩次第一線藥物 5 分鐘後癲癇未停或又再發生：</div>
+              <div style="font-size:0.9rem; margin-bottom:6px;">給予第二線癲癇藥物（請勾選）：</div>
+
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <label class="chk-label">
+                  <input type="radio" name="line2_drug" value="keppra_lt50" onchange="saveData(); updateEMR();">
+                  <span><strong>&lt; 50 kg:</strong> Keppra 60 mg/kg (max 3000 mg) <span class="dose-calc-badge" id="calcKeppraLt50">請先輸入體重</span></span>
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="line2_drug" value="keppra_ge50" onchange="saveData(); updateEMR();">
+                  <span><strong>≥ 50 kg:</strong> Keppra 3000 mg ST <span class="dose-calc-badge" id="calcKeppraGe50">標準滿載 3000 mg ST</span></span>
+                </label>
+              </div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">
+                輸注建議：加入 D5W 或 NS 100mL 於 10~15 分鐘內輸注完成。
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_7" value="done" onchange="onStatusChange(7, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_7" value="seizure_stopped" onchange="onStatusChange(7, 'seizure_stopped')"> 未完成，因癲癇已停止
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_7" value="other" onchange="onStatusChange(7, 'other')"> 未完成，其他原因：
+                </label>
+                <input type="text" id="reason_7" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>
+              <div class="field-label" style="font-size:0.8rem;">第二線給予時間：</div>
+              <div class="time-input-group">
+                <input type="time" id="time_step7" class="input-time" oninput="saveData(); updateEMR();">
+                <button class="btn btn-sm" onclick="setNowTimeStep('time_step7'); startTimer(5 * 60);">現在+計時</button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Step 8 -->
+          <tr>
+            <td class="step-num">8</td>
+            <td class="step-content">
+              <div class="step-title">第二線藥物 5 分鐘後癲癇未停或又再發生：</div>
+              <div style="font-size:0.95rem; color:var(--red); font-weight:700;">
+                ⚠️ 建立氣管內管 (Intubation / ETT)，準備給予第三線藥物
+              </div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:3px;">
+                進入難治型癲癇 (Refractory SE) 階段，備妥呼吸器及升壓劑 (Vasopressor)。
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_8" value="done" onchange="onStatusChange(8, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_8" value="seizure_stopped" onchange="onStatusChange(8, 'seizure_stopped')"> 未完成，因癲癇已停止
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_8" value="other" onchange="onStatusChange(8, 'other')"> 未完成，其他原因：
+                </label>
+                <input type="text" id="reason_8" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+          <!-- Step 9 -->
+          <tr>
+            <td class="step-num">9</td>
+            <td class="step-content">
+              <div class="step-title">給予第三線藥物：Midazolam IV push &amp; IV pump</div>
+              <div style="font-size:0.9rem; color:var(--body);">
+                ① <strong>Loading:</strong> Midazolam <strong>0.2 mg/kg</strong> IV push <span class="dose-calc-badge" id="calcMidaLoading">請輸入體重</span><br>
+                ② <strong>Maintenance:</strong> then <strong>0.05 - 0.5 mg/kg/h</strong> IV pump <span class="dose-calc-badge warn" id="calcMidaPump">請輸入體重</span>
+              </div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">
+                滴定原則：以制止抽搐或達到腦波爆發抑制 (Burst suppression) 為目標，監測血壓。
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_9" value="done" onchange="onStatusChange(9, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_9" value="seizure_stopped" onchange="onStatusChange(9, 'seizure_stopped')"> 未完成，因癲癇已停止
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_9" value="other" onchange="onStatusChange(9, 'other')"> 未完成，其他原因：
+                </label>
+                <input type="text" id="reason_9" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>
+              <div class="field-label" style="font-size:0.8rem;">第三線給予時間：</div>
+              <div class="time-input-group">
+                <input type="time" id="time_step9" class="input-time" oninput="saveData(); updateEMR();">
+                <button class="btn btn-sm" onclick="setNowTimeStep('time_step9')">現在</button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Step 10 -->
+          <tr>
+            <td class="step-num">10</td>
+            <td class="step-content">
+              <div class="step-title">進行頭部影像學檢查 (brain CT C-)</div>
+              <div style="font-size:0.85rem; color:var(--muted);">
+                病人抽搐穩定且呼吸道確立後，安排無顯影劑電腦斷層排除顱內出血、急性中風或佔位性病灶。
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_10" value="done" onchange="onStatusChange(10, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_10" value="undone" onchange="onStatusChange(10, 'undone')"> 未完成，原因：
+                </label>
+                <input type="text" id="reason_10" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+          <!-- Step 11 -->
+          <tr>
+            <td class="step-num">11</td>
+            <td class="step-content">
+              <div class="step-title">神經部醫師確認病人動向：</div>
+              <div style="display:flex; gap:16px; margin-top:6px;">
+                <label class="chk-label">
+                  <input type="radio" name="disposition" value="ICU" onchange="saveData(); updateEMR();">
+                  <strong style="color:var(--red);">ICU（加護病房）</strong>
+                </label>
+                <label class="chk-label">
+                  <input type="radio" name="disposition" value="Ward" onchange="saveData(); updateEMR();">
+                  <strong style="color:var(--navy);">病房 (Ward)</strong>
+                </label>
+              </div>
+            </td>
+            <td>
+              <div class="status-options">
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_11" value="done" onchange="onStatusChange(11, 'done')"> 已完成
+                </label>
+                <label class="status-btn-label">
+                  <input type="radio" name="chk_11" value="undone" onchange="onStatusChange(11, 'undone')"> 未完成，原因：
+                </label>
+                <input type="text" id="reason_11" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
+              </div>
+            </td>
+            <td>—</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <!-- Signatures inside Card -->
+      <div style="padding: 16px 20px;">
+        <div class="sig-grid">
+          <div class="field-group">
+            <label class="field-label">填表人</label>
+            <input type="text" id="sigRecorder" class="input-text" placeholder="醫師 / 護理師" oninput="saveData(); updateEMR();">
+          </div>
+          <div class="field-group">
+            <label class="field-label">急診 VS</label>
+            <input type="text" id="sigEdVs" class="input-text" placeholder="急診主治醫師" oninput="saveData(); updateEMR();">
+          </div>
+          <div class="field-group">
+            <label class="field-label">神經部 VS</label>
+            <input type="text" id="sigNeuroVs" class="input-text" placeholder="神經部主治醫師" oninput="saveData(); updateEMR();">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMR Record Generator -->
+    <div class="card emr-section no-print">
+      <div class="card-header">
+        <h3 class="card-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          急診病歷文字一鍵產生 (EMR Progress Note)
+        </h3>
+        <button class="btn btn-sm btn-primary" onclick="copyEmrNote()">複製整段紀錄</button>
+      </div>
+      <div class="emr-box" id="emrOutput">點選上方檢核單，系統將自動同步生成病歷草稿...</div>
+      <div style="font-size:0.8rem; color:var(--muted); margin-top:8px;">
+        ⚠️ 隱私提醒：本工具在瀏覽器端本機運作（無伺服器上傳）。急救結束或換病人時請按「清空重置」以確保共用電腦病患隱私。
+      </div>
+    </div>
+
+    <!-- Codex Review & Clinical Guideline Comparison Panel -->
+    <details class="guideline-accordion no-print">
+      <summary>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        臨床醫學指引對照與安全備忘 (Codex 審查建議)
+      </summary>
+      <div class="guideline-body">
+        <p>本數位檢核單以高醫急診部/神經部正式核定之「癲癇重積檢核單」為最高基準，並經 Codex 參照 AES 2016、NCS 2012、ENLS v6 (2024) 及 ESETT 研究進行審查對照：</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>高醫院內檢核單規範</th>
+              <th>國際指引對照與安全實務要點</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>T1 / 啟動門檻</strong></td>
+              <td>抽搐 ≥ 5 分鐘 或 15 分鐘內兩次全身抽搐意識未清</td>
+              <td>符合 ILAE 2015 / AES 2016 convulsive SE 之 T1 門檻。持續抽搐 5 分鐘即應視為難以自行終止，應立即開始給藥，絕不可等待。</td>
+            </tr>
+            <tr>
+              <td><strong>第一線 Lorazepam</strong></td>
+              <td>&lt; 40kg: 0.1 mg/kg (max 4mg)<br>≥ 40kg: 4mg (2 amp)</td>
+              <td>與 AES 一致。靜脈注射建議速率 ≤ 2 mg/min；給藥後 5 分鐘為重評間隔。若 5 分鐘未停可重複一次（單次總累積上限 8 mg）。</td>
+            </tr>
+            <tr>
+              <td><strong>第一線 Midazolam IM</strong></td>
+              <td>&lt; 40kg: 5mg (1 amp)<br>≥ 40kg: 10mg (2 amp)</td>
+              <td>若無靜脈管路首選肌肉注射 (IM)。注意 AES 指引是以 40kg 為界點，兩者劑量相符。若 IM 後取得 IV，第二次給藥可改用 IV Lorazepam。</td>
+            </tr>
+            <tr>
+              <td><strong>第二線 Keppra</strong></td>
+              <td>&lt; 50kg: 60 mg/kg (max 3000mg)<br>≥ 50kg: 3000mg ST</td>
+              <td>高醫採 3,000 mg ST 上限（符合 NCS 2012）；AES / ENLS v6 上限為 4,500 mg。本工具嚴格維持院內核定 3,000 mg 規格。建議以 10-15 分鐘輸注完成。</td>
+            </tr>
+            <tr>
+              <td><strong>抽搐停止後評估</strong></td>
+              <td>因抽搐停止未完成</td>
+              <td><strong>重要警示：</strong>運動性抽搐停止不等於腦波癲癇終止！若抽搐停止但意識持續昏迷，必須警惕非痙攣性癲癇重積 (NCSE)，需照會神經部安排緊急腦波 (cEEG)。</td>
+            </tr>
+            <tr>
+              <td><strong>氣管插管時機</strong></td>
+              <td>第二線 5 分鐘未停，給第三線前建立氣道</td>
+              <td>若病患給予 Benzodiazepine 後發生嚴重低血氧、呼吸衰竭或無法保護氣道，應立即施行 RSI 插管，不需拘泥於必須走到步驟 8。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+  </div><!-- /#checklistView -->
+
+  <!-- Timeline Flow Diagram View -->
+  <div id="flowView" style="display:none;" class="no-print">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          癲癇重積處置時間軸流程圖 (Clinical Timeline)
+        </h3>
+        <button class="btn btn-sm" onclick="switchView('checklist')">切換回檢核表</button>
+      </div>
+
+      <div class="timeline-container">
+        
+        <!-- Phase 0 -->
+        <div class="tl-node active">
+          <div class="tl-header">
+            <span class="tl-phase-tag" style="background:var(--navy);">0 ~ 5 分鐘</span>
+            <strong style="color:var(--navy);">啟動與穩定階段 (Stabilization)</strong>
+          </div>
+          <div class="tl-card">
+            <h4>通報雙線 VS ＋ ABC 評估 ＋ 抽血與床邊血糖</h4>
+            <p>• 同時通報「神經部值班 VS」與「急診 VS」</p>
+            <p>• 開立「重積癲癇」抽血套案（sugar, VBG, electrolytes, AED levels...）</p>
+            <p>• 開立醫囑給予 <strong>Thiamine 100mg + D5W ST IVD</strong></p>
+          </div>
+        </div>
+
+        <!-- Phase 1 -->
+        <div class="tl-node urgent">
+          <div class="tl-header">
+            <span class="tl-phase-tag" style="background:var(--teal);">5 ~ 10 分鐘</span>
+            <strong style="color:var(--teal);">第一線治療：初始止痙 (1st-line Therapy)</strong>
+          </div>
+          <div class="tl-card">
+            <h4>第一線 Benzodiazepine 投予</h4>
+            <p>• <strong>有 IV：</strong>Lorazepam 0.1 mg/kg (≥40kg 給 4mg / 2amp)</p>
+            <p>• <strong>無 IV：</strong>Midazolam IM (≥40kg 給 10mg / 2amp；&lt;40kg 給 5mg / 1amp)</p>
+            <p>• 給藥後啟動 <strong>5 分鐘倒數計時</strong></p>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="tl-node">
+          <div class="tl-header">
+            <span class="tl-phase-tag" style="background:var(--amber);">10 ~ 15 分鐘</span>
+            <strong style="color:var(--amber);">第一線重複 ＋ 第二線備藥</strong>
+          </div>
+          <div class="tl-card">
+            <h4>5 分鐘抽搐未停：再次第一線藥物 ＋ 預開 Keppra</h4>
+            <p>• 再次步驟 5 第一線藥物（Lorazepam 或 Midazolam）</p>
+            <p>• 預先開立第二線藥物 Keppra 備用</p>
+            <p>• 再給藥後繼續觀察 5 分鐘</p>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="tl-node urgent">
+          <div class="tl-header">
+            <span class="tl-phase-tag" style="background:#b91c1c;">15 ~ 25 分鐘</span>
+            <strong style="color:#b91c1c;">第二線治療：抗癲癇藥物滿載 (2nd-line Therapy)</strong>
+          </div>
+          <div class="tl-card">
+            <h4>兩次第一線失敗：給予第二線 Keppra</h4>
+            <p>• <strong>≥ 50 kg：</strong>Keppra 3000 mg ST（加入 D5W 100mL 於 10-15 分鐘輸注）</p>
+            <p>• <strong>&lt; 50 kg：</strong>Keppra 60 mg/kg (max 3000 mg)</p>
+            <p>• 輸注後評估抽搐是否停止</p>
+          </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="tl-node urgent">
+          <div class="tl-header">
+            <span class="tl-phase-tag" style="background:#7f1d1d;">25 ~ 35 分鐘</span>
+            <strong style="color:#7f1d1d;">難治型癲癇 (Refractory SE)：建立氣道與第三線麻醉</strong>
+          </div>
+          <div class="tl-card">
+            <h4>氣管插管 ＋ Midazolam 持續靜脈輸注</h4>
+            <p>• 建立氣管內管 (Intubation)，呼吸器支持</p>
+            <p>• <strong>Loading:</strong> Midazolam 0.2 mg/kg IV push</p>
+            <p>• <strong>Maintenance:</strong> 0.05 ~ 0.5 mg/kg/h IV pump 滴定</p>
+          </div>
+        </div>
+
+        <!-- Phase 5 -->
+        <div class="tl-node">
+          <div class="tl-header">
+            <span class="tl-phase-tag" style="background:var(--navy);">後續評估</span>
+            <strong style="color:var(--navy);">影像檢查與病人動向 (Disposition)</strong>
+          </div>
+          <div class="tl-card">
+            <h4>頭部 CT ＋ 神經部醫師確認動向</h4>
+            <p>• 安排無顯影劑頭部電腦斷層 (Brain CT C-)</p>
+            <p>• 神經部醫師確認收治加護病房 (ICU) 或病房</p>
+            <p>• 若抽搐停止但意識未恢復，安排持續腦波監測 (cEEG) 排除 NCSE</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /#flowView -->
+
+</div><!-- /.wrap -->
+
+<!-- Print-Only 1-Page Layout: Exact KMUH Hospital Form Replica -->
+<div class="print-sheet" style="display:none;">
+  <div style="border: 2px solid #000; padding: 6px; margin: 0 0 10px; width: 230px;">
+    <div>姓名：<span id="p_ptName"></span></div>
+    <div>病歷號：<span id="p_ptChart"></span></div>
+    <div>生日：<span id="p_ptDob"></span></div>
+  </div>
+
+  <div class="print-header">
+    <h2>高醫急診部/神經部癲癇重積（Status epilepticus）檢核單</h2>
+  </div>
+
+  <div style="font-size: 9.5pt; margin-bottom: 8px;">
+    成人（≥18歲）有下列兩者之一條件時（請打勾），請啟動急診部/神經部癲癇重積處理，並填寫本單：<br>
+    <span id="p_trig1">[ ]</span> 抽搐≥5分鐘合併意識喪失<br>
+    <span id="p_trig2">[ ]</span> 於15分鐘內有兩次（含）以上之全身抽搐合併意識喪失，且抽搐之間意識並未回復正常<br>
+    案件啟動時間：<span id="p_actTime">____年____月____日____時____分</span>
+  </div>
+
+  <table class="print-table">
+    <thead>
+      <tr>
+        <th style="width: 32px;">項目</th>
+        <th>內容</th>
+        <th style="width: 170px;">檢核</th>
+        <th style="width: 110px;">備註</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center;">1</td>
+        <td>啟動：同時通報「神經部值班VS」與「急診VS」，優先評估處理病人</td>
+        <td>
+          <span id="p_chk_1_done">[ ]</span> 已完成<br>
+          <span id="p_chk_1_undone">[ ]</span> 未完成，原因：<span id="p_reason_1"></span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">2</td>
+        <td>測量病人生命徵象，預估體重 <span id="p_weight">____</span> 公斤</td>
+        <td>
+          <span id="p_chk_2_done">[ ]</span> 已完成<br>
+          <span id="p_chk_2_undone">[ ]</span> 未完成，原因：<span id="p_reason_2"></span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">3</td>
+        <td>
+          開立「重積癲癇」抽血套案：<br>
+          ① sugar, CBC/DC, BUN, Cre, AST, ALT, VBG, Na, K, Ca, Mg, CK, CK-MB, Trop-I, D-dimer<br>
+          ② 已知正在服用且可測之抗癲癇藥物濃度
+        </td>
+        <td>
+          <span id="p_chk_3_done">[ ]</span> 已完成<br>
+          <span id="p_chk_3_undone">[ ]</span> 未完成，原因：<span id="p_reason_3"></span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">4</td>
+        <td>
+          開立「重積癲癇」醫囑套案<br>
+          給予 Thiamine 100mg + D5W ST IVD
+        </td>
+        <td>
+          <span id="p_chk_4_done">[ ]</span> 已完成<br>
+          <span id="p_chk_4_undone">[ ]</span> 未完成，原因：<span id="p_reason_4"></span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">5</td>
+        <td>
+          給予第一線抗癲癇藥物（請勾選）：<br>
+          <span id="p_l1_1">[ ]</span> 有IV &lt; 40 kg: Lorazepam 0.1mg/kg (max 4mg)<br>
+          <span id="p_l1_2">[ ]</span> 有IV ≥ 40 kg: Lorazepam 4mg (2amp)<br>
+          <span id="p_l1_3">[ ]</span> 無IV &lt; 40 kg: Midazolam 5mg (1amp) IM<br>
+          <span id="p_l1_4">[ ]</span> 無IV ≥ 40 kg: Midazolam 10mg (2amp) IM
+        </td>
+        <td>
+          <span id="p_chk_5_done">[ ]</span> 已完成<br>
+          <span id="p_chk_5_stop">[ ]</span> 未完成，因癲癇已停止<br>
+          <span id="p_chk_5_other">[ ]</span> 未完成，其他原因：<span id="p_reason_5"></span>
+        </td>
+        <td>1st 第一線藥物給予時間：<br><span id="p_time_5">__:__</span></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">6</td>
+        <td>
+          第一線藥物 5 分鐘後癲癇未停止或又再發生：<br>
+          再次步驟 5 之一第一線抗癲癇藥物；預先開立第二線藥物 Keppra 備用
+        </td>
+        <td>
+          <span id="p_chk_6_done">[ ]</span> 已完成<br>
+          <span id="p_chk_6_stop">[ ]</span> 未完成，因癲癇已停止<br>
+          <span id="p_chk_6_other">[ ]</span> 未完成，其他原因：<span id="p_reason_6"></span>
+        </td>
+        <td>2nd 第一線藥物給予時間：<br><span id="p_time_6">__:__</span></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">7</td>
+        <td>
+          兩次第一線藥物 5 分鐘後癲癇未停或又再發生：<br>
+          給予第二線癲癇藥物（請勾選）：<br>
+          <span id="p_l2_1">[ ]</span> &lt; 50kg: Keppra 60mg/kg (max 3000mg)<br>
+          <span id="p_l2_2">[ ]</span> ≥ 50kg: Keppra 3000mg ST
+        </td>
+        <td>
+          <span id="p_chk_7_done">[ ]</span> 已完成<br>
+          <span id="p_chk_7_stop">[ ]</span> 未完成，因癲癇已停止<br>
+          <span id="p_chk_7_other">[ ]</span> 未完成，其他原因：<span id="p_reason_7"></span>
+        </td>
+        <td>第二線藥物給予時間：<br><span id="p_time_7">__:__</span></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">8</td>
+        <td>
+          第二線藥物 5 分鐘後癲癇未停或又再發生：<br>
+          建立氣管內管，準備給予第三線藥物
+        </td>
+        <td>
+          <span id="p_chk_8_done">[ ]</span> 已完成<br>
+          <span id="p_chk_8_stop">[ ]</span> 未完成，因癲癇已停止<br>
+          <span id="p_chk_8_other">[ ]</span> 未完成，其他原因：<span id="p_reason_8"></span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">9</td>
+        <td>
+          給予第三線藥物 Midazolam 0.2mg/kg IV push<br>
+          then 0.05-0.5 mg/kg/h IV pump
+        </td>
+        <td>
+          <span id="p_chk_9_done">[ ]</span> 已完成<br>
+          <span id="p_chk_9_stop">[ ]</span> 未完成，因癲癇已停止<br>
+          <span id="p_chk_9_other">[ ]</span> 未完成，其他原因：<span id="p_reason_9"></span>
+        </td>
+        <td>第三線藥物給予時間：<br><span id="p_time_9">__:__</span></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">10</td>
+        <td>進行頭部影像學檢查（brain CT C-）</td>
+        <td>
+          <span id="p_chk_10_done">[ ]</span> 已完成<br>
+          <span id="p_chk_10_undone">[ ]</span> 未完成，原因：<span id="p_reason_10"></span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">11</td>
+        <td>神經部醫師確認病人動向：<span id="p_disp_icu">[ ]</span> ICU  <span id="p_disp_ward">[ ]</span> 病房</td>
+        <td>
+          <span id="p_chk_11_done">[ ]</span> 已完成<br>
+          <span id="p_chk_11_undone">[ ]</span> 未完成，原因：<span id="p_reason_11"></span>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="print-sig">
+    <div>填表人：<span id="p_sigRec">____________</span></div>
+    <div>急診 VS：<span id="p_sigEd">____________</span></div>
+    <div>神經部 VS：<span id="p_sigNeuro">____________</span></div>
+  </div>
+</div>
+
+<script>
+// --- State & Form Logic ---
+let timerInterval = null;
+let timerSecondsLeft = 300;
+let timerIsRunning = false;
+let audioCtx = null;
+
+function switchView(mode) {
+  const chkView = document.getElementById('checklistView');
+  const flowView = document.getElementById('flowView');
+  const tabChk = document.getElementById('tabChecklistBtn');
+  const tabFlow = document.getElementById('tabFlowBtn');
+
+  if (mode === 'flow') {
+    chkView.style.display = 'none';
+    flowView.style.display = 'block';
+    tabChk.classList.remove('active');
+    tabFlow.classList.add('active');
+  } else {
+    chkView.style.display = 'block';
+    flowView.style.display = 'none';
+    tabChk.classList.add('active');
+    tabFlow.classList.remove('active');
+  }
+}
+
+// Weight-based dynamic dose calculation
+function onWeightChange() {
+  const wInput = document.getElementById('ptWeight');
+  const w = parseFloat(wInput.value);
+  const wDisp = document.getElementById('step2WeightDisplay');
+
+  const loraLt40Badge = document.getElementById('calcLoraLt40');
+  const loraGe40Badge = document.getElementById('calcLoraGe40');
+  const kepLt50Badge = document.getElementById('calcKeppraLt50');
+  const kepGe50Badge = document.getElementById('calcKeppraGe50');
+  const midaLoadBadge = document.getElementById('calcMidaLoading');
+  const midaPumpBadge = document.getElementById('calcMidaPump');
+
+  if (isNaN(w) || w <= 0) {
+    wDisp.textContent = '尚未輸入';
+    loraLt40Badge.textContent = '請先輸入體重';
+    kepLt50Badge.textContent = '請先輸入體重';
+    midaLoadBadge.textContent = '請輸入體重';
+    midaPumpBadge.textContent = '請輸入體重';
+    saveData();
+    updateEMR();
+    return;
+  }
+
+  wDisp.textContent = w;
+
+  // 1. Lorazepam < 40kg: 0.1 mg/kg (max 4mg)
+  const loraCalc = Math.min(0.1 * w, 4.0).toFixed(1);
+  const loraAmp = (loraCalc / 2.0).toFixed(1); // 2mg/amp in Taiwan
+  loraLt40Badge.textContent = `換算：${loraCalc} mg (~${loraAmp} amp)`;
+
+  // Lorazepam >= 40kg
+  loraGe40Badge.textContent = `標準劑量 4mg (2 amp)`;
+
+  // 2. Keppra < 50kg: 60mg/kg (max 3000mg)
+  const kepCalc = Math.min(Math.round(60 * w), 3000);
+  kepLt50Badge.textContent = `換算：${kepCalc} mg ST`;
+
+  // Keppra >= 50kg
+  kepGe50Badge.textContent = `標準劑量 3000 mg ST`;
+
+  // 3. Midazolam Loading: 0.2 mg/kg
+  const mLoad = (0.2 * w).toFixed(1);
+  midaLoadBadge.textContent = `換算劑量：${mLoad} mg IV push`;
+
+  // 4. Midazolam Pump: 0.05 - 0.5 mg/kg/h
+  const mLow = (0.05 * w).toFixed(1);
+  const mHigh = (0.5 * w).toFixed(1);
+  // Assuming 1 mg/mL standard concentration in ED
+  midaPumpBadge.textContent = `換算速率：${mLow} ~ ${mHigh} mg/h (以 1mg/mL 稀釋即 ${mLow} ~ ${mHigh} mL/h)`;
+
+  // Auto recommend checkboxes based on weight boundary
+  const loraLtRadio = document.querySelector('input[name="line1_drug"][value="lora_lt40"]');
+  const loraGeRadio = document.querySelector('input[name="line1_drug"][value="lora_ge40"]');
+  const kepLtRadio = document.querySelector('input[name="line2_drug"][value="keppra_lt50"]');
+  const kepGeRadio = document.querySelector('input[name="line2_drug"][value="keppra_ge50"]');
+
+  if (w < 40) {
+    if (!document.querySelector('input[name="line1_drug"]:checked')) loraLtRadio.checked = true;
+  } else {
+    if (!document.querySelector('input[name="line1_drug"]:checked')) loraGeRadio.checked = true;
+  }
+
+  if (w < 50) {
+    if (!document.querySelector('input[name="line2_drug"]:checked')) kepLtRadio.checked = true;
+  } else {
+    if (!document.querySelector('input[name="line2_drug"]:checked')) kepGeRadio.checked = true;
+  }
+
+  saveData();
+  updateEMR();
+}
+
+// Status check button handler
+function onStatusChange(step, val) {
+  const reasonBox = document.getElementById(`reason_${step}`);
+  if (reasonBox) {
+    if (val === 'undone' || val === 'other') {
+      reasonBox.style.display = 'block';
+      reasonBox.focus();
+    } else {
+      reasonBox.style.display = 'none';
+    }
+  }
+  saveData();
+  updateEMR();
+}
+
+function setNowTime(elemId) {
+  const el = document.getElementById(elemId);
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const val = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  el.value = val;
+  saveData();
+  updateEMR();
+}
+
+function setNowTimeStep(elemId) {
+  const el = document.getElementById(elemId);
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  el.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  saveData();
+  updateEMR();
+}
+
+// Web Audio API Chime
+function playChimeSound() {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
+    osc.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.3); // A6
+    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.8);
+  } catch (e) {
+    console.warn("Audio chime error:", e);
+  }
+}
+
+function testChimeSound() {
+  playChimeSound();
+}
+
+// 5-min Countdown Timer
+function renderTimer() {
+  const disp = document.getElementById('timerClock');
+  const m = Math.floor(timerSecondsLeft / 60);
+  const s = timerSecondsLeft % 60;
+  const pad = n => String(n).padStart(2, '0');
+  disp.textContent = `${pad(m)}:${pad(s)}`;
+
+  if (timerSecondsLeft <= 0) {
+    disp.className = 'timer-display expired';
+    disp.textContent = '00:00 (請重新評估抽搐!)';
+  } else if (timerIsRunning) {
+    disp.className = 'timer-display running';
+  } else {
+    disp.className = 'timer-display';
+  }
+}
+
+function startTimer(seconds) {
+  if (timerInterval) clearInterval(timerInterval);
+  timerSecondsLeft = seconds;
+  timerIsRunning = true;
+  renderTimer();
+
+  timerInterval = setInterval(() => {
+    if (timerSecondsLeft > 0) {
+      timerSecondsLeft--;
+      renderTimer();
+      if (timerSecondsLeft === 0) {
+        timerIsRunning = false;
+        renderTimer();
+        playChimeSound();
+        setTimeout(playChimeSound, 600);
+        setTimeout(playChimeSound, 1200);
+        alert('【5分鐘評估提醒】請立即評估病人癲癇抽搐是否停止或再發生！若未停請接續下一步處置。');
+      }
+    } else {
+      clearInterval(timerInterval);
+      timerIsRunning = false;
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  if (timerInterval) clearInterval(timerInterval);
+  timerIsRunning = false;
+  renderTimer();
+}
+
+function resetTimer() {
+  if (timerInterval) clearInterval(timerInterval);
+  timerSecondsLeft = 300;
+  timerIsRunning = false;
+  renderTimer();
+}
+
+// EMR Formatted Progress Note Generator
+function updateEMR() {
+  const name = document.getElementById('ptName').value || '未填';
+  const chart = document.getElementById('ptChart').value || '未填';
+  const w = document.getElementById('ptWeight').value || '未估';
+  const actTime = document.getElementById('activationTime').value.replace('T', ' ') || '未填';
+
+  const trig1 = document.getElementById('trig1').checked;
+  const trig2 = document.getElementById('trig2').checked;
+  let triggers = [];
+  if (trig1) triggers.push('抽搐≥5分鐘合併意識喪失');
+  if (trig2) triggers.push('15分鐘內≥2次全身抽搐且意識未回復正常');
+  const trigStr = triggers.length > 0 ? triggers.join('; ') : '未勾選條件';
+
+  // 1st line drug
+  const l1Radio = document.querySelector('input[name="line1_drug"]:checked');
+  let l1Name = '未選擇';
+  if (l1Radio) {
+    if (l1Radio.value === 'lora_lt40') l1Name = `Lorazepam ${Math.min(0.1 * (parseFloat(w)||35), 4).toFixed(1)}mg IV`;
+    if (l1Radio.value === 'lora_ge40') l1Name = 'Lorazepam 4mg (2amp) IV';
+    if (l1Radio.value === 'mida_lt40') l1Name = 'Midazolam 5mg (1amp) IM';
+    if (l1Radio.value === 'mida_ge40') l1Name = 'Midazolam 10mg (2amp) IM';
+  }
+  const t5 = document.getElementById('time_step5').value || '未填';
+  const t6 = document.getElementById('time_step6').value || '未填';
+
+  // 2nd line drug
+  const l2Radio = document.querySelector('input[name="line2_drug"]:checked');
+  let l2Name = '未選擇';
+  if (l2Radio) {
+    if (l2Radio.value === 'keppra_lt50') l2Name = `Keppra ${Math.min(Math.round(60 * (parseFloat(w)||45)), 3000)}mg ST IVD`;
+    if (l2Radio.value === 'keppra_ge50') l2Name = 'Keppra 3000mg ST IVD';
+  }
+  const t7 = document.getElementById('time_step7').value || '未填';
+
+  // 3rd line drug
+  const t9 = document.getElementById('time_step9').value || '未填';
+
+  // Disposition
+  const dispRadio = document.querySelector('input[name="disposition"]:checked');
+  const dispStr = dispRadio ? dispRadio.value : '尚未確認';
+
+  // Signatures
+  const rec = document.getElementById('sigRecorder').value || '未簽';
+  const edVs = document.getElementById('sigEdVs').value || '未簽';
+  const neuroVs = document.getElementById('sigNeuroVs').value || '未簽';
+
+  function getStepStatus(n) {
+    const r = document.querySelector(`input[name="chk_${n}"]:checked`);
+    if (!r) return '[待辦]';
+    if (r.value === 'done') return '[已完成]';
+    if (r.value === 'seizure_stopped') return '[未執行：因抽搐停止]';
+    const reason = document.getElementById(`reason_${n}`) ? document.getElementById(`reason_${n}`).value : '';
+    return `[未執行：${reason || '其他原因'}]`;
+  }
+
+  const note = `[急診/神經部 癲癇重積 (Status Epilepticus) 處置紀錄]
+• 病患姓名: ${name} (病歷號: ${chart}) | 預估體重: ${w} kg
+• 啟動時間: ${actTime} | 啟動條件: ${trigStr}
+--------------------------------------------------
+[臨床步驟執行檢核]
+1. 通報神經部值班 VS 與急診 VS: ${getStepStatus(1)}
+2. 生命徵象與體重評估 (${w} kg): ${getStepStatus(2)}
+3. 開立重積抽血套案 (sugar, VBG, AED level): ${getStepStatus(3)}
+4. 給予 Thiamine 100mg + D5W ST: ${getStepStatus(4)}
+5. 第一線抗癲癇藥物 (${l1Name}): ${getStepStatus(5)} (給藥時間: ${t5})
+6. 5分鐘後評估/再次第一線藥物: ${getStepStatus(6)} (給藥時間: ${t6})
+7. 第二線抗癲癇藥物 (${l2Name}): ${getStepStatus(7)} (給藥時間: ${t7})
+8. 氣管內管建立 (Intubation/ETT): ${getStepStatus(8)}
+9. 第三線 Midazolam push+pump: ${getStepStatus(9)} (給藥時間: ${t9})
+10. 頭部影像學檢查 (Brain CT C-): ${getStepStatus(10)}
+11. 神經部醫師確認動向: ${dispStr} ${getStepStatus(11)}
+--------------------------------------------------
+• 填表人: ${rec} | 急診VS: ${edVs} | 神經部VS: ${neuroVs}`;
+
+  document.getElementById('emrOutput').textContent = note;
+  syncToPrintView();
+}
+
+function copyEmrNote() {
+  const note = document.getElementById('emrOutput').textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(note).then(() => {
+      alert('✅ 已成功複製 EMR 癲癇重積處置紀錄至剪貼簿！');
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = note;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('✅ 已複製 EMR 癲癇重積處置紀錄至剪貼簿！');
+  }
+}
+
+// Sync screen inputs to the print sheet representation
+function syncToPrintView() {
+  const setTxt = (id, v, def = '') => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v || def;
+  };
+  const setChk = (id, b) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = b ? '[✓]' : '[ ]';
+  };
+
+  setTxt('p_ptName', document.getElementById('ptName').value);
+  setTxt('p_ptChart', document.getElementById('ptChart').value);
+  setTxt('p_ptDob', document.getElementById('ptDob').value);
+  setTxt('p_weight', document.getElementById('ptWeight').value, '____');
+
+  const act = document.getElementById('activationTime').value;
+  if (act) {
+    const d = new Date(act);
+    setTxt('p_actTime', `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${d.getHours()}時${d.getMinutes()}分`);
+  } else {
+    setTxt('p_actTime', '____年____月____日____時____分');
+  }
+
+  setChk('p_trig1', document.getElementById('trig1').checked);
+  setChk('p_trig2', document.getElementById('trig2').checked);
+
+  // Steps status
+  for (let i = 1; i <= 11; i++) {
+    const r = document.querySelector(`input[name="chk_${i}"]:checked`);
+    const val = r ? r.value : null;
+    setChk(`p_chk_${i}_done`, val === 'done');
+    setChk(`p_chk_${i}_undone`, val === 'undone');
+    setChk(`p_chk_${i}_stop`, val === 'seizure_stopped');
+    setChk(`p_chk_${i}_other`, val === 'other');
+    const rEl = document.getElementById(`reason_${i}`);
+    setTxt(`p_reason_${i}`, rEl ? rEl.value : '');
+  }
+
+  // Drug radios
+  const l1 = document.querySelector('input[name="line1_drug"]:checked');
+  setChk('p_l1_1', l1 && l1.value === 'lora_lt40');
+  setChk('p_l1_2', l1 && l1.value === 'lora_ge40');
+  setChk('p_l1_3', l1 && l1.value === 'mida_lt40');
+  setChk('p_l1_4', l1 && l1.value === 'mida_ge40');
+
+  const l2 = document.querySelector('input[name="line2_drug"]:checked');
+  setChk('p_l2_1', l2 && l2.value === 'keppra_lt50');
+  setChk('p_l2_2', l2 && l2.value === 'keppra_ge50');
+
+  // Times
+  setTxt('p_time_5', document.getElementById('time_step5').value, '__:__');
+  setTxt('p_time_6', document.getElementById('time_step6').value, '__:__');
+  setTxt('p_time_7', document.getElementById('time_step7').value, '__:__');
+  setTxt('p_time_9', document.getElementById('time_step9').value, '__:__');
+
+  // Disposition
+  const disp = document.querySelector('input[name="disposition"]:checked');
+  setChk('p_disp_icu', disp && disp.value === 'ICU');
+  setChk('p_disp_ward', disp && disp.value === 'Ward');
+
+  // Signatures
+  setTxt('p_sigRec', document.getElementById('sigRecorder').value, '____________');
+  setTxt('p_sigEd', document.getElementById('sigEdVs').value, '____________');
+  setTxt('p_sigNeuro', document.getElementById('sigNeuroVs').value, '____________');
+}
+
+// LocalStorage Persistence
+const STORAGE_KEY = 'kmuh_se_checklist_draft';
+
+function saveData() {
+  const data = {
+    ptName: document.getElementById('ptName').value,
+    ptChart: document.getElementById('ptChart').value,
+    ptDob: document.getElementById('ptDob').value,
+    ptWeight: document.getElementById('ptWeight').value,
+    activationTime: document.getElementById('activationTime').value,
+    trig1: document.getElementById('trig1').checked,
+    trig2: document.getElementById('trig2').checked,
+    line1_drug: (document.querySelector('input[name="line1_drug"]:checked') || {}).value,
+    line2_drug: (document.querySelector('input[name="line2_drug"]:checked') || {}).value,
+    disposition: (document.querySelector('input[name="disposition"]:checked') || {}).value,
+    time_step5: document.getElementById('time_step5').value,
+    time_step6: document.getElementById('time_step6').value,
+    time_step7: document.getElementById('time_step7').value,
+    time_step9: document.getElementById('time_step9').value,
+    sigRecorder: document.getElementById('sigRecorder').value,
+    sigEdVs: document.getElementById('sigEdVs').value,
+    sigNeuroVs: document.getElementById('sigNeuroVs').value,
+    reasons: {},
+    chkStatus: {}
+  };
+
+  for (let i = 1; i <= 11; i++) {
+    const chk = document.querySelector(`input[name="chk_${i}"]:checked`);
+    if (chk) data.chkStatus[i] = chk.value;
+    const rEl = document.getElementById(`reason_${i}`);
+    if (rEl) data.reasons[i] = rEl.value;
+  }
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch(e) {}
+}
+
+function loadData() {
+  let raw = null;
+  try {
+    raw = localStorage.getItem(STORAGE_KEY);
+  } catch(e) {}
+  if (!raw) {
+    setNowTime('activationTime');
+    updateEMR();
+    return;
+  }
+
+  try {
+    const data = JSON.parse(raw);
+    document.getElementById('ptName').value = data.ptName || '';
+    document.getElementById('ptChart').value = data.ptChart || '';
+    document.getElementById('ptDob').value = data.ptDob || '';
+    document.getElementById('ptWeight').value = data.ptWeight || '';
+    document.getElementById('activationTime').value = data.activationTime || '';
+    document.getElementById('trig1').checked = !!data.trig1;
+    document.getElementById('trig2').checked = !!data.trig2;
+
+    if (data.line1_drug) {
+      const el = document.querySelector(`input[name="line1_drug"][value="${data.line1_drug}"]`);
+      if (el) el.checked = true;
+    }
+    if (data.line2_drug) {
+      const el = document.querySelector(`input[name="line2_drug"][value="${data.line2_drug}"]`);
+      if (el) el.checked = true;
+    }
+    if (data.disposition) {
+      const el = document.querySelector(`input[name="disposition"][value="${data.disposition}"]`);
+      if (el) el.checked = true;
+    }
+
+    document.getElementById('time_step5').value = data.time_step5 || '';
+    document.getElementById('time_step6').value = data.time_step6 || '';
+    document.getElementById('time_step7').value = data.time_step7 || '';
+    document.getElementById('time_step9').value = data.time_step9 || '';
+
+    document.getElementById('sigRecorder').value = data.sigRecorder || '';
+    document.getElementById('sigEdVs').value = data.sigEdVs || '';
+    document.getElementById('sigNeuroVs').value = data.sigNeuroVs || '';
+
+    if (data.chkStatus) {
+      for (const [step, val] of Object.entries(data.chkStatus)) {
+        const el = document.querySelector(`input[name="chk_${step}"][value="${val}"]`);
+        if (el) {
+          el.checked = true;
+          onStatusChange(step, val);
+        }
+      }
+    }
+    if (data.reasons) {
+      for (const [step, val] of Object.entries(data.reasons)) {
+        const el = document.getElementById(`reason_${step}`);
+        if (el) el.value = val;
+      }
+    }
+
+    onWeightChange();
+  } catch(e) {
+    console.error("Load draft error", e);
+  }
+  updateEMR();
+}
+
+function resetForm() {
+  if (confirm('確定要清空所有資料並重置檢核單嗎？')) {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch(e) {}
+    window.location.reload();
+  }
+}
+
+// Window init
+window.addEventListener('DOMContentLoaded', () => {
+  loadData();
+});
+</script>
+
+</body>
+</html>

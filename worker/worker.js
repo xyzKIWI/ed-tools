@@ -178,6 +178,10 @@ export default {
       return securedResponse(out, path);
     }
 
+    if (path === "/se" || path === "/se/") {
+      return securedResponse(redirect(url.origin + "/se.html" + url.search, 301), path);
+    }
+
     for (const [prefix, target] of Object.entries(TOOLS)) {
       if (path === prefix) {
         // 少了尾斜線會讓頁內相對路徑解析錯層，先補上再進來
