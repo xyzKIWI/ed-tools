@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>高醫急診部/神經部 癲癇重積 (Status Epilepticus) 檢核單與臨床指引</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2316395b'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='700' text-anchor='middle' fill='%2338bdf8' font-family='sans-serif'%3ESE%3C/text%3E%3C/svg%3E">
 <style>
@@ -42,7 +42,15 @@
     color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", "Segoe UI", sans-serif;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 16px;
+    padding-bottom: 70px; /* Safe space for mobile bottom bar */
+  }
+
+  /* Prevent iOS zoom on input focus */
+  input, select, textarea, button {
+    font: inherit;
+    font-size: max(16px, 1rem);
+    touch-action: manipulation;
   }
 
   .wrap {
@@ -56,7 +64,7 @@
     background: linear-gradient(135deg, var(--navy), var(--navy2));
     color: #fff;
     padding: 24px 20px 20px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
   }
   .hero-top {
@@ -64,7 +72,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1040px;
-    margin: 0 auto 12px;
+    margin: 0 auto 10px;
   }
   .back-link {
     color: #93c5fd;
@@ -74,13 +82,14 @@
     align-items: center;
     gap: 4px;
     font-weight: 500;
+    min-height: 44px; /* Touch target */
   }
   .back-link:hover { color: #fff; text-decoration: underline; }
   .badge-hosp {
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.3);
     color: #e0f2fe;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-radius: 99px;
     font-size: 0.8rem;
   }
@@ -105,7 +114,7 @@
     border: 1px solid var(--line-light);
     border-radius: 12px;
     padding: 12px 16px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
@@ -124,45 +133,140 @@
     border: 1px solid var(--line);
     background: #fff;
     color: var(--ink);
-    padding: 7px 14px;
+    padding: 9px 15px;
     border-radius: 8px;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     transition: all 0.15s ease;
+    min-height: 44px; /* WCAG touch target */
   }
   .btn:hover { background: #f1f5f9; border-color: #94a3b8; }
   .btn-primary { background: var(--teal); border-color: var(--teal); color: #fff; }
   .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
   .btn-danger { background: #fff; border-color: var(--red-bd); color: var(--red); }
   .btn-danger:hover { background: var(--red-bg); }
-  .btn-sm { padding: 4px 8px; font-size: 0.8rem; border-radius: 6px; }
+  .btn-sm { padding: 6px 12px; font-size: 0.85rem; border-radius: 6px; min-height: 38px; }
 
   /* Tab View Toggle */
   .tab-nav {
     display: flex;
     background: #e2e8f0;
-    padding: 3px;
-    border-radius: 8px;
-    font-size: 0.88rem;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 0.92rem;
   }
   .tab-btn {
     border: none;
     background: transparent;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-weight: 700;
     color: var(--muted);
     cursor: pointer;
     transition: all 0.15s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .tab-btn.active {
     background: #fff;
     color: var(--navy);
     box-shadow: var(--shadow-sm);
+  }
+
+  /* Timer Banner - Sticky on mobile */
+  .timer-banner {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #fff;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: var(--shadow);
+  }
+  .timer-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .timer-label-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .timer-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+  }
+  .timer-display {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #38bdf8;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .timer-display.running { color: #facc15; }
+  .timer-display.expired { color: #f87171; animation: pulse 1s infinite; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .timer-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-timer {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-timer:hover { background: #475569; }
+  .btn-timer-primary { background: #0284c7; border-color: #0284c7; font-weight: 700; }
+  .btn-timer-primary:hover { background: #0369a1; }
+
+  /* Wake Lock Button */
+  .btn-wakelock {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #e2e8f0;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 38px;
+  }
+  .btn-wakelock.active {
+    background: #15803d;
+    border-color: #86efac;
+    color: #fff;
+    font-weight: 700;
   }
 
   /* Card Sections */
@@ -171,7 +275,7 @@
     border: 1px solid var(--line-light);
     border-radius: 12px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     box-shadow: var(--shadow-sm);
   }
   .card-header {
@@ -202,21 +306,20 @@
   .field-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
   .field-label {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    color: var(--muted);
+    color: var(--body);
   }
   .input-text, .input-select {
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: 1px solid var(--line);
     border-radius: 8px;
-    font-size: 0.95rem;
     background: #fff;
     color: var(--ink);
-    font-family: inherit;
+    min-height: 44px;
   }
   .input-text:focus, .input-select:focus {
     outline: none;
@@ -227,7 +330,7 @@
     background: #eff6ff;
     border: 2px solid #60a5fa;
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--navy);
   }
 
@@ -249,76 +352,21 @@
   .chk-label {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    font-size: 0.92rem;
+    gap: 12px;
+    font-size: 0.95rem;
     cursor: pointer;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    min-height: 44px;
+    padding: 6px 0;
   }
-  .chk-label input[type="checkbox"] {
-    margin-top: 3px;
-    width: 17px;
-    height: 17px;
-    accent-color: var(--red);
-    cursor: pointer;
-  }
-
-  /* Timer Widget */
-  .timer-banner {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    color: #fff;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 22px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    box-shadow: var(--shadow);
-  }
-  .timer-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .timer-label {
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #94a3b8;
-  }
-  .timer-display {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #38bdf8;
-    line-height: 1;
-  }
-  .timer-display.running { color: #facc15; }
-  .timer-display.expired { color: #f87171; animation: pulse 1s infinite; }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  .timer-controls {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .btn-timer {
-    background: #334155;
-    border: 1px solid #475569;
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
+  .chk-label input[type="checkbox"], .chk-label input[type="radio"] {
+    margin-top: 2px;
+    width: 22px;
+    height: 22px;
+    accent-color: var(--teal);
+    flex-shrink: 0;
     cursor: pointer;
   }
-  .btn-timer:hover { background: #475569; }
-  .btn-timer-primary { background: #0284c7; border-color: #0284c7; }
-  .btn-timer-primary:hover { background: #0369a1; }
 
   /* Flow Steps Checklist Table */
   .flow-table {
@@ -331,7 +379,7 @@
     overflow: hidden;
   }
   .flow-table th, .flow-table td {
-    padding: 12px 14px;
+    padding: 14px 16px;
     border-bottom: 1px solid var(--line-light);
     vertical-align: top;
   }
@@ -339,17 +387,17 @@
     background: var(--navy);
     color: #fff;
     font-weight: 700;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     text-align: left;
   }
   .flow-table tr:last-child td { border-bottom: none; }
   .flow-table tr:hover { background: #f8fafc; }
   
   .step-num {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--teal);
-    width: 36px;
+    width: 48px;
     text-align: center;
   }
   .step-content {
@@ -359,18 +407,19 @@
   .step-title {
     font-weight: 700;
     color: var(--navy);
-    margin-bottom: 4px;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
   }
   .dose-calc-badge {
     background: #f0fdf4;
-    border: 1px solid var(--green-bd);
+    border: 1.5px solid var(--green-bd);
     color: var(--green);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.92rem;
     font-weight: 700;
     display: inline-block;
-    margin: 4px 0;
+    margin: 6px 0;
   }
   .dose-calc-badge.warn {
     background: #fffbeb;
@@ -378,68 +427,90 @@
     color: var(--amber);
   }
   .check-col {
-    min-width: 220px;
+    min-width: 230px;
   }
   .time-col {
-    min-width: 150px;
+    min-width: 160px;
   }
 
-  /* Radio pill selectors */
+  /* Radio pill selectors with large touch area */
   .status-options {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
   .status-btn-label {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.88rem;
+    gap: 10px;
+    font-size: 0.92rem;
     cursor: pointer;
+    min-height: 44px; /* WCAG touch target */
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1.5px solid var(--line-light);
+    background: #fff;
+    transition: all 0.15s ease;
+  }
+  .status-btn-label:hover {
+    background: #f8fafc;
+    border-color: var(--line);
+  }
+  .status-btn-label.active {
+    background: #f0fdf4;
+    border-color: #15803d;
+    color: #14532d;
+    font-weight: 700;
   }
   .status-btn-label input[type="radio"] {
+    width: 20px;
+    height: 20px;
     accent-color: var(--teal);
+    flex-shrink: 0;
     cursor: pointer;
   }
   .input-reason {
     width: 100%;
-    margin-top: 4px;
-    padding: 4px 8px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    font-size: 0.82rem;
+    margin-top: 6px;
+    padding: 8px 10px;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    min-height: 42px;
   }
 
   .time-input-group {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
   .input-time {
-    padding: 6px 8px;
+    padding: 8px 10px;
     border: 1px solid var(--line);
     border-radius: 6px;
-    font-size: 0.88rem;
-    width: 95px;
+    font-size: 0.95rem;
+    width: 105px;
     text-align: center;
     font-family: ui-monospace, monospace;
+    min-height: 42px;
   }
 
   /* Visual Timeline / Process View */
   .timeline-container {
     position: relative;
-    padding: 20px 0 20px 30px;
+    padding: 16px 0 16px 26px;
     border-left: 3px solid var(--line);
-    margin: 20px 10px 40px;
+    margin: 16px 8px 30px;
   }
   .tl-node {
     position: relative;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   .tl-node::before {
     content: "";
     position: absolute;
-    left: -38px;
+    left: -34px;
     top: 4px;
     width: 14px;
     height: 14px;
@@ -465,9 +536,9 @@
   .tl-phase-tag {
     background: var(--navy);
     color: #fff;
-    padding: 2px 10px;
+    padding: 3px 10px;
     border-radius: 99px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
   .tl-card {
@@ -483,9 +554,10 @@
     color: var(--navy2);
   }
   .tl-card p {
-    margin: 4px 0;
+    margin: 5px 0;
     font-size: 0.92rem;
     color: var(--body);
+    line-height: 1.55;
   }
 
   /* Clinical Notes & Guidelines Box */
@@ -504,6 +576,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    min-height: 44px;
   }
   .guideline-body {
     margin-top: 14px;
@@ -531,8 +604,8 @@
     border-radius: 10px;
     padding: 16px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.86rem;
-    line-height: 1.5;
+    font-size: 0.88rem;
+    line-height: 1.55;
     white-space: pre-wrap;
     max-height: 320px;
     overflow-y: auto;
@@ -550,6 +623,181 @@
     border-top: 1px solid var(--line-light);
   }
 
+  /* Mobile Bottom Action Bar (Thumb Zone) */
+  .mobile-bottom-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    z-index: 100;
+    box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+  }
+  .mobile-bottom-bar .bottom-btn-group {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .mobile-bottom-bar .btn {
+    flex: 1;
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
+  /* ========================================================
+     MOBILE RESPONSIVE CARD TRANSFORMATION (< 680px)
+     ======================================================== */
+  @media (max-width: 680px) {
+    header.hero {
+      padding: 16px 14px 14px;
+      margin-bottom: 12px;
+    }
+    header.hero h1 {
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+    header.hero p.sub {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+    .wrap {
+      padding: 0 12px 100px; /* Space for bottom bar */
+    }
+
+    /* Toolbar collapses cleanly */
+    .toolbar {
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+    .tab-nav {
+      width: 100%;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 0.88rem;
+    }
+    .toolbar-group {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .toolbar-group .btn {
+      flex: 1;
+      font-size: 0.82rem;
+      padding: 8px 8px;
+    }
+
+    /* Sticky Timer Bar on Mobile */
+    .timer-banner {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      padding: 10px 14px;
+      margin: 0 -12px 14px -12px;
+      border-radius: 0 0 12px 12px;
+      gap: 8px;
+    }
+    .timer-display {
+      font-size: 1.85rem;
+    }
+    .timer-controls {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 6px;
+    }
+    .btn-timer {
+      padding: 6px 8px;
+      font-size: 0.82rem;
+      min-height: 42px;
+    }
+
+    /* Transform Table into Step Cards */
+    .flow-table {
+      border: none;
+      background: transparent;
+    }
+    .flow-table thead {
+      display: none; /* Hide desktop column headers */
+    }
+    .flow-table tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .flow-table tr {
+      display: block;
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .flow-table td {
+      display: block;
+      padding: 8px 0;
+      border: none;
+    }
+    .flow-table td.step-num {
+      display: inline-block;
+      width: auto;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 800;
+      background: var(--navy-light);
+      color: var(--teal);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+    .flow-table td.time-col {
+      border-top: 1px dashed var(--line-light);
+      margin-top: 8px;
+      padding-top: 10px;
+    }
+    .time-input-group {
+      justify-content: flex-start;
+    }
+    .time-input-group .input-time {
+      flex: 1;
+      max-width: 120px;
+    }
+    .time-input-group .btn {
+      flex: 1;
+    }
+
+    /* Dose Badge Highlight in Mobile Card */
+    .dose-calc-badge {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      margin: 6px 0;
+    }
+
+    /* Show Mobile Bottom Bar */
+    .mobile-bottom-bar {
+      display: block;
+    }
+
+    /* Timeline Container on Mobile */
+    .timeline-container {
+      margin: 10px 4px 20px;
+      padding-left: 20px;
+    }
+    .tl-node::before {
+      left: -28px;
+    }
+  }
+
   /* Print Specific Styling: Replicates 1-Page Physical Hospital Document */
   @media print {
     body {
@@ -557,8 +805,9 @@
       color: #000 !important;
       font-size: 11pt !important;
       line-height: 1.35 !important;
+      padding: 0 !important;
     }
-    .no-print, header.hero, .toolbar, .timer-banner, .tab-nav, .emr-section, .guideline-accordion {
+    .no-print, header.hero, .toolbar, .timer-banner, .tab-nav, .emr-section, .guideline-accordion, .mobile-bottom-bar {
       display: none !important;
     }
     .wrap {
@@ -605,14 +854,6 @@
       font-size: 10pt;
     }
   }
-
-  @media (max-width: 768px) {
-    header.hero h1 { font-size: 1.3rem; }
-    .toolbar { flex-direction: column; align-items: stretch; }
-    .timer-banner { flex-direction: column; align-items: flex-start; }
-    .timer-controls { width: 100%; justify-content: flex-start; }
-    .flow-table th:nth-child(4), .flow-table td:nth-child(4) { min-width: 110px; }
-  }
 </style>
 </head>
 <body>
@@ -620,18 +861,18 @@
 <header class="hero">
   <div class="hero-top">
     <a href="../" class="back-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
       急診臨床小工具
     </a>
-    <span class="badge-hosp">高醫急診部 / 神經部 臨床指引協定</span>
+    <span class="badge-hosp">高醫急診/神經部協定</span>
   </div>
-  <h1>癲癇重積 (Status Epilepticus) 檢核單</h1>
-  <p class="sub">成人（≥18歲）急診急救流程、即時動態劑量試算、5分鐘階段計時器與病歷一鍵生成</p>
+  <h1>癲癇重積 (SE) 臨床指引與檢核單</h1>
+  <p class="sub">成人急救流程・即時體重劑量換算・5分鐘階段計時・一鍵 EMR 病歷</p>
 </header>
 
 <div class="wrap">
 
-  <!-- Quick Action & View Tabs Toolbar (急救流程圖模式 與 檢核單操作模式 互換) -->
+  <!-- Quick Action & View Tabs Toolbar -->
   <div class="toolbar no-print">
     <div class="tab-nav">
       <button class="tab-btn active" id="tabFlowBtn" onclick="switchView('flow')">急救流程圖模式</button>
@@ -639,36 +880,40 @@
     </div>
     <div class="toolbar-group">
       <button class="btn btn-primary" onclick="copyEmrNote()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-        複製 EMR 紀錄
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        複製 EMR
       </button>
       <button class="btn" onclick="window.print()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-        列印紙本單
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        紙本列印
       </button>
       <button class="btn btn-danger" onclick="resetForm()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-        清空重置
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+        重置
       </button>
     </div>
   </div>
 
-  <!-- Stage Timer Banner -->
+  <!-- Stage Timer Banner (Sticky on Mobile) -->
   <div class="timer-banner no-print">
     <div class="timer-info">
-      <span class="timer-label">5 分鐘給藥後重評倒數計時器 (AES / KMUH Protocol)</span>
       <div class="timer-display" id="timerClock">05:00</div>
+      <div class="timer-label-box">
+        <span class="timer-label">5 分鐘給藥重評倒數</span>
+        <button id="wakeLockBtn" class="btn-wakelock" onclick="toggleWakeLock()">
+          <span id="wakeLockIcon">📱</span> <span id="wakeLockText">保持螢幕開啟</span>
+        </button>
+      </div>
     </div>
     <div class="timer-controls">
-      <button class="btn-timer btn-timer-primary" onclick="startTimer(5 * 60)">▶ 啟動 5 分鐘倒數</button>
-      <button class="btn-timer" onclick="startTimer(10 * 60)">+10 分鐘</button>
+      <button class="btn-timer btn-timer-primary" onclick="startTimer(5 * 60)">▶ 啟動 5分</button>
       <button class="btn-timer" onclick="pauseTimer()">暫停</button>
       <button class="btn-timer" onclick="resetTimer()">重設</button>
-      <button class="btn-timer" onclick="testChimeSound()">🔊 測試提示音</button>
+      <button class="btn-timer" onclick="testChimeSound()">🔊 音效</button>
     </div>
   </div>
 
-  <!-- 1. Timeline Flow Diagram View (預設置頂先呈現) -->
+  <!-- 1. Timeline Flow Diagram View (優先呈現) -->
   <div id="flowView" class="no-print">
     <div class="card">
       <div class="card-header">
@@ -767,9 +1012,9 @@
 
       </div>
 
-      <div style="text-align:center; padding:10px 0 6px;">
-        <button class="btn btn-primary" onclick="switchView('checklist')">
-          進入檢核單操作模式（填寫病患體重、勾選檢核與列印）→
+      <div style="text-align:center; padding:12px 0 6px;">
+        <button class="btn btn-primary" style="width:100%; max-width:400px;" onclick="switchView('checklist')">
+          進入檢核單操作模式（填寫體重、勾選檢核與列印）→
         </button>
       </div>
     </div>
@@ -791,11 +1036,11 @@
       <div class="patient-grid">
         <div class="field-group">
           <label class="field-label">姓名</label>
-          <input type="text" id="ptName" class="input-text" placeholder="病人姓名" oninput="saveData(); updateEMR();">
+          <input type="text" id="ptName" class="input-text" placeholder="病人姓名" autocomplete="off" oninput="saveData(); updateEMR();">
         </div>
         <div class="field-group">
           <label class="field-label">病歷號</label>
-          <input type="text" id="ptChart" class="input-text" placeholder="Chart No." oninput="saveData(); updateEMR();">
+          <input type="text" id="ptChart" class="input-text" placeholder="Chart No." autocomplete="off" oninput="saveData(); updateEMR();">
         </div>
         <div class="field-group">
           <label class="field-label">生日</label>
@@ -804,14 +1049,14 @@
         <div class="field-group">
           <label class="field-label" style="color: var(--teal); font-weight:700;">預估體重 (kg) ★連動劑量換算</label>
           <div style="display:flex; gap:6px;">
-            <input type="number" id="ptWeight" class="input-text weight-highlight" placeholder="如 60" min="20" max="200" step="0.5" oninput="onWeightChange()">
+            <input type="number" id="ptWeight" class="input-text weight-highlight" placeholder="如 60" min="20" max="200" step="0.5" inputmode="decimal" oninput="onWeightChange()">
             <span style="align-self:center; font-weight:bold;">kg</span>
           </div>
         </div>
         <div class="field-group">
           <label class="field-label">案件啟動時間</label>
           <div style="display:flex; gap:6px;">
-            <input type="datetime-local" id="activationTime" class="input-text" oninput="saveData(); updateEMR();">
+            <input type="datetime-local" id="activationTime" class="input-text" style="flex:1;" oninput="saveData(); updateEMR();">
             <button class="btn btn-sm" onclick="setNowTime('activationTime')">現在</button>
           </div>
         </div>
@@ -830,8 +1075,8 @@
       </div>
     </div>
 
-    <!-- 11 Steps Checklist Table -->
-    <div class="card" style="padding:0; overflow:hidden;">
+    <!-- 11 Steps Checklist Table (Mobile Card Transformed) -->
+    <div class="card" style="padding:0; overflow:hidden; background:transparent; border:none; box-shadow:none;">
       <table class="flow-table">
         <thead>
           <tr>
@@ -845,289 +1090,289 @@
 
           <!-- Step 1 -->
           <tr>
-            <td class="step-num">1</td>
+            <td class="step-num">01</td>
             <td class="step-content">
               <div class="step-title">啟動：同時通報「神經部值班 VS」與「急診 VS」，優先評估處理病人</div>
-              <div style="font-size:0.85rem; color:var(--muted);">雙線 VS 同步評估處置，維持呼吸道順暢、給氧並監測生命徵象。</div>
+              <div style="font-size:0.88rem; color:var(--muted);">雙線 VS 同步評估處置，維持呼吸道順暢、給氧並監測生命徵象。</div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_1_done">
                   <input type="radio" name="chk_1" value="done" onchange="onStatusChange(1, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_1_undone">
                   <input type="radio" name="chk_1" value="undone" onchange="onStatusChange(1, 'undone')"> 未完成，原因：
                 </label>
                 <input type="text" id="reason_1" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
           <!-- Step 2 -->
           <tr>
-            <td class="step-num">2</td>
+            <td class="step-num">02</td>
             <td class="step-content">
               <div class="step-title">測量病人生命徵象，預估體重</div>
-              <div style="font-size:0.88rem; color:var(--body);">
-                預估體重：<strong id="step2WeightDisplay" style="color:var(--teal);">尚未輸入</strong> kg
-                <span style="font-size:0.82rem; color:var(--muted);">（將自動換算步驟 5、7、9 之第一、二、三線藥物劑量）</span>
+              <div style="font-size:0.9rem; color:var(--body);">
+                預估體重：<strong id="step2WeightDisplay" style="color:var(--teal); font-size:1.15rem;">尚未輸入</strong> kg
+                <span style="font-size:0.84rem; color:var(--muted); display:block;">（自動換算步驟 5、7、9 第一、二、三線藥物劑量）</span>
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_2_done">
                   <input type="radio" name="chk_2" value="done" onchange="onStatusChange(2, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_2_undone">
                   <input type="radio" name="chk_2" value="undone" onchange="onStatusChange(2, 'undone')"> 未完成，原因：
                 </label>
                 <input type="text" id="reason_2" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
           <!-- Step 3 -->
           <tr>
-            <td class="step-num">3</td>
+            <td class="step-num">03</td>
             <td class="step-content">
               <div class="step-title">開立「重積癲癇」抽血套案</div>
-              <div style="font-size:0.86rem; color:var(--body); line-height:1.5;">
+              <div style="font-size:0.88rem; color:var(--body); line-height:1.5;">
                 ① <strong>sugar</strong>, CBC/DC, BUN, Cre, AST, ALT, VBG, Na, K, Ca, Mg, CK, CK-MB, Trop-I, D-dimer<br>
                 ② <strong>已知正在服用且可測之抗癲癇藥物濃度</strong>（如 Valproate, Phenytoin, Tegretol 等）
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_3_done">
                   <input type="radio" name="chk_3" value="done" onchange="onStatusChange(3, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_3_undone">
                   <input type="radio" name="chk_3" value="undone" onchange="onStatusChange(3, 'undone')"> 未完成，原因：
                 </label>
                 <input type="text" id="reason_3" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
           <!-- Step 4 -->
           <tr>
-            <td class="step-num">4</td>
+            <td class="step-num">04</td>
             <td class="step-content">
               <div class="step-title">開立「重積癲癇」醫囑套案</div>
-              <div style="font-size:0.9rem; color:var(--body);">
+              <div style="font-size:0.92rem; color:var(--body);">
                 給予 <strong>Thiamine 100mg + D5W ST IVD</strong>
               </div>
-              <div style="font-size:0.82rem; color:var(--muted); margin-top:3px;">
-                💡 臨床安全筆記：預防 Wernicke 腦病變；若床邊血糖測得低血糖，應立即同時補給高濃度葡萄糖（D50W），切勿因等待 Thiamine 而延誤低血糖糾正。
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">
+                💡 臨床安全筆記：預防 Wernicke 腦病變；若測得低血糖，立即同時給予 D50W，切勿因等待 Thiamine 延誤。
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_4_done">
                   <input type="radio" name="chk_4" value="done" onchange="onStatusChange(4, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_4_undone">
                   <input type="radio" name="chk_4" value="undone" onchange="onStatusChange(4, 'undone')"> 未完成，原因：
                 </label>
                 <input type="text" id="reason_4" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
           <!-- Step 5 -->
           <tr>
-            <td class="step-num">5</td>
+            <td class="step-num">05</td>
             <td class="step-content">
               <div class="step-title">給予第一線抗癲癇藥物（請勾選實際給藥途徑）：</div>
               
-              <div style="margin: 8px 0; display:flex; flex-direction:column; gap:6px;">
-                <label class="chk-label">
+              <div style="margin: 8px 0; display:flex; flex-direction:column; gap:8px;">
+                <label class="chk-label" style="background:#f8fafc; padding:8px 10px; border-radius:8px; border:1px solid var(--line-light);">
                   <input type="radio" name="line1_drug" value="lora_lt40" onchange="saveData(); updateEMR();">
-                  <span><strong>有 IV &lt; 40 kg:</strong> Lorazepam 0.1 mg/kg (max 4mg) <span class="dose-calc-badge" id="calcLoraLt40">請先輸入體重</span></span>
+                  <span><strong>有 IV &lt; 40 kg:</strong> Lorazepam 0.1 mg/kg (max 4mg) <span class="dose-calc-badge" id="calcLoraLt40">請輸入體重</span></span>
                 </label>
-                <label class="chk-label">
+                <label class="chk-label" style="background:#f8fafc; padding:8px 10px; border-radius:8px; border:1px solid var(--line-light);">
                   <input type="radio" name="line1_drug" value="lora_ge40" onchange="saveData(); updateEMR();">
                   <span><strong>有 IV ≥ 40 kg:</strong> Lorazepam 4mg (2 amp) <span class="dose-calc-badge" id="calcLoraGe40">標準劑量 4mg (2 amp)</span></span>
                 </label>
-                <label class="chk-label">
+                <label class="chk-label" style="background:#f8fafc; padding:8px 10px; border-radius:8px; border:1px solid var(--line-light);">
                   <input type="radio" name="line1_drug" value="mida_lt40" onchange="saveData(); updateEMR();">
                   <span><strong>無 IV &lt; 40 kg:</strong> Midazolam 5mg (1 amp) IM</span>
                 </label>
-                <label class="chk-label">
+                <label class="chk-label" style="background:#f8fafc; padding:8px 10px; border-radius:8px; border:1px solid var(--line-light);">
                   <input type="radio" name="line1_drug" value="mida_ge40" onchange="saveData(); updateEMR();">
                   <span><strong>無 IV ≥ 40 kg:</strong> Midazolam 10mg (2 amp) IM</span>
                 </label>
               </div>
 
               <div style="font-size:0.82rem; color:var(--muted);">
-                註：靜脈注射以 ≤ 2 mg/min 緩慢注射，注意呼吸道抑制作業。
+                註：靜脈注射以 ≤ 2 mg/min 緩慢推注，密切注意呼吸抑制。
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_5_done">
                   <input type="radio" name="chk_5" value="done" onchange="onStatusChange(5, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_5_seizure_stopped">
                   <input type="radio" name="chk_5" value="seizure_stopped" onchange="onStatusChange(5, 'seizure_stopped')"> 未完成，因癲癇已停止
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_5_other">
                   <input type="radio" name="chk_5" value="other" onchange="onStatusChange(5, 'other')"> 未完成，其他原因：
                 </label>
                 <input type="text" id="reason_5" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>
-              <div class="field-label" style="font-size:0.8rem;">1st 第一線給予時間：</div>
+            <td class="time-col">
+              <div class="field-label" style="font-size:0.82rem;">1st 第一線給藥時間：</div>
               <div class="time-input-group">
                 <input type="time" id="time_step5" class="input-time" oninput="saveData(); updateEMR();">
-                <button class="btn btn-sm" onclick="setNowTimeStep('time_step5'); startTimer(5 * 60);">現在+計時</button>
+                <button class="btn btn-sm btn-primary" onclick="setNowTimeStep('time_step5'); startTimer(5 * 60);">現在+計時5分</button>
               </div>
             </td>
           </tr>
 
           <!-- Step 6 -->
           <tr>
-            <td class="step-num">6</td>
+            <td class="step-num">06</td>
             <td class="step-content">
               <div class="step-title">第一線藥物 5 分鐘後癲癇未停止或又再發生：</div>
-              <div style="font-size:0.9rem; color:var(--body);">
+              <div style="font-size:0.92rem; color:var(--body);">
                 <strong>再次步驟 5 之一第一線抗癲癇藥物</strong>；<br>
                 <span style="color:var(--amber); font-weight:700;">★ 預先開立第二線藥物 Keppra 備用</span>
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_6_done">
                   <input type="radio" name="chk_6" value="done" onchange="onStatusChange(6, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_6_seizure_stopped">
                   <input type="radio" name="chk_6" value="seizure_stopped" onchange="onStatusChange(6, 'seizure_stopped')"> 未完成，因癲癇已停止
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_6_other">
                   <input type="radio" name="chk_6" value="other" onchange="onStatusChange(6, 'other')"> 未完成，其他原因：
                 </label>
                 <input type="text" id="reason_6" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>
-              <div class="field-label" style="font-size:0.8rem;">2nd 第一線給予時間：</div>
+            <td class="time-col">
+              <div class="field-label" style="font-size:0.82rem;">2nd 第一線給藥時間：</div>
               <div class="time-input-group">
                 <input type="time" id="time_step6" class="input-time" oninput="saveData(); updateEMR();">
-                <button class="btn btn-sm" onclick="setNowTimeStep('time_step6'); startTimer(5 * 60);">現在+計時</button>
+                <button class="btn btn-sm btn-primary" onclick="setNowTimeStep('time_step6'); startTimer(5 * 60);">現在+計時5分</button>
               </div>
             </td>
           </tr>
 
           <!-- Step 7 -->
           <tr>
-            <td class="step-num">7</td>
+            <td class="step-num">07</td>
             <td class="step-content">
               <div class="step-title">兩次第一線藥物 5 分鐘後癲癇未停或又再發生：</div>
-              <div style="font-size:0.9rem; margin-bottom:6px;">給予第二線癲癇藥物（請勾選）：</div>
+              <div style="font-size:0.92rem; margin-bottom:8px;">給予第二線癲癇藥物（請勾選）：</div>
 
-              <div style="display:flex; flex-direction:column; gap:6px;">
-                <label class="chk-label">
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label class="chk-label" style="background:#f8fafc; padding:8px 10px; border-radius:8px; border:1px solid var(--line-light);">
                   <input type="radio" name="line2_drug" value="keppra_lt50" onchange="saveData(); updateEMR();">
-                  <span><strong>&lt; 50 kg:</strong> Keppra 60 mg/kg (max 3000 mg) <span class="dose-calc-badge" id="calcKeppraLt50">請先輸入體重</span></span>
+                  <span><strong>&lt; 50 kg:</strong> Keppra 60 mg/kg (max 3000 mg) <span class="dose-calc-badge" id="calcKeppraLt50">請輸入體重</span></span>
                 </label>
-                <label class="chk-label">
+                <label class="chk-label" style="background:#f8fafc; padding:8px 10px; border-radius:8px; border:1px solid var(--line-light);">
                   <input type="radio" name="line2_drug" value="keppra_ge50" onchange="saveData(); updateEMR();">
                   <span><strong>≥ 50 kg:</strong> Keppra 3000 mg ST <span class="dose-calc-badge" id="calcKeppraGe50">標準滿載 3000 mg ST</span></span>
                 </label>
               </div>
-              <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:6px;">
                 輸注建議：加入 D5W 或 NS 100mL 於 10~15 分鐘內輸注完成。
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_7_done">
                   <input type="radio" name="chk_7" value="done" onchange="onStatusChange(7, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_7_seizure_stopped">
                   <input type="radio" name="chk_7" value="seizure_stopped" onchange="onStatusChange(7, 'seizure_stopped')"> 未完成，因癲癇已停止
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_7_other">
                   <input type="radio" name="chk_7" value="other" onchange="onStatusChange(7, 'other')"> 未完成，其他原因：
                 </label>
                 <input type="text" id="reason_7" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>
-              <div class="field-label" style="font-size:0.8rem;">第二線給予時間：</div>
+            <td class="time-col">
+              <div class="field-label" style="font-size:0.82rem;">第二線給藥時間：</div>
               <div class="time-input-group">
                 <input type="time" id="time_step7" class="input-time" oninput="saveData(); updateEMR();">
-                <button class="btn btn-sm" onclick="setNowTimeStep('time_step7'); startTimer(5 * 60);">現在+計時</button>
+                <button class="btn btn-sm btn-primary" onclick="setNowTimeStep('time_step7'); startTimer(5 * 60);">現在+計時5分</button>
               </div>
             </td>
           </tr>
 
           <!-- Step 8 -->
           <tr>
-            <td class="step-num">8</td>
+            <td class="step-num">08</td>
             <td class="step-content">
               <div class="step-title">第二線藥物 5 分鐘後癲癇未停或又再發生：</div>
-              <div style="font-size:0.95rem; color:var(--red); font-weight:700;">
+              <div style="font-size:0.98rem; color:var(--red); font-weight:700;">
                 ⚠️ 建立氣管內管 (Intubation / ETT)，準備給予第三線藥物
               </div>
-              <div style="font-size:0.82rem; color:var(--muted); margin-top:3px;">
+              <div style="font-size:0.84rem; color:var(--muted); margin-top:4px;">
                 進入難治型癲癇 (Refractory SE) 階段，備妥呼吸器及升壓劑 (Vasopressor)。
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_8_done">
                   <input type="radio" name="chk_8" value="done" onchange="onStatusChange(8, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_8_seizure_stopped">
                   <input type="radio" name="chk_8" value="seizure_stopped" onchange="onStatusChange(8, 'seizure_stopped')"> 未完成，因癲癇已停止
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_8_other">
                   <input type="radio" name="chk_8" value="other" onchange="onStatusChange(8, 'other')"> 未完成，其他原因：
                 </label>
                 <input type="text" id="reason_8" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
           <!-- Step 9 -->
           <tr>
-            <td class="step-num">9</td>
+            <td class="step-num">09</td>
             <td class="step-content">
               <div class="step-title">給予第三線藥物：Midazolam IV push &amp; IV pump</div>
-              <div style="font-size:0.9rem; color:var(--body);">
+              <div style="font-size:0.92rem; color:var(--body);">
                 ① <strong>Loading:</strong> Midazolam <strong>0.2 mg/kg</strong> IV push <span class="dose-calc-badge" id="calcMidaLoading">請輸入體重</span><br>
                 ② <strong>Maintenance:</strong> then <strong>0.05 - 0.5 mg/kg/h</strong> IV pump <span class="dose-calc-badge warn" id="calcMidaPump">請輸入體重</span>
               </div>
-              <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">
+              <div style="font-size:0.84rem; color:var(--muted); margin-top:6px;">
                 滴定原則：以制止抽搐或達到腦波爆發抑制 (Burst suppression) 為目標，監測血壓。
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_9_done">
                   <input type="radio" name="chk_9" value="done" onchange="onStatusChange(9, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_9_seizure_stopped">
                   <input type="radio" name="chk_9" value="seizure_stopped" onchange="onStatusChange(9, 'seizure_stopped')"> 未完成，因癲癇已停止
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_9_other">
                   <input type="radio" name="chk_9" value="other" onchange="onStatusChange(9, 'other')"> 未完成，其他原因：
                 </label>
                 <input type="text" id="reason_9" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>
-              <div class="field-label" style="font-size:0.8rem;">第三線給予時間：</div>
+            <td class="time-col">
+              <div class="field-label" style="font-size:0.82rem;">第三線給藥時間：</div>
               <div class="time-input-group">
                 <input type="time" id="time_step9" class="input-time" oninput="saveData(); updateEMR();">
-                <button class="btn btn-sm" onclick="setNowTimeStep('time_step9')">現在</button>
+                <button class="btn btn-sm" onclick="setNowTimeStep('time_step9')">現在時間</button>
               </div>
             </td>
           </tr>
@@ -1137,22 +1382,22 @@
             <td class="step-num">10</td>
             <td class="step-content">
               <div class="step-title">進行頭部影像學檢查 (brain CT C-)</div>
-              <div style="font-size:0.85rem; color:var(--muted);">
+              <div style="font-size:0.86rem; color:var(--muted);">
                 病人抽搐穩定且呼吸道確立後，安排無顯影劑電腦斷層排除顱內出血、急性中風或佔位性病灶。
               </div>
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_10_done">
                   <input type="radio" name="chk_10" value="done" onchange="onStatusChange(10, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_10_undone">
                   <input type="radio" name="chk_10" value="undone" onchange="onStatusChange(10, 'undone')"> 未完成，原因：
                 </label>
                 <input type="text" id="reason_10" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
           <!-- Step 11 -->
@@ -1160,12 +1405,12 @@
             <td class="step-num">11</td>
             <td class="step-content">
               <div class="step-title">神經部醫師確認病人動向：</div>
-              <div style="display:flex; gap:16px; margin-top:6px;">
-                <label class="chk-label">
+              <div style="display:flex; gap:16px; margin-top:8px;">
+                <label class="chk-label" style="background:#fff; border:1px solid var(--red-bd); padding:8px 14px; border-radius:8px;">
                   <input type="radio" name="disposition" value="ICU" onchange="saveData(); updateEMR();">
                   <strong style="color:var(--red);">ICU（加護病房）</strong>
                 </label>
-                <label class="chk-label">
+                <label class="chk-label" style="background:#fff; border:1px solid var(--line); padding:8px 14px; border-radius:8px;">
                   <input type="radio" name="disposition" value="Ward" onchange="saveData(); updateEMR();">
                   <strong style="color:var(--navy);">病房 (Ward)</strong>
                 </label>
@@ -1173,24 +1418,25 @@
             </td>
             <td>
               <div class="status-options">
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_11_done">
                   <input type="radio" name="chk_11" value="done" onchange="onStatusChange(11, 'done')"> 已完成
                 </label>
-                <label class="status-btn-label">
+                <label class="status-btn-label" id="lbl_chk_11_undone">
                   <input type="radio" name="chk_11" value="undone" onchange="onStatusChange(11, 'undone')"> 未完成，原因：
                 </label>
                 <input type="text" id="reason_11" class="input-reason" placeholder="請註明原因" style="display:none;" oninput="saveData(); updateEMR();">
               </div>
             </td>
-            <td>—</td>
+            <td class="time-col">—</td>
           </tr>
 
         </tbody>
       </table>
 
       <!-- Signatures inside Card -->
-      <div style="padding: 16px 20px;">
-        <div class="sig-grid">
+      <div class="card" style="margin-top:16px;">
+        <h4 style="margin:0 0 10px; color:var(--navy);">檢核與簽章確認</h4>
+        <div class="sig-grid" style="margin-top:0; padding-top:0; border-top:none;">
           <div class="field-group">
             <label class="field-label">填表人</label>
             <input type="text" id="sigRecorder" class="input-text" placeholder="醫師 / 護理師" oninput="saveData(); updateEMR();">
@@ -1208,17 +1454,17 @@
     </div>
 
     <!-- EMR Record Generator -->
-    <div class="card emr-section no-print">
+    <div class="card emr-section no-print" style="margin-top:16px;">
       <div class="card-header">
         <h3 class="card-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           急診病歷文字一鍵產生 (EMR Progress Note)
         </h3>
-        <button class="btn btn-sm btn-primary" onclick="copyEmrNote()">複製整段紀錄</button>
+        <button class="btn btn-sm btn-primary" onclick="copyEmrNote()">一鍵複製</button>
       </div>
-      <div class="emr-box" id="emrOutput">點選上方檢核單，系統將自動同步生成病歷草稿...</div>
-      <div style="font-size:0.8rem; color:var(--muted); margin-top:8px;">
-        ⚠️ 隱私提醒：本工具在瀏覽器端本機運作（無伺服器上傳）。急救結束或換病人時請按「清空重置」以確保共用電腦病患隱私。
+      <div class="emr-box" id="emrOutput">填寫上方檢核項目，系統將自動同步生成病歷草稿...</div>
+      <div style="font-size:0.82rem; color:var(--muted); margin-top:8px;">
+        ⚠️ 隱私提醒：本工具在瀏覽器端本機運作（無伺服器上傳）。急救結束或換病人時請按「重置」以確保共用電腦病患隱私。
       </div>
     </div>
 
@@ -1278,6 +1524,18 @@
   </div><!-- /#checklistView -->
 
 </div><!-- /.wrap -->
+
+<!-- Mobile Sticky Bottom Thumb Bar -->
+<div class="mobile-bottom-bar no-print">
+  <div class="bottom-btn-group">
+    <button class="btn" id="mobileSwitchBtn" onclick="toggleMobileView()">
+      🔄 <span id="mobileSwitchText">切換檢核單</span>
+    </button>
+    <button class="btn btn-primary" onclick="copyEmrNote()">
+      📋 複製 EMR
+    </button>
+  </div>
+</div>
 
 <!-- Print-Only 1-Page Layout: Exact KMUH Hospital Form Replica -->
 <div class="print-sheet" style="display:none;">
@@ -1452,35 +1710,115 @@
 <script>
 // --- State & Form Logic ---
 let timerInterval = null;
-let timerSecondsLeft = 300;
+let timerTargetTimestamp = null;
+let timerDurationSeconds = 300;
 let timerIsRunning = false;
 let audioCtx = null;
+let currentActiveView = 'flow';
+let wakeLockSentinel = null;
+
+// Screen Wake Lock API (保持螢幕恆亮)
+async function requestWakeLock() {
+  if ('wakeLock' in navigator) {
+    try {
+      wakeLockSentinel = await navigator.wakeLock.request('screen');
+      updateWakeLockUI(true);
+      wakeLockSentinel.addEventListener('release', () => {
+        updateWakeLockUI(false);
+      });
+    } catch (err) {
+      console.warn('Wake Lock error:', err);
+      updateWakeLockUI(false);
+    }
+  } else {
+    alert('此瀏覽器不支援自動防休眠 API，請手動調整手機螢幕自動鎖定設定。');
+  }
+}
+
+function releaseWakeLock() {
+  if (wakeLockSentinel !== null) {
+    wakeLockSentinel.release();
+    wakeLockSentinel = null;
+    updateWakeLockUI(false);
+  }
+}
+
+function toggleWakeLock() {
+  if (wakeLockSentinel === null) {
+    requestWakeLock();
+  } else {
+    releaseWakeLock();
+  }
+}
+
+function updateWakeLockUI(active) {
+  const btn = document.getElementById('wakeLockBtn');
+  const txt = document.getElementById('wakeLockText');
+  const icon = document.getElementById('wakeLockIcon');
+  if (btn) {
+    if (active) {
+      btn.classList.add('active');
+      txt.textContent = '螢幕已保持常亮';
+      icon.textContent = '💡';
+    } else {
+      btn.classList.remove('active');
+      txt.textContent = '保持螢幕常亮';
+      icon.textContent = '📱';
+    }
+  }
+}
+
+// Re-acquire wake lock if page becomes visible again
+document.addEventListener('visibilitychange', async () => {
+  if (wakeLockSentinel !== null && document.visibilityState === 'visible') {
+    await requestWakeLock();
+  }
+  // Immediately recalculate timer when returning from background tab/screen lock
+  if (timerIsRunning && timerTargetTimestamp) {
+    renderTimer();
+  }
+});
 
 function switchView(mode) {
   const chkView = document.getElementById('checklistView');
   const flowView = document.getElementById('flowView');
   const tabChk = document.getElementById('tabChecklistBtn');
   const tabFlow = document.getElementById('tabFlowBtn');
+  const mobText = document.getElementById('mobileSwitchText');
+
+  currentActiveView = mode;
 
   if (mode === 'checklist') {
     chkView.style.display = 'block';
     flowView.style.display = 'none';
     tabChk.classList.add('active');
     tabFlow.classList.remove('active');
+    if (mobText) mobText.textContent = '切換流程圖';
     try { localStorage.setItem('kmuh_se_view_mode', 'checklist'); } catch(e) {}
   } else {
     chkView.style.display = 'none';
     flowView.style.display = 'block';
     tabChk.classList.remove('active');
     tabFlow.classList.add('active');
+    if (mobText) mobText.textContent = '切換檢核單';
     try { localStorage.setItem('kmuh_se_view_mode', 'flow'); } catch(e) {}
   }
+}
+
+function toggleMobileView() {
+  if (currentActiveView === 'flow') {
+    switchView('checklist');
+  } else {
+    switchView('flow');
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Weight-based dynamic dose calculation
 function onWeightChange() {
   const wInput = document.getElementById('ptWeight');
-  const w = parseFloat(wInput.value);
+  const rawVal = wInput.value.trim();
+  const w = parseFloat(rawVal);
   const wDisp = document.getElementById('step2WeightDisplay');
 
   const loraLt40Badge = document.getElementById('calcLoraLt40');
@@ -1490,7 +1828,8 @@ function onWeightChange() {
   const midaLoadBadge = document.getElementById('calcMidaLoading');
   const midaPumpBadge = document.getElementById('calcMidaPump');
 
-  if (isNaN(w) || w <= 0) {
+  // Strict check: if empty or invalid, clear all calculated badges
+  if (!rawVal || isNaN(w) || w <= 0) {
     wDisp.textContent = '尚未輸入';
     loraLt40Badge.textContent = '請先輸入體重';
     kepLt50Badge.textContent = '請先輸入體重';
@@ -1525,10 +1864,9 @@ function onWeightChange() {
   // 4. Midazolam Pump: 0.05 - 0.5 mg/kg/h
   const mLow = (0.05 * w).toFixed(1);
   const mHigh = (0.5 * w).toFixed(1);
-  // Assuming 1 mg/mL standard concentration in ED
-  midaPumpBadge.textContent = `換算速率：${mLow} ~ ${mHigh} mg/h (以 1mg/mL 稀釋即 ${mLow} ~ ${mHigh} mL/h)`;
+  midaPumpBadge.textContent = `換算流速：${mLow} ~ ${mHigh} mg/h (1mg/mL 配方即 ${mLow} ~ ${mHigh} mL/h)`;
 
-  // Auto recommend checkboxes based on weight boundary
+  // Auto recommend checkboxes based on weight boundary if none selected yet
   const loraLtRadio = document.querySelector('input[name="line1_drug"][value="lora_lt40"]');
   const loraGeRadio = document.querySelector('input[name="line1_drug"][value="lora_ge40"]');
   const kepLtRadio = document.querySelector('input[name="line2_drug"][value="keppra_lt50"]');
@@ -1550,7 +1888,7 @@ function onWeightChange() {
   updateEMR();
 }
 
-// Status check button handler
+// Status check button handler with active highlight
 function onStatusChange(step, val) {
   const reasonBox = document.getElementById(`reason_${step}`);
   if (reasonBox) {
@@ -1561,6 +1899,20 @@ function onStatusChange(step, val) {
       reasonBox.style.display = 'none';
     }
   }
+
+  // Highlight selected label pill for touch feedback
+  const labels = document.querySelectorAll(`input[name="chk_${step}"]`);
+  labels.forEach(radio => {
+    const parentLabel = radio.closest('.status-btn-label');
+    if (parentLabel) {
+      if (radio.checked) {
+        parentLabel.classList.add('active');
+      } else {
+        parentLabel.classList.remove('active');
+      }
+    }
+  });
+
   saveData();
   updateEMR();
 }
@@ -1595,7 +1947,7 @@ function playChimeSound() {
     osc.type = 'sine';
     osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
     osc.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.3); // A6
-    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
     osc.connect(gain);
     gain.connect(audioCtx.destination);
@@ -1610,46 +1962,63 @@ function testChimeSound() {
   playChimeSound();
 }
 
-// 5-min Countdown Timer
+// Timestamp-based countdown timer (Robust against background throttle)
 function renderTimer() {
   const disp = document.getElementById('timerClock');
-  const m = Math.floor(timerSecondsLeft / 60);
-  const s = timerSecondsLeft % 60;
-  const pad = n => String(n).padStart(2, '0');
-  disp.textContent = `${pad(m)}:${pad(s)}`;
-
-  if (timerSecondsLeft <= 0) {
-    disp.className = 'timer-display expired';
-    disp.textContent = '00:00 (請重新評估抽搐!)';
-  } else if (timerIsRunning) {
-    disp.className = 'timer-display running';
-  } else {
+  if (!timerTargetTimestamp) {
+    disp.textContent = '05:00';
     disp.className = 'timer-display';
+    return;
+  }
+
+  const now = Date.now();
+  const diffMs = timerTargetTimestamp - now;
+
+  if (diffMs <= 0) {
+    // Overdue timer mode
+    const overdueSeconds = Math.floor(Math.abs(diffMs) / 1000);
+    const m = Math.floor(overdueSeconds / 60);
+    const s = overdueSeconds % 60;
+    const pad = n => String(n).padStart(2, '0');
+    disp.textContent = `+${pad(m)}:${pad(s)}`;
+    disp.className = 'timer-display expired';
+  } else {
+    const remainingSeconds = Math.ceil(diffMs / 1000);
+    const m = Math.floor(remainingSeconds / 60);
+    const s = remainingSeconds % 60;
+    const pad = n => String(n).padStart(2, '0');
+    disp.textContent = `${pad(m)}:${pad(s)}`;
+    disp.className = timerIsRunning ? 'timer-display running' : 'timer-display';
   }
 }
 
 function startTimer(seconds) {
   if (timerInterval) clearInterval(timerInterval);
-  timerSecondsLeft = seconds;
+  timerDurationSeconds = seconds;
+  timerTargetTimestamp = Date.now() + seconds * 1000;
   timerIsRunning = true;
   renderTimer();
 
+  // Also auto request wake lock on timer start
+  requestWakeLock();
+
+  let hasChimed = false;
+
   timerInterval = setInterval(() => {
-    if (timerSecondsLeft > 0) {
-      timerSecondsLeft--;
-      renderTimer();
-      if (timerSecondsLeft === 0) {
-        timerIsRunning = false;
-        renderTimer();
-        playChimeSound();
-        setTimeout(playChimeSound, 600);
-        setTimeout(playChimeSound, 1200);
-        alert('【5分鐘評估提醒】請立即評估病人癲癇抽搐是否停止或再發生！若未停請接續下一步處置。');
+    const now = Date.now();
+    const diffMs = timerTargetTimestamp - now;
+
+    if (diffMs <= 0 && !hasChimed) {
+      hasChimed = true;
+      playChimeSound();
+      setTimeout(playChimeSound, 600);
+      setTimeout(playChimeSound, 1200);
+      // Gentle notification
+      if ('vibrate' in navigator) {
+        navigator.vibrate([300, 100, 300, 100, 500]);
       }
-    } else {
-      clearInterval(timerInterval);
-      timerIsRunning = false;
     }
+    renderTimer();
   }, 1000);
 }
 
@@ -1661,7 +2030,7 @@ function pauseTimer() {
 
 function resetTimer() {
   if (timerInterval) clearInterval(timerInterval);
-  timerSecondsLeft = 300;
+  timerTargetTimestamp = null;
   timerIsRunning = false;
   renderTimer();
 }
@@ -1749,17 +2118,27 @@ function copyEmrNote() {
   const note = document.getElementById('emrOutput').textContent;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(note).then(() => {
-      alert('✅ 已成功複製 EMR 癲癇重積處置紀錄至剪貼簿！');
+      showToast('✅ 已複製 EMR 癲癇重積處置紀錄至剪貼簿！');
+    }).catch(() => {
+      fallbackCopy(note);
     });
   } else {
-    const ta = document.createElement('textarea');
-    ta.value = note;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    alert('✅ 已複製 EMR 癲癇重積處置紀錄至剪貼簿！');
+    fallbackCopy(note);
   }
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  showToast('✅ 已複製 EMR 癲癇重積處置紀錄至剪貼簿！');
+}
+
+function showToast(msg) {
+  alert(msg);
 }
 
 // Sync screen inputs to the print sheet representation
