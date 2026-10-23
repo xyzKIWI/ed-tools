@@ -178,8 +178,8 @@ export default {
       return securedResponse(out, path);
     }
 
-    if (path === "/se" || path === "/se/") {
-      return securedResponse(redirect(url.origin + "/se.html" + url.search, 301), path);
+    if (path === "/se" || path === "/se.html") {
+      return securedResponse(redirect(url.origin + "/se/" + url.search, 301), path);
     }
 
     for (const [prefix, target] of Object.entries(TOOLS)) {
