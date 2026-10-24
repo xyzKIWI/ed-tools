@@ -3,6 +3,6 @@
   "type": "module",
   "scripts": {
     "test": "node --test worker.test.mjs",
-    "deploy:pages": "node -e \"const fs=require('fs'),os=require('os'),path=require('path'),cp=require('child_process');const d=fs.mkdtempSync(path.join(os.tmpdir(),'kiwi-ed-tools-'));fs.copyFileSync('worker.js',path.join(d,'_worker.js'));try{cp.execSync('npx wrangler pages deploy . --project-name kiwi-ed-tools --branch main --commit-dirty=true',{cwd:d,stdio:'inherit'})}finally{fs.rmSync(d,{recursive:true,force:true})}\""
+    "deploy:pages": "node -e \"const fs=require('fs'),os=require('os'),path=require('path'),cp=require('child_process');const d=fs.mkdtempSync(path.join(os.tmpdir(),'kiwi-ed-tools-'));fs.copyFileSync('worker.js',path.join(d,'_worker.js'));const npx=process.platform==='win32'?'npx.cmd':'npx';try{cp.execSync(npx+' wrangler pages deploy . --project-name kiwi-ed-tools --branch main --commit-dirty=true',{cwd:d,stdio:'inherit'})}finally{fs.rmSync(d,{recursive:true,force:true})}\""
   }
 }
