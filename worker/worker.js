@@ -7,6 +7,7 @@ const TOOLS = {
   "/peds": "https://xyzkiwi.github.io/peds",
   "/heparin": "https://xyzkiwi.github.io/heparin",
   "/calc": "https://xyzkiwi.github.io/calc",
+  "/na": "https://xyzkiwi.github.io/na",
 };
 const HUB = "https://xyzkiwi.github.io/ed-tools";
 
@@ -180,6 +181,10 @@ export default {
 
     if (path === "/se" || path === "/se.html") {
       return securedResponse(redirect(url.origin + "/se/" + url.search, 301), path);
+    }
+
+    if (path === "/hyponatremia" || path === "/hyponatremia/" || path === "/na.html") {
+      return securedResponse(redirect(url.origin + "/na/" + url.search, 301), path);
     }
 
     for (const [prefix, target] of Object.entries(TOOLS)) {

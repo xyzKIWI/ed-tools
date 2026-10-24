@@ -367,3 +367,26 @@ test("/se and /se.html redirect to /se/ with security headers", async () => {
   assert.equal(response2.headers.get("location"), "https://er.kiwi-ai.uk/se/?ref=ed");
   assertGenericSecurityHeaders(response2);
 });
+
+test("/na, /hyponatremia, and /na/ routes redirect and proxy to xyzkiwi.github.io/na", async () => {
+  const r1 = await worker.fetch(new Request("https://er.kiwi-ai.uk/na?preset=siadh"));
+  assert.equal(r1.status, 301);
+  assert.equal(r1.headers.get("location"), "https://er.kiwi-ai.uk/na/?preset=siadh");
+  assertGenericSecurityHeaders(r1);
+
+  const r2 = await worker.fetch(new Request("https://er.kiwi-ai.uk/hyponatremia?from=search"));
+  assert.equal(r2.status, 301);
+  assert.equal(r2.headers.get("location"), "https://er.kiwi-ai.uk/na/?from=search");
+  assertGenericSecurityHeaders(r2);
+
+  const calls = stubFetch(() =>
+    new Response("<html>na tool</html>", {
+      status: 200,
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    }),
+  );
+  const r3 = await worker.fetch(new Request("https://er.kiwi-ai.uk/na/"));
+  assert.equal(r3.status, 200);
+  assert.equal(calls[0].input, "https://xyzkiwi.github.io/na/");
+  assertGenericSecurityHeaders(r3);
+});
