@@ -356,6 +356,17 @@ test("missing or failed monitor ZIP is not cached or offered as a ZIP attachment
   }
 });
 
+test("er-session-extension ZIP route preserves GET and filename", async () => {
+  const bytes = Uint8Array.from([80, 75, 3, 4]);
+  stubFetch((_, init) => new Response(bytes, {
+    status: 200,
+    headers: { "Content-Type": "application/zip" }
+  }));
+  const response = await worker.fetch(new Request("https://er.kiwi-ai.uk/er-session-extension.zip"));
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("content-disposition"), 'attachment; filename="er-session-extension-v0.4.3.zip"');
+});
+
 test("/se and /se.html redirect to /se/ with security headers", async () => {
   const response1 = await worker.fetch(new Request("https://er.kiwi-ai.uk/se"));
   assert.equal(response1.status, 301);

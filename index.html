@@ -240,6 +240,17 @@
           <a class="btn ghost" href="ed-overload-monitor.html">安裝說明</a>
         </div>
       </div>
+      <div class="row item dl" id="er-session-extension" data-kw="急診 病摘 延長 時間 session 倒數 逾時 鎖定 高醫 岡山 Chrome extension 擴充功能 zip 下載">
+        <div class="txt">
+          <span class="name">急診病摘使用中延長時間</span>
+          <span class="desc">支援高醫本院與岡山醫院病摘系統。在背景自動點擊延長按鈕維持 Session，防休眠心跳引擎、自訂延長頻率與失敗自癒重試，防止打病歷被登出鎖定。</span>
+          <span class="meta">Chrome 擴充功能 v0.4.3（2026-11-03）｜下載解壓後載入未封裝項目｜支援本院與岡山病摘</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="https://er.kiwi-ai.uk/er-session-extension.zip">下載 .zip</a>
+          <a class="btn ghost" href="er-session-extension.html">安裝說明</a>
+        </div>
+      </div>
       <!-- gh-only:start 以下三個程式只在 github.io 與 er.kiwi-ai.uk 顯示；tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
       <div class="row item dl" data-gh-only data-kw="多瀏覽器 Chrome Comet Edge IE 深色模式 暗色 夜間 dark mode 護眼 夜班 exe Windows 下載">
         <div class="txt">
@@ -305,6 +316,7 @@
     "https://er.kiwi-ai.uk/calc/": "https://xyzkiwi.github.io/calc/",
     "https://er.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
     "https://er.kiwi-ai.uk/ed-overload-monitor.zip": "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.4.zip",
+    "https://er.kiwi-ai.uk/er-session-extension.zip": "https://xyzkiwi.github.io/ed-tools/releases/er-session-extension/er-session-extension-v0.4.3.zip",
   };
   const remap = h => ON_GITHUB ? GH[h] : (h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
   document.querySelectorAll('a[href]').forEach(a => {

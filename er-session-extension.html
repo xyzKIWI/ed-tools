@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>急診病摘使用中延長時間 — 下載與安裝</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a href="./#work-tools">← 回上班小工具</a>
+<h1>急診病摘使用中延長時間</h1>
+<p>Chrome 擴充功能：支援高醫本院與岡山醫院病摘系統，背景自動點擊延長按鈕維持 Session，防休眠心跳引擎、自訂延長頻率與失敗自癒重試，防止打病歷被登出鎖定。</p>
+<p class="meta">版本 0.4.3 · 2026-11-03 · 支援本院與岡山醫院</p>
+<a id="download" class="download" href="er-session-extension.zip">下載 Chrome 套件 ZIP</a>
+<section class="card">
+<h2>第一次安裝</h2>
+<ol>
+<li>點上方按鈕下載 ZIP，解壓到固定資料夾，解壓後請保留該資料夾。</li>
+<li>在 Chrome 網址列輸入 <code>chrome://extensions</code>，開啟右上角「開發人員模式」。</li>
+<li>點選左上角「載入未封裝項目」，選擇解壓後包含 <code>manifest.json</code> 的 <code>er-session-extension</code> 資料夾。</li>
+<li>登入院內或岡山急診／住院病摘系統，重新整理分頁一次。</li>
+<li>倒數時間旁出現灰白色「持續延長 v0.4.3」即代表正常常駐運作。</li>
+</ol>
+</section>
+<section class="card">
+<h2>功能與自訂頻率</h2>
+<p><strong>調整頻率：</strong>點擊 Chrome 右上角工具列的外掛圖示（可先於拼圖圖示釘選），即可開啟設定面板，自訂每 1 / 5 / 10 / 15 / 20 / 25 分鐘自動延長一次（預設每 10 分鐘延長一次）。設定會自動儲存於瀏覽器中。</p>
+<p><strong>防休眠心跳：</strong>內建獨立 Web Worker 心跳線程，即使切換到其他分頁看 PACS、查檢驗報告或開啟大量視窗，計時器亦不會被 Chrome 背景機制凍結。</p>
+<p><strong>自癒機制：</strong>遇到網路短暫延遲時自動進行重試，並在倒數刷新後立即自我恢復待命，避免舊版逾時永久暴斃的狀況。</p>
+<p class="note">已鎖定時不代輸密碼，電腦睡眠或關閉瀏覽器仍會中斷。已撰寫但尚未完成的病歷請務必定期手動存檔。</p>
+</section>
+<section class="card">
+<h2>更新與排錯</h2>
+<p>更新套件時，將新版 ZIP 解壓並覆蓋原資料夾內容，在 <code>chrome://extensions</code> 按「重新載入 🔄」，再按 F5 重新整理病摘頁面即可。</p>
+<p>若倒數旁顯示異常或紅字，可直接點擊倒數旁的狀態字樣，或至右上角外掛面板點擊「立即手動延長目前分頁」進行補發。</p>
+</section>
+<footer>急診臨床小工具 · Chrome 套件下載與安裝</footer>
+</main>
+<script>
+if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/er-session-extension/er-session-extension-v0.4.3.zip";
+</script>
+</body>
+</html>
