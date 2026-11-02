@@ -31,15 +31,9 @@
 
 ### A. 需要 Kiwi 本人操作（本 repo，但涉及部署，依指示不動）
 
-1. **🔴 pages.dev 備援站 `/na/` 是 404**
-   `https://kiwi-ed-tools.pages.dev/na/`、`/hyponatremia`、`/na.html` 都回 404；er 與 tools 正常。代表 10-25 加 `/na` 路由後，`npm run deploy:pages` 沒有跑。院內若改走 pages.dev，入口頁的「低血鈉」卡片會點到 404。
-   修法（在 `worker/` 目錄）：
-
-   ```bash
-   npm run deploy:pages
-   ```
-
-   驗收：`curl -o /dev/null -w "%{http_code}" https://kiwi-ed-tools.pages.dev/na/` 拿到 200。
+1. ~~**🔴 pages.dev 備援站 `/na/` 是 404**~~ ✅ **2026-11-02 已處理**
+   原狀況：`https://kiwi-ed-tools.pages.dev/na/`、`/hyponatremia`、`/na.html` 都回 404（er 與 tools 正常），原因是 10-25 加 `/na` 路由後沒有跑 `npm run deploy:pages`。
+   Kiwi 已在 `worker/` 執行 `npm run deploy:pages`。部署後實測：`/na/` 正常、`/hyponatremia` 與 `/na.html` 正確 301 到 `/na/`，其餘工具路徑、下載檔與首頁也都正常。
 
 2. **ICD-10 卡片日期與工具頁不一致**：卡片寫「資料校對 2026-07-10」，icd10 頁面顯示「資料更新 2026-08-27」（健保署更新日）。10-30 的 commit 是刻意移除 ICD-10 的 90 天提醒，所以沒改；請確認卡片要顯示哪個日期。
 
