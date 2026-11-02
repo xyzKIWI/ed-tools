@@ -89,6 +89,11 @@
   .footer{margin-top:50px; padding-top:18px; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted);}
   .kb{background:#f1f5f9; border:1px dashed #94a3b8; border-radius:8px; padding:12px 16px; font-size:.85rem; color:#475569; margin:14px 0;}
   .kb b{color:var(--navy);}
+  /* 回入口連結（相對路徑：er.kiwi-ai.uk／pages.dev 回站根，github.io 回 /ed-tools/） */
+  .back-link{display:inline-flex; align-items:center; min-height:44px; margin-bottom:6px; color:#93c5fd; font-size:.9rem; text-decoration:none;}
+  .back-link:hover{color:#fff; text-decoration:underline;}
+  .footer .std{margin-bottom:10px;}
+  .footer a{color:var(--teal);}
   @media(max-width:720px){
     .cards{grid-template-columns:1fr;} .redflags{grid-template-columns:1fr;}
     header.hero h1{font-size:1.45rem;}
@@ -103,6 +108,7 @@
 </head>
 <body>
 <header class="hero">
+  <a href="./" class="back-link">← 急診臨床小工具</a>
   <h1>急診輕微外傷性顱內出血<br>哪些病人可以不住院？</h1>
   <p class="sub">以 Brain Injury Guidelines (BIG / mBIG) 為核心的風險分層與 disposition 決策</p>
   <div class="tags">
@@ -456,7 +462,7 @@
   </ul>
 
   <!-- refs -->
-  <h2><span class="num">📚</span>Reference</h2>
+  <h2 id="refs"><span class="num">📚</span>Reference</h2>
   <ol class="refs">
     <li>Joseph B, Friese RS, Sadoun M, et al. The BIG (brain injury guidelines) project: defining the management of traumatic brain injury by acute care surgeons. <cite>J Trauma Acute Care Surg. 2014;76(4):965-969.</cite> <a href="https://journals.lww.com/jtrauma/abstract/2014/04000/the_big__brain_injury_guidelines__project_.8.aspx">連結</a></li>
     <li>Joseph B, Aziz H, Pandit V, et al. Prospective validation of the brain injury guidelines: managing traumatic brain injury without neurosurgical consultation. <cite>J Trauma Acute Care Surg. 2014;77(6):984-988.</cite> doi:10.1097/TA.0000000000000428. <a href="https://pubmed.ncbi.nlm.nih.gov/25423541/">PMID 25423541</a></li>
@@ -480,6 +486,8 @@
   </div>
 
   <div class="footer">
+    <div class="std">⚠️ <b>免責：</b>本工具僅供臨床決策輔助參考，不取代臨床判斷、官方仿單與最新指引，使用前請自行核對原始資料來源。<br>
+    <b>資料來源：</b>見上方 <a href="#refs">Reference</a>。（資料日期：2026-06-01）</div>
     <b>免責聲明：</b>本檔為教學整理，依 2026-06-01 可得之國際指引與文獻彙整。臨床決策仍須依個別病人、所在機構神外資源與最新指引版本判斷。BIG/mBIG 為成人工具，不適用兒童。<br>
     內容來源：侯勝文醫師｜整理：Claude（KB /query 工作流）｜受眾：急診主治／住院醫師｜範圍：國際最新指引為主
   </div>

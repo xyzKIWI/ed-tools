@@ -85,6 +85,16 @@
     min-height: 44px; /* Touch target */
   }
   .back-link:hover { color: #fff; text-decoration: underline; }
+  .disc {
+    margin: 24px 0 8px;
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--muted);
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    border-radius: 10px;
+  }
   .badge-hosp {
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.3);
@@ -1522,6 +1532,13 @@
     </details>
 
   </div><!-- /#checklistView -->
+
+  <!-- 標準頁尾（ed-tool-template 格式）：免責＋內容來源＋資料日期；兩種檢視都顯示，列印不印 -->
+  <div class="disc no-print">
+    ⚠️ <b>免責：</b>本工具僅供臨床決策輔助參考，不取代臨床判斷、官方仿單與最新指引，
+    使用前請自行核對原始資料來源。<br>
+    <b>內容來源：</b>高醫急診部／神經部「癲癇重積檢核單」院內協定；國際指引對照見上方「臨床醫學指引對照與安全備忘」。（資料日期：2026-10-23）
+  </div>
 
 </div><!-- /.wrap -->
 

@@ -11,7 +11,7 @@
 
 > 2026-09-27 五個工具 repo 改短名對齊短路徑：`icd10-ed-quickref`→`icd10`、`abx-tool`→`abx`、`peds-dose`→`peds`、`heparin-tool`→`heparin`、`ed-calc`→`calc`。舊 github.io 網址已失效（GitHub repo 網址會自動轉址）；**不要再建立與舊名同名的 repo**，會搶走轉址。回饋表單前綴（`[peds-dose]`、`[ed-calc/頁名]`）刻意沿用舊名以保持 Sheet 資料連續。
 
-> 好記版由 `worker/` 內的 Cloudflare Worker 反向代理 GitHub Pages 而成；`npx wrangler deploy`（在 `worker/` 目錄）即可更新 Worker 本身，頁面內容照常只要 push 本 repo。各工具另有短路徑代理（`/icd10`、`/abx`、`/peds`）——醫院等會封鎖 `github.io` 的內網，一律走 `er.kiwi-ai.uk` 就能用。
+> 好記版由 `worker/` 內的 Cloudflare Worker 反向代理 GitHub Pages 而成；`npx wrangler deploy`（在 `worker/` 目錄）即可更新 Worker 本身，頁面內容照常只要 push 本 repo。各工具另有短路徑代理（`/abx`、`/icd10`、`/peds`、`/heparin`、`/na`、`/calc`，以 `worker/worker.js` 的 `TOOLS` 為準）——醫院等會封鎖 `github.io` 的內網，一律走 `er.kiwi-ai.uk` 就能用。
 
 ## 收錄工具
 
@@ -25,12 +25,12 @@
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [calc](https://github.com/xyzKIWI/calc) | <https://er.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/calc/> |
 | 雲端藥歷整理小幫手 v1.5.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://er.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 急診滿載監控 v0.2.4（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
-| 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
-| 高醫急診部/神經部癲癇重積檢核單（含即時劑量計算、5分鐘計時器、EMR紀錄與紙本列印） | 本 repo（`se/`） | <https://er.kiwi-ai.uk/se/>（亦可經 <https://xyzkiwi.github.io/ed-tools/se/> 開啟） |
+| 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://er.kiwi-ai.uk/mtbi-ich-discharge.html> | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
+| 高醫急診部/神經部癲癇重積檢核單（含即時劑量計算、5分鐘計時器、EMR紀錄與紙本列印） | 本 repo（`se/`） | <https://er.kiwi-ai.uk/se/> | <https://xyzkiwi.github.io/ed-tools/se/> |
 | 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 批次檔） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | [ChromeDarkMode.bat](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkMode.bat)（主要下載，GitHub Release；exe 版同一 Release 仍在） | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |
 | MouseJiggle 滑鼠防閒置工具（Normal／Zen，Windows 可攜式程式） | [MouseJiggle](https://github.com/xyzKIWI/MouseJiggle)（公開） | [GitHub Release 頁](https://github.com/xyzKIWI/MouseJiggle/releases/latest)（EXE／可攜版 zip） | [Releases](https://github.com/xyzKIWI/MouseJiggle/releases/latest) |
 | Windows 暫存與快取清理（Clean.bat 批次檔） | [windows-clean](https://github.com/xyzKIWI/windows-clean)（公開） | [GitHub Release 頁](https://github.com/xyzKIWI/windows-clean/releases/latest) | [Releases](https://github.com/xyzKIWI/windows-clean/releases/latest) |
-| note2icd 病歷自動抽 ICD 碼 | 規劃中 | — |
+| note2icd 病歷自動抽 ICD 碼 | 規劃中 | — | — |
 
 ### 外部工具（ [highker21](https://highker21.github.io/) 製作，內容與校對由原作者維護）
 
@@ -49,7 +49,7 @@
 4. 部署：main 分支根目錄 → GitHub Pages（Settings → Pages → Deploy from a branch）
 5. 上線後回到本 repo：`index.html` 加一張卡片（名稱、一句話、資料校對日、連結），README 表格加一列
    - 「速查／速算」區用 `.tile` 格子：`data-reviewed="YYYY-MM-DD"`（超過 90 天自動標琥珀色提醒）、`data-kw`（搜尋關鍵字，中英同義詞都放）、`title`（完整名稱與說明）；其他區用 `.row`
-   - ⚠️ 主頁搜尋框內建 ed-calc 的 72 項清單（`index.html` 底部 `const CALC`，由 ed-calc `index.html` 的分類卡片抽出）。**ed-calc 增刪項目時要同步重抽**，否則搜尋找不到新項目
+   - ⚠️ 主頁搜尋框內建 calc（原 ed-calc）的 72 項清單（`index.html` 底部 `const CALC`，由 calc `index.html` 的分類卡片抽出）。**calc 增刪項目時要同步重抽**，否則搜尋找不到新項目
 6. 在 `worker/worker.js` 的 `TOOLS` 加一條短路徑對應（如 `"/xxx": "https://xyzkiwi.github.io/xxx-tool"`），`worker/` 目錄下 `npx wrangler deploy` **＋** `npm run deploy:pages`（pages.dev 備援站）；卡片連結用 `https://er.kiwi-ai.uk/xxx/`，並在 `index.html` 腳本的 `GH` 對應表加一列 GitHub 原址（github.io 版靠它換連結）
 
 ⚠️ **第 6 步不做等於沒上線**：程式碼推上 GitHub、Pages 也建好了，`er.kiwi-ai.uk/xxx/` 還是會 404 —— Worker 跑的是上次 deploy 的版本，`worker.js` 進 repo 不會自動生效。驗收句是 `curl -o /dev/null -w "%{http_code}" https://tools.kiwi-ai.uk/xxx/` 拿到 200，不是「GitHub 上有檔案」。
