@@ -134,6 +134,8 @@ const DOWNLOADS = {
     "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.4.zip",
   "/er-session-extension.zip":
     "https://xyzkiwi.github.io/ed-tools/releases/er-session-extension/er-session-extension-v0.4.3.zip",
+  "/kmuh-consent-autocloser.zip":
+    "https://xyzkiwi.github.io/ed-tools/kmuh-consent-autocloser.zip",
 };
 
 export default {

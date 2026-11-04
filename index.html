@@ -251,7 +251,18 @@
           <a class="btn ghost" href="er-session-extension.html">安裝說明</a>
         </div>
       </div>
-      <!-- gh-only:start 以下三個程式只在 github.io 與 er.kiwi-ai.uk 顯示；tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
+      <!-- gh-only:start 以下程式只在 github.io 與 er.kiwi-ai.uk 顯示；tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
+      <div class="row item dl" data-gh-only data-kw="同意書 數位簽名 ConsentForm 卡簽 岡山 高醫 KMUH KMUGH 60秒 1分鐘 自動關閉 exe Windows 下載">
+        <div class="txt">
+          <span class="name">KMUH 數位簽名同意書系統自動關閉工具</span>
+          <span class="desc">高醫體系專用。醫師勾選同意書、卡簽時完整保留作業時間；偵測到同意書簽名網頁（SelfieSign）開啟後倒數 1 分鐘自動優雅關閉，5 分鐘無網頁自動保底。原生 C# 背景常駐，0黑框、免安裝、不觸發卡巴斯基企業防毒警報。</span>
+          <span class="meta">Windows 10／11｜原生 exe 綠色免安裝｜支援開機自啟與同視窗新分頁展延｜附一鍵管理與桌面捷徑</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="https://er.kiwi-ai.uk/kmuh-consent-autocloser.zip">下載 .zip</a>
+          <a class="btn ghost" href="https://github.com/xyzKIWI/kmuh-consent-autocloser">GitHub 專案</a>
+        </div>
+      </div>
       <div class="row item dl" data-gh-only data-kw="多瀏覽器 Chrome Comet Edge IE 深色模式 暗色 夜間 dark mode 護眼 夜班 exe Windows 下載">
         <div class="txt">
           <span class="name">多瀏覽器深色模式切換</span>
@@ -317,6 +328,7 @@
     "https://er.kiwi-ai.uk/medcloud.zip": "https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip",
     "https://er.kiwi-ai.uk/ed-overload-monitor.zip": "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.4.zip",
     "https://er.kiwi-ai.uk/er-session-extension.zip": "https://xyzkiwi.github.io/ed-tools/releases/er-session-extension/er-session-extension-v0.4.3.zip",
+    "https://er.kiwi-ai.uk/kmuh-consent-autocloser.zip": "https://xyzkiwi.github.io/ed-tools/kmuh-consent-autocloser.zip",
   };
   const remap = h => ON_GITHUB ? GH[h] : (h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
   document.querySelectorAll('a[href]').forEach(a => {
