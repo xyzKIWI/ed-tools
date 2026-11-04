@@ -2070,7 +2070,8 @@ function updateEMR() {
   const l1Radio = document.querySelector('input[name="line1_drug"]:checked');
   let l1Name = '未選擇';
   if (l1Radio) {
-    if (l1Radio.value === 'lora_lt40') l1Name = `Lorazepam ${Math.min(0.1 * (parseFloat(w)||35), 4).toFixed(1)}mg IV`;
+    // 沒填體重時只寫 mg/kg 規則，不用假設體重換算出劑量
+    if (l1Radio.value === 'lora_lt40') l1Name = parseFloat(w) > 0 ? `Lorazepam ${Math.min(0.1 * parseFloat(w), 4).toFixed(1)}mg IV` : 'Lorazepam 0.1mg/kg IV（max 4mg；體重未填，未換算）';
     if (l1Radio.value === 'lora_ge40') l1Name = 'Lorazepam 4mg (2amp) IV';
     if (l1Radio.value === 'mida_lt40') l1Name = 'Midazolam 5mg (1amp) IM';
     if (l1Radio.value === 'mida_ge40') l1Name = 'Midazolam 10mg (2amp) IM';
@@ -2082,7 +2083,7 @@ function updateEMR() {
   const l2Radio = document.querySelector('input[name="line2_drug"]:checked');
   let l2Name = '未選擇';
   if (l2Radio) {
-    if (l2Radio.value === 'keppra_lt50') l2Name = `Keppra ${Math.min(Math.round(60 * (parseFloat(w)||45)), 3000)}mg ST IVD`;
+    if (l2Radio.value === 'keppra_lt50') l2Name = parseFloat(w) > 0 ? `Keppra ${Math.min(Math.round(60 * parseFloat(w)), 3000)}mg ST IVD` : 'Keppra 60mg/kg ST IVD（max 3000mg；體重未填，未換算）';
     if (l2Radio.value === 'keppra_ge50') l2Name = 'Keppra 3000mg ST IVD';
   }
   const t7 = document.getElementById('time_step7').value || '未填';
