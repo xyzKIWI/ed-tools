@@ -7,7 +7,7 @@
 備用：<https://xyzkiwi.github.io/ed-tools/>（GitHub Pages 原址；院內可開，另有「上班小工具」三個 Windows 程式）
 備援：<https://kiwi-ed-tools.pages.dev/>（Cloudflare Pages 跑同一支 Worker，網址路徑與主網址相同）
 
-> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），其他網域（er／tools.kiwi-ai.uk、pages.dev）換成同站路徑；卡片連結一律寫 `https://er.kiwi-ai.uk/…`。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 與 er.kiwi-ai.uk 顯示**（2026-09-30 Kiwi 要求 er 也放；下載檔都在 GitHub，本網域不發檔），tools.kiwi-ai.uk 與 pages.dev 不放。每張下載卡統一兩顆按鈕：［下載檔案］＋［到 GitHub 下載］（Release 頁）。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時，除 `PROGRAM_HOSTS`（er.kiwi-ai.uk）外整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
+> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），其他網域（er／tools.kiwi-ai.uk、pages.dev）換成同站路徑；卡片連結一律寫 `https://er.kiwi-ai.uk/…`。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 與 er.kiwi-ai.uk 顯示**（2026-09-30 Kiwi 要求 er 也放；下載檔都在 GitHub，本網域不發檔），tools.kiwi-ai.uk 與 pages.dev 不放。每張下載卡統一兩顆等寬按鈕：［下載檔案］＋［使用說明］（公開 repo 連 GitHub README；私人 repo 用本 repo 的說明頁，例如 `kmuh-consent-autocloser.html`，避免同事點到 404）。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時，除 `PROGRAM_HOSTS`（er.kiwi-ai.uk）外整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
 
 > 2026-09-27 五個工具 repo 改短名對齊短路徑：`icd10-ed-quickref`→`icd10`、`abx-tool`→`abx`、`peds-dose`→`peds`、`heparin-tool`→`heparin`、`ed-calc`→`calc`。舊 github.io 網址已失效（GitHub repo 網址會自動轉址）；**不要再建立與舊名同名的 repo**，會搶走轉址。回饋表單前綴（`[peds-dose]`、`[ed-calc/頁名]`）刻意沿用舊名以保持 Sheet 資料連續。
 
@@ -26,6 +26,7 @@
 | 雲端藥歷整理小幫手 v1.6.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://er.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 急診滿載監控 v0.2.4（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
 | 急診病摘使用中延長時間 v0.4.3（Chrome 擴充功能） | er-session-extension | <https://er.kiwi-ai.uk/er-session-extension.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/er-session-extension.html) |
+| KMUH 數位簽名同意書系統自動關閉工具（Windows exe） | kmuh-consent-autocloser（私人原始碼） | <https://er.kiwi-ai.uk/kmuh-consent-autocloser.zip>（直接下載） | [使用說明](https://er.kiwi-ai.uk/kmuh-consent-autocloser.html) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://er.kiwi-ai.uk/mtbi-ich-discharge.html> | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | 高醫急診部/神經部癲癇重積檢核單（含即時劑量計算、5分鐘計時器、EMR紀錄與紙本列印） | 本 repo（`se/`） | <https://er.kiwi-ai.uk/se/> | <https://xyzkiwi.github.io/ed-tools/se/> |
 | 多瀏覽器深色模式切換（Chrome／Comet／Edge／IE，Windows 批次檔） | [chrome-dark-mode](https://github.com/xyzKIWI/chrome-dark-mode)（公開） | [ChromeDarkMode.bat](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkMode.bat)（主要下載，GitHub Release；exe 版同一 Release 仍在） | [Releases](https://github.com/xyzKIWI/chrome-dark-mode/releases/latest) |

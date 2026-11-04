@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KMUH 數位簽名同意書系統自動關閉工具 — 下載與使用</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol,ul{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a href="./#work-tools">← 回上班小工具</a>
+<h1>KMUH 數位簽名同意書系統自動關閉工具</h1>
+<p>Windows 背景小工具：數位簽名同意書程式開著時完整保留醫師勾選與卡簽的時間；偵測到簽名網頁開啟後倒數 1 分鐘自動關閉，避免同意書程式一直掛著。</p>
+<p class="meta">Windows 10／11 · 免安裝 exe · 支援高醫本院與岡山醫院</p>
+<a id="download" class="download" href="kmuh-consent-autocloser.zip">下載 ZIP</a>
+<section class="card">
+<h2>第一次使用</h2>
+<ol>
+<li>點上方按鈕下載 ZIP，解壓到固定資料夾，之後請保留該資料夾。</li>
+<li>雙擊 <code>Install-DesktopShortcuts.bat</code>，桌面會出現三個捷徑：<strong>【啟動】【狀態】【停止】同意書自動關閉</strong>。</li>
+<li>雙擊桌面的【啟動】捷徑，工具會在背景執行，不會跳出視窗。</li>
+<li>想確認有沒有在跑，雙擊【狀態】捷徑。</li>
+<li>想每次開機自動啟動，雙擊 <code>Enable-AutoStart.bat</code>；要取消就雙擊 <code>Disable-AutoStart.bat</code>。</li>
+</ol>
+</section>
+<section class="card">
+<h2>運作方式</h2>
+<ul>
+<li><strong>同意書程式開著、還沒開簽名網頁：</strong>不會關閉，保留勾選、插卡卡簽、開其他同意書的時間。</li>
+<li><strong>簽名網頁開啟後：</strong>倒數 1 分鐘關閉同意書程式；倒數期間又開新的同意書，會重新倒數 1 分鐘。</li>
+<li><strong>一直沒開簽名網頁：</strong>5 分鐘後自動關閉（保底）。</li>
+</ul>
+<p>秒數可在資料夾內的 <code>config.json</code> 調整（<code>WebDelaySeconds</code> 是倒數秒數，<code>FallbackTimeoutSeconds</code> 是保底秒數，設 0 代表不保底）。改完請按【停止】再按【啟動】。</p>
+<p class="note">關閉前請確認卡簽已完成。工具只關閉同意書程式，不會代為簽名或送出任何資料。請依院內資訊安全規範使用。</p>
+</section>
+<section class="card">
+<h2>停止與排錯</h2>
+<p>要停止，雙擊桌面的【停止】捷徑。更新版本時，先按【停止】，再用新版 ZIP 的內容覆蓋原資料夾，最後按【啟動】。</p>
+<p>行為不如預期時，可雙擊 <code>View-Log.bat</code> 查看執行紀錄。</p>
+</section>
+<footer>急診臨床小工具 · Windows 工具下載與使用</footer>
+</main>
+</body>
+</html>
