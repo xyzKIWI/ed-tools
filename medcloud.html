@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雲端藥歷整理小幫手 — 下載與安裝</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol,ul{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}.back{display:inline-flex;align-items:center;min-height:44px}.gh ul{list-style:none;padding:0;margin:4px 0 0}.gh li{margin:6px 0;padding:0}.gh a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #dde4e2;padding:7px 6px;text-align:left;vertical-align:top}th{color:#67777b;font-weight:600}td.c{text-align:center}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./#work-tools">← 回上班小工具</a>
+<h1>雲端藥歷整理小幫手</h1>
+<p>Edge／Chrome 擴充功能：整理健保雲端目前已載入的西醫用藥、檢驗、影像及病理、手術、出院病摘與過敏紀錄。輸出供核對，不取代正式病歷、原始報告與臨床判斷。</p>
+<p class="meta">版本 1.6.0 · 2026-10-28 · Edge／Chrome</p>
+<a id="download" class="download" href="medcloud.zip">下載擴充功能 ZIP</a>
+<section class="card">
+<h2>安裝與更新</h2>
+<ol>
+<li>完整解壓縮 ZIP，保留在固定的本機資料夾。</li>
+<li>開啟 <code>edge://extensions</code> 或 <code>chrome://extensions</code>，啟用「開發人員模式」。</li>
+<li>先停用舊版，按「載入解壓縮」，選 <code>extension</code> 資料夾，確認版本為 1.6.0；不要同時執行兩版。</li>
+<li>重新開啟健保雲端頁面；登入與卡片驗證照平常流程操作。</li>
+</ol>
+<p>更新時解壓縮到<strong>新的資料夾</strong>，舊版資料夾保留當備份；停用或移除舊版後再載入新版，載入後重新整理健保頁面。要回復時，停用新版、重新載入舊版資料夾即可。</p>
+</section>
+<section class="card">
+<h2>彙整病歷</h2>
+<ol>
+<li>依院所平常流程完成授權查詢，確認是目前這位個案。</li>
+<li>核對各頁日期範圍與篩選；要納入半年內檢查，原頁也要查出至少半年資料。</li>
+<li>回到「摘要」頁，按「彙整病歷」；程式會依序讀取六區資料，必要時開啟原頁報告或病摘。</li>
+<li>完成後先核對每區狀態、筆數、未完成警示與預覽，再複製需要的內容。</li>
+<li>面板右上角 <code>−</code>／<code>+</code> 可隨時最小化或還原。</li>
+<li>換個案、新查詢或登出後，請重新整理頁面，不要沿用先前結果。</li>
+</ol>
+<p><strong>資料範圍：</strong>檢驗（抽血／驗尿）最近三個曆月；影像及病理最近六個曆月；西醫用藥與出院病摘三個月；手術不限日期；過敏依原頁查詢範圍。</p>
+<p class="note">未完成、逾時或未確認不等於沒有病史；過敏空白不等於 NKDA。翻頁期間不要自行切換病人、排序或修改篩選。</p>
+</section>
+<section class="card">
+<h2>隱私與常見狀況</h2>
+<p>擴充功能不主動上傳、不用瀏覽器儲存區保存結果。複製內容會進入剪貼簿；下載的 JSON 屬醫療資料，請依院內規範保管與清除。</p>
+<p><strong>沒有整理按鈕：</strong>確認網址在 medcloud2.nhi.gov.tw/imu/、擴充功能已啟用，再重新開啟該頁。</p>
+<p><strong>某區未完成或筆數不完整：</strong>保留警示，回原頁核對日期、篩選與分頁；未載入的資料不會自動補齊。</p>
+<p>回報問題時提供版本、頁籤名稱、匿名筆數與錯誤狀態即可，<strong>不要附真實個案截圖或報告內文</strong>。</p>
+</section>
+<section class="card gh">
+<h2>GitHub 原始碼與完整說明</h2>
+<p>本工具為公開專案，可在 GitHub 查看原始碼、完整說明與歷次版本。</p>
+<ul>
+<li><a href="https://github.com/xyzKIWI/CloudMedicationHelper">GitHub 專案頁（原始碼）</a></li>
+<li><a href="https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest">最新版本與更新紀錄（Releases）</a></li>
+<li><a href="https://github.com/xyzKIWI/CloudMedicationHelper/blob/main/USER-GUIDE.md">完整使用說明（USER-GUIDE）</a></li>
+</ul>
+</section>
+<footer>急診臨床小工具 · 瀏覽器擴充功能下載與安裝</footer>
+</main>
+<script>
+if(location.hostname.endsWith("github.io"))document.getElementById("download").href="https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest/download/CloudMedicationHelper.zip";
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多瀏覽器深色模式切換 — 下載與使用</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol,ul{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}.back{display:inline-flex;align-items:center;min-height:44px}.gh ul{list-style:none;padding:0;margin:4px 0 0}.gh li{margin:6px 0;padding:0}.gh a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #dde4e2;padding:7px 6px;text-align:left;vertical-align:top}th{color:#67777b;font-weight:600}td.c{text-align:center}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./#work-tools">← 回上班小工具</a>
+<h1>多瀏覽器深色模式切換</h1>
+<p>Windows 可攜式工具：把瀏覽器介面與網頁內容切成深色模式，也能還原成系統預設外觀。</p>
+<p class="meta">Windows 10／11 · .bat 批次檔 · 免安裝、免系統管理員權限</p>
+<a id="download" class="download" href="https://github.com/xyzKIWI/chrome-dark-mode/releases/latest/download/ChromeDarkMode.bat">下載 ChromeDarkMode.bat</a>
+<section class="card">
+<h2>使用方式</h2>
+<ol>
+<li>點上方按鈕下載 <code>ChromeDarkMode.bat</code>（純文字檔，可先用記事本打開檢查內容）。</li>
+<li>雙擊執行。</li>
+<li>選擇單一瀏覽器，或一次套用到全部支援的瀏覽器；也可以個別或全部還原。</li>
+</ol>
+<p class="note">執行時會先<strong>關閉所選的瀏覽器</strong>再套用設定，請先存好未送出的表單與內容。</p>
+</section>
+<section class="card">
+<h2>支援的瀏覽器與需求</h2>
+<ul>
+<li>Google Chrome、Perplexity Comet、Microsoft Edge</li>
+<li>Internet Explorer（該 Windows 版本仍有 IE 時）</li>
+</ul>
+<p>需要 Windows 10 或 11、至少一個支援的瀏覽器、Windows PowerShell 5.1 以上（Windows 內建）。</p>
+<p>會更新目前 Windows 帳號下既有的瀏覽器設定檔；還原時只移除本工具加上的深色模式設定，其他自訂設定會保留。</p>
+<p>瀏覽器大改版後若效果改變，請重新執行一次確認。</p>
+</section>
+<section class="card gh">
+<h2>GitHub 原始碼與完整說明</h2>
+<p>本工具為公開專案，可在 GitHub 查看原始碼、完整說明與歷次版本。</p>
+<ul>
+<li><a href="https://github.com/xyzKIWI/chrome-dark-mode">GitHub 專案頁（原始碼）</a></li>
+<li><a href="https://github.com/xyzKIWI/chrome-dark-mode/releases/latest">最新版本與更新紀錄（Releases）</a></li>
+<li><a href="https://github.com/xyzKIWI/chrome-dark-mode#readme">完整說明（README，英文）</a></li>
+</ul>
+</section>
+<footer>急診臨床小工具 · Windows 工具下載與使用</footer>
+</main>
+</body>
+</html>

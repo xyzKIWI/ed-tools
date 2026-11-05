@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MouseJiggle 滑鼠防閒置工具 — 下載與使用</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol,ul{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}.back{display:inline-flex;align-items:center;min-height:44px}.gh ul{list-style:none;padding:0;margin:4px 0 0}.gh li{margin:6px 0;padding:0}.gh a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #dde4e2;padding:7px 6px;text-align:left;vertical-align:top}th{color:#67777b;font-weight:600}td.c{text-align:center}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./#work-tools">← 回上班小工具</a>
+<h1>MouseJiggle 滑鼠防閒置工具</h1>
+<p>輕量、免安裝的 Windows 滑鼠防閒置工具，提供 Normal／Zen 模式、系統匣選單、淺色／深色介面及選用的開機啟動。</p>
+<p class="meta">Windows 10／11 · 需 .NET Framework 4.8 · 免安裝、免系統管理員權限</p>
+<a id="download" class="download" href="https://github.com/xyzKIWI/MouseJiggle/releases/latest/download/MouseJiggle.zip">下載可攜版 ZIP</a>
+<section class="card">
+<h2>使用方式</h2>
+<ol>
+<li>下載並解壓縮 <code>MouseJiggle.zip</code>。</li>
+<li>執行 <code>MouseJiggle.exe</code>；程式會立即以 Zen 模式開始，預設每 50 秒一次。</li>
+<li>用 <strong>Start Jiggling／Stop Jiggling</strong> 開始或停止。</li>
+<li>選 <strong>Normal</strong> 或 <strong>Zen</strong>，間隔可設 1–60 秒，變更立即生效。</li>
+<li>勾選 <strong>Start with Windows (minimized)</strong>，Windows 登入時會自動啟動並縮到系統匣；取消勾選即移除。</li>
+</ol>
+<p><strong>Zen</strong>：防止閒置但游標不會動。<strong>Normal</strong>：游標每次小幅來回移動 4 px。</p>
+<p class="note">按右上角 <code>X</code> 或 <code>Alt+F4</code> 只會縮到系統匣；要真正結束，請用視窗或系統匣選單的 <strong>Exit</strong>。</p>
+</section>
+<section class="card">
+<h2>設定與注意事項</h2>
+<p>設定存在 EXE 旁邊的 <code>MouseJiggle.ini</code>（模式、秒數、深淺色）。如果移動了 EXE 的位置，請把開機啟動取消再重新勾選一次。</p>
+<p>程式不使用網路、不安裝服務、不記錄鍵盤或滑鼠內容，也不要求提升權限。</p>
+<p class="note">請依院內資訊安全與電腦使用規範使用。</p>
+</section>
+<section class="card gh">
+<h2>GitHub 原始碼與完整說明</h2>
+<p>本工具為公開專案，可在 GitHub 查看原始碼、完整說明與歷次版本。</p>
+<ul>
+<li><a href="https://github.com/xyzKIWI/MouseJiggle">GitHub 專案頁（原始碼）</a></li>
+<li><a href="https://github.com/xyzKIWI/MouseJiggle/releases/latest">最新版本與更新紀錄（Releases）</a></li>
+<li><a href="https://github.com/xyzKIWI/MouseJiggle/releases/latest/download/MouseJiggle.exe">直接下載 EXE（不用解壓縮）</a></li>
+<li><a href="https://github.com/xyzKIWI/MouseJiggle#readme">完整說明（README）</a></li>
+</ul>
+</section>
+<footer>急診臨床小工具 · Windows 工具下載與使用</footer>
+</main>
+</body>
+</html>

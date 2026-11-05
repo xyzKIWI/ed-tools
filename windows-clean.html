@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows 暫存與快取清理 — 下載與使用</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol,ul{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}.back{display:inline-flex;align-items:center;min-height:44px}.gh ul{list-style:none;padding:0;margin:4px 0 0}.gh li{margin:6px 0;padding:0}.gh a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #dde4e2;padding:7px 6px;text-align:left;vertical-align:top}th{color:#67777b;font-weight:600}td.c{text-align:center}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./#work-tools">← 回上班小工具</a>
+<h1>Windows 暫存與快取清理</h1>
+<p>一個 <code>.bat</code> 批次檔，清理 Windows 暫存檔與各種快取。純文字檔，可以先用記事本打開檢查內容再執行。</p>
+<p class="meta">Windows · .bat 批次檔 · 免安裝</p>
+<a id="download" class="download" href="https://github.com/xyzKIWI/windows-clean/releases/latest/download/Clean.bat">下載 Clean.bat</a>
+<section class="card">
+<h2>使用方式</h2>
+<ol>
+<li>點上方按鈕下載 <code>Clean.bat</code>。</li>
+<li><strong>雙擊執行＝一般模式</strong>：只清目前使用者自己的暫存與快取，不需要系統管理員權限。</li>
+<li><strong>按右鍵「以系統管理員身分執行」＝完整模式</strong>：額外清理系統層。</li>
+<li>完成後按任意鍵關閉視窗。</li>
+</ol>
+</section>
+<section class="card">
+<h2>清理項目</h2>
+<table>
+<tr><th>項目</th><th>一般</th><th>完整</th></tr>
+<tr><td>使用者暫存（%TEMP%）、當機傾印、錯誤報告</td><td class="c">✓</td><td class="c">✓</td></tr>
+<tr><td>網路暫存、Edge／Chrome 預設設定檔的網頁快取</td><td class="c">✓</td><td class="c">✓</td></tr>
+<tr><td>檔案總管縮圖與圖示快取</td><td class="c">✓</td><td class="c">✓</td></tr>
+<tr><td>資源回收筒（目前使用者）、DNS 快取</td><td class="c">✓</td><td class="c">✓</td></tr>
+<tr><td>Windows Update 下載快取（會暫停相關服務，清完自動開回）</td><td></td><td class="c">✓</td></tr>
+<tr><td><code>C:\Windows\Temp</code>、Prefetch</td><td></td><td class="c">✓</td></tr>
+<tr><td>系統當機傾印、系統錯誤報告</td><td></td><td class="c">✓</td></tr>
+<tr><td>所有磁碟的資源回收筒（全部使用者）</td><td></td><td class="c">✓</td></tr>
+</table>
+<p class="note">會清空資源回收筒，執行前請確認裡面沒有要救回的檔案。共用電腦請依單位資訊安全政策使用。</p>
+</section>
+<section class="card gh">
+<h2>GitHub 原始碼與完整說明</h2>
+<p>本工具為公開專案，可在 GitHub 查看原始碼、完整說明與歷次版本。</p>
+<ul>
+<li><a href="https://github.com/xyzKIWI/windows-clean">GitHub 專案頁（原始碼）</a></li>
+<li><a href="https://github.com/xyzKIWI/windows-clean/releases/latest">最新版本與更新紀錄（Releases）</a></li>
+<li><a href="https://github.com/xyzKIWI/windows-clean#readme">完整說明（README）</a></li>
+</ul>
+</section>
+<footer>急診臨床小工具 · Windows 工具下載與使用</footer>
+</main>
+</body>
+</html>
