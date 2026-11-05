@@ -66,6 +66,8 @@
 
 ### 上班小工具（Windows 可攜式程式）
 
+**「使用說明」一律連站內說明頁**（2026-11-05）：每張上班小工具卡片的第二顆按鈕都連到本 repo 根目錄的 `<工具>.html`（`medcloud.html`、`ed-overload-monitor.html`、`er-session-extension.html`、`kmuh-consent-autocloser.html`、`chrome-dark-mode.html`、`mousejiggle.html`、`windows-clean.html`），不直接連 GitHub README。說明頁內容照該工具 repo 的 README 濃縮。**公開 repo** 的說明頁最下方加「GitHub 原始碼與完整說明」區塊（專案頁、Releases、完整 README）；**私人 repo**（滿載監控、病摘延長、同意書關閉）不放 GitHub 連結，否則會 404。
+
 急診滿載監控是Chrome套件，公開下載包位於`releases/ed-overload-monitor/`；`DOWNLOADS`代理版本化GitHub Pages ZIP至固定短路徑`/ed-overload-monitor.zip`。根目錄另保留相同位元組的`ed-overload-monitor.zip`，讓尚未更新下載路由的備援Worker也能透過既有HUB靜態代理取用。更新版本時須同步兩份ZIP、確認Pages可下載，再更新卡片版號與路由。原始碼儲存庫保持私人；下載不需要GitHub登入。安裝說明為`ed-overload-monitor.html`。
 
 **.exe 不經本網域發送**（2026-09-27：院內卡巴斯基封鎖 tools.kiwi-ai.uk，疑因本網域代理未簽章 exe）：公開來源 repo 的卡片按鈕一律連到 GitHub 的 `releases/latest` 頁面，讓使用者在 GitHub 上下載，不要再加進 `worker.js` 的 `DOWNLOADS`。
