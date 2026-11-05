@@ -6,6 +6,49 @@
 
 ---
 
+## 〇、追蹤更新（2026-11-05）
+
+> 第一～三節是 11-02 健檢當時的原始紀錄，保留不改；**最新狀態以本節為準**。本節每一項都在 11-05 重新實測或對照 `main` 上的程式碼確認過。
+
+### ✅ 已處理
+
+| 原報告項目 | 處理方式 | 誰／哪裡 |
+|---|---|---|
+| 二-A-1 pages.dev `/na/` 404 | 重新部署 `npm run deploy:pages`，`/na/`、`/hyponatremia`、`/na.html` 皆正常 | Kiwi，11-02 |
+| 二-A-2 ICD-10 卡片日期不一致 | 卡片改為「資料更新 2026-08-27」，與工具頁一致 | Kiwi，ed-tools `5bda6d3` |
+| 二-C abx 手機水平捲動 | 劑量表格改為表格內左右捲動，375px 整頁不再被撐寬 | Kiwi，abx `f44441c` |
+| 二-C abx 沒有回首頁 | 加回首頁連結；點擊高度改 44px | Kiwi `f44441c`＋abx#2 |
+| 二-C peds 看不到免責聲明 | 頁尾補免責聲明與資料來源（取自 `_meta`） | peds#2 |
+| 二-C peds 沒有回首頁 | 加回首頁連結；移到頁面最上方 | peds#2＋peds#3（**待合併**） |
+| 二-C icd10 沒有回首頁、頁尾標題 | 右上角「⌂」回首頁；頁尾標題改「免責與使用說明」 | Kiwi，icd10 `8b788db` |
+| 二-C calc 沒有回首頁 | 入口頁加回首頁；9 個分頁加「← 急診小工具」「計算機首頁」 | Kiwi，calc `de11168` |
+| 二-C calc README 連結指向舊名 `ed-calc` | 已改為 `github.com/xyzkiwi/calc#readme` | Kiwi，calc |
+| 三-1 se 體重空白時 EMR 用假設體重算劑量 | 改寫 mg/kg 規則並註明「體重未填，未換算」，不再出現具體劑量 | Kiwi，ed-tools `8149403` |
+| 三-6、三-7 mtbi aspirin 定義、Tintinalli 章節號 | Kiwi 決定：引用侯勝文醫師內容，**維持原樣不修改** | Kiwi，11-02 |
+
+### ✅ 健檢之後追加完成
+
+- **上班小工具「使用說明」全部改連站內說明頁**：新增 `medcloud.html`、`chrome-dark-mode.html`、`mousejiggle.html`、`windows-clean.html`；公開 repo 頁底附 GitHub 連結，私人 repo 不放（ed-tools#5）。
+- **返回按鈕統一放在頁面上方**：所有分頁實測，除 heparin、peds 外都已在上方；heparin 原在頁底、peds 原在頁尾，已移到最上方（heparin#7、peds#3，**待合併**）。
+- 病摘延長、同意書關閉兩個說明頁的回程連結改為 44px（ed-tools#5）。
+
+### ⏳ 仍待處理
+
+| 項目 | 狀態 | 建議 |
+|---|---|---|
+| heparin#7、peds#3 | PR 已開，待合併 | 合併後返回按鈕位置即全站一致 |
+| 三-2 se Midazolam loading 0.2 mg/kg 沒有上限 | 未變 | 請協定負責人確認是否需要單次上限 |
+| 三-3 se pump 換算假設「1 mg/mL 配方」 | 未變 | 請確認與院內實際泡法相同 |
+| 三-4 se 體重分級自動勾選不會跟著改體重更新 | 未變（因有上限，算出數字目前相同） | 低優先 |
+| 三-5 se 指引對照表「單次總累積上限 8 mg」用詞 | 未變 | 可改為「兩劑合計上限 8 mg」 |
+| 二-A-3 卡片／`GH` 表／Worker 路由自動比對 | 未做（需動 `worker/` 測試） | 可加進 `worker/worker.test.mjs` |
+| 二-C icd10 外傷小人圖熱區太小 | 未變 | 低優先（圖形本質限制） |
+| 二-C heparin 頁尾標題用「臨床安全」 | 未變 | 很低（格式差異，內容完整） |
+| 二-C 模板 topic `clinical-tools` 與 ed-tools README `clinical-tool` 不一致 | 未變 | 很低 |
+| 二-B `CALC` 搜尋清單缺中文別名 | 未變 | 從 calc 首頁卡片改起 |
+
+---
+
 ## 一、已修項目（本 PR）
 
 | # | 檔案 | 問題 | 修正 |
