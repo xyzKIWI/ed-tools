@@ -12,8 +12,8 @@
 <main>
 <a class="back" href="./#work-tools">← 回上班小工具</a>
 <h1>CXR 重新標註</h1>
-<p>Chrome／Edge 擴充功能：在 AI 平台「急診胸部X光」結果頁或 WebPACS 上，直接替胸部 X 光畫框標註，把原圖與 LabelMe 格式的標註存到本機，供模型重新訓練。</p>
-<p class="meta">版本 0.4.0 · 2026-11-21 · 附院與岡山 · 對院內系統唯讀</p>
+<p>Chrome／Edge 擴充功能：從急診清單一鍵回顧病人的 WebPACS 影像；在 AI 平台「急診胸部X光」結果頁、PACS 回顧或 WebPACS 上直接替胸部 X 光畫框標註，把原圖與 LabelMe 格式的標註存到本機，供模型重新訓練。</p>
+<p class="meta">版本 0.5.0 · 2026-11-21 · 附院與岡山 · 對院內系統唯讀</p>
 <a id="download" class="download" href="cxr-relabel.zip">下載擴充功能 ZIP</a>
 <section class="card">
 <h2>第一次安裝</h2>
@@ -21,14 +21,15 @@
 <li>下載 ZIP，解壓到固定資料夾，之後保留該資料夾。</li>
 <li>網址列輸入 <code>chrome://extensions</code>（Edge 是 <code>edge://extensions</code>），開啟「開發人員模式」。</li>
 <li>點「載入未封裝項目」，選擇解壓後的 <code>cxr-relabel</code> 資料夾（裡面有 <code>manifest.json</code>）。</li>
-<li>把已經開著的 AI 平台結果頁與 WebPACS 分頁都重新整理一次。</li>
+<li>把已經開著的 AI 平台結果頁、急診清單與 WebPACS 分頁都重新整理一次。</li>
 </ol>
 </section>
 <section class="card">
-<h2>兩個入口</h2>
+<h2>三個入口</h2>
 <p><b>AI 平台結果頁</b>：影像上方多一顆「✏️ 重新標註」。先在同一個瀏覽器開著<b>已登入、同院區</b>的 WebPACS 分頁，外掛會用檢查單號取原圖，並把模型的框按比例帶進來讓你修改。沒有開 WebPACS 時，改用結果頁的影像（模型畫的框會先抹掉），畫面下方會寫原因。</p>
 <p><b>WebPACS</b>：影像縮圖下面多一顆「✏️ 標註」，按下去開新分頁標註那張影像。AI 沒辨識到、或沒經過 AI 的影像從這裡標。</p>
-<p class="note">只會去同一院區的 WebPACS 查（岡山結果頁只查岡山 WebPACS），而且病歷號對不上時不使用那張影像，避免標到別人的片子。</p>
+<p><b>急診清單（0.5.0 新增）</b>：在病摘紀錄系統的急診清單（在院或出院）把滑鼠移到病人那一列，右邊浮出「🩻 PACS」。按下去開「PACS 回顧」分頁：預設列出這次急診期間的檢查（可切「全部」、可只看某一類）、縮圖、點開看大圖，大圖上按「✏️ 標註」就能標；「在 WebPACS 開這位病人」會讓 WebPACS 分頁直接查這位病人，方便用完整 Viewer 看。按鈕浮在清單上方，不會點到病人，也不影響其他急診外掛。</p>
+<p class="note">只會去同一院區的 WebPACS 查（岡山的結果頁與急診清單只查岡山 WebPACS），而且病歷號對不上時不使用那張影像、不列那筆檢查，避免看到或標到別人的片子。</p>
 </section>
 <section class="card">
 <h2>標註畫面的操作</h2>
@@ -52,13 +53,13 @@
 <section class="card">
 <h2>更新與排錯</h2>
 <p>更新套件時，替換原資料夾內容，在擴充功能管理頁按「重新載入」，再重新整理結果頁與 WebPACS 分頁。</p>
-<p>結果頁一直說沒用到 PACS 原圖：確認同院區的 WebPACS 分頁開著且已登入；外掛更新後那個分頁要重新整理一次。</p>
+<p>結果頁一直說沒用到 PACS 原圖、或 PACS 回顧說沒登入：確認同院區的 WebPACS 分頁開著且已登入；外掛更新後那個分頁要重新整理一次。（0.5.0 起，WebPACS 剛登入、還沒按過查詢也能用。）</p>
 <p>套件只讀頁面內容、只發查詢與下載，不修改院內任何資料，不儲存帳號密碼或登入憑證，也不連任何外部網路。</p>
 </section>
 <footer>急診臨床小工具 · Chrome／Edge 擴充功能下載與安裝</footer>
 </main>
 <script>
-if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/cxr-relabel/cxr-relabel-0.4.0.zip";
+if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/cxr-relabel/cxr-relabel-0.5.0.zip";
 </script>
 </body>
 </html>
