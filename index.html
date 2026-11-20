@@ -252,6 +252,17 @@
           <a class="btn ghost" href="er-session-extension.html">使用說明</a>
         </div>
       </div>
+      <div class="row item dl" id="cxr-relabel" data-kw="CXR 胸部X光 胸部 X 光 AI 平台 重新標註 標註 labelme PACS WebPACS 骨折 肺浸潤 重訓 高醫 岡山 Chrome Edge extension 擴充功能 zip 下載">
+        <div class="txt">
+          <span class="name">CXR 重新標註</span>
+          <span class="desc">在 AI 平台結果頁或 WebPACS 上替胸部 X 光畫框，原圖與標註存到本機，供模型重訓；支援本院與岡山。</span>
+          <span class="meta">v0.4.0（2026-11-21）｜Chrome／Edge 擴充功能｜需開著已登入的 WebPACS 分頁</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="https://er.kiwi-ai.uk/cxr-relabel.zip">下載 .zip</a>
+          <a class="btn ghost" href="cxr-relabel.html">使用說明</a>
+        </div>
+      </div>
       <!-- gh-only:start 以下程式只在 github.io 與 er.kiwi-ai.uk 顯示；tools.kiwi-ai.uk 與 pages.dev 由 Worker 整段拿掉 -->
       <div class="row item dl" data-gh-only data-kw="同意書 數位簽名 ConsentForm 卡簽 岡山 高醫 KMUH KMUGH 60秒 1分鐘 自動關閉 exe Windows 下載">
         <div class="txt">
@@ -308,7 +319,7 @@
     劑量與診斷碼請以原始資料來源為準，使用前請自行核對；作者不對使用結果負責。
   </div>
   <p>外部資源：<a href="https://highker21.github.io/">highker21 工具與教學總站</a>（上方三個外部工具之外的完整清單：GLP-1、InBody、甲狀腺、教學投影片等）</p>
-  <p>最後更新：2026-11-02｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
+  <p>最後更新：2026-11-21｜<a href="https://github.com/xyzKIWI/ed-tools">GitHub</a></p>
 </footer>
 
 <script>
@@ -330,6 +341,7 @@
     "https://er.kiwi-ai.uk/ed-overload-monitor.zip": "https://xyzkiwi.github.io/ed-tools/releases/ed-overload-monitor/ed-overload-monitor-chrome-0.2.4.zip",
     "https://er.kiwi-ai.uk/er-session-extension.zip": "https://xyzkiwi.github.io/ed-tools/releases/er-session-extension/er-session-extension-v0.4.3.zip",
     "https://er.kiwi-ai.uk/kmuh-consent-autocloser.zip": "https://xyzkiwi.github.io/ed-tools/kmuh-consent-autocloser.zip",
+    "https://er.kiwi-ai.uk/cxr-relabel.zip": "https://xyzkiwi.github.io/ed-tools/releases/cxr-relabel/cxr-relabel-0.4.0.zip",
   };
   const remap = h => ON_GITHUB ? GH[h] : (h.startsWith(KIWI) ? '/' + h.slice(KIWI.length) : undefined);
   document.querySelectorAll('a[href]').forEach(a => {

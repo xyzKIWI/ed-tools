@@ -136,6 +136,8 @@ const DOWNLOADS = {
     "https://xyzkiwi.github.io/ed-tools/releases/er-session-extension/er-session-extension-v0.4.3.zip",
   "/kmuh-consent-autocloser.zip":
     "https://xyzkiwi.github.io/ed-tools/kmuh-consent-autocloser.zip",
+  "/cxr-relabel.zip":
+    "https://xyzkiwi.github.io/ed-tools/releases/cxr-relabel/cxr-relabel-0.4.0.zip",
 };
 
 export default {

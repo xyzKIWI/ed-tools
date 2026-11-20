@@ -26,6 +26,7 @@
 | 雲端藥歷整理小幫手 v1.6.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://er.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
 | 急診滿載監控 v0.2.4（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
 | 急診病摘使用中延長時間 v0.4.3（Chrome 擴充功能） | er-session-extension | <https://er.kiwi-ai.uk/er-session-extension.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/er-session-extension.html) |
+| CXR 重新標註 v0.4.0（Chrome／Edge 擴充功能；AI 平台結果頁與 WebPACS 上標註胸部 X 光，附院＋岡山） | cxr-relabel（私人原始碼） | <https://er.kiwi-ai.uk/cxr-relabel.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/cxr-relabel.html) |
 | KMUH 數位簽名同意書系統自動關閉工具（Windows exe） | kmuh-consent-autocloser（私人原始碼） | <https://er.kiwi-ai.uk/kmuh-consent-autocloser.zip>（直接下載） | [使用說明](https://er.kiwi-ai.uk/kmuh-consent-autocloser.html) |
 | 輕微外傷性顱內出血出院準則（內容來源：侯勝文醫師；含點選式快速判定） | 本 repo（`mtbi-ich-discharge.html`） | <https://er.kiwi-ai.uk/mtbi-ich-discharge.html> | <https://xyzkiwi.github.io/ed-tools/mtbi-ich-discharge.html> |
 | 高醫急診部/神經部癲癇重積檢核單（含即時劑量計算、5分鐘計時器、EMR紀錄與紙本列印） | 本 repo（`se/`） | <https://er.kiwi-ai.uk/se/> | <https://xyzkiwi.github.io/ed-tools/se/> |
@@ -66,7 +67,7 @@
 
 ### 上班小工具（Windows 可攜式程式）
 
-**「使用說明」一律連站內說明頁**（2026-11-05）：每張上班小工具卡片的第二顆按鈕都連到本 repo 根目錄的 `<工具>.html`（`medcloud.html`、`ed-overload-monitor.html`、`er-session-extension.html`、`kmuh-consent-autocloser.html`、`chrome-dark-mode.html`、`mousejiggle.html`、`windows-clean.html`），不直接連 GitHub README。說明頁內容照該工具 repo 的 README 濃縮。**公開 repo** 的說明頁最下方加「GitHub 原始碼與完整說明」區塊（專案頁、Releases、完整 README）；**私人 repo**（滿載監控、病摘延長、同意書關閉）不放 GitHub 連結，否則會 404。
+**「使用說明」一律連站內說明頁**（2026-11-05）：每張上班小工具卡片的第二顆按鈕都連到本 repo 根目錄的 `<工具>.html`（`medcloud.html`、`ed-overload-monitor.html`、`er-session-extension.html`、`kmuh-consent-autocloser.html`、`chrome-dark-mode.html`、`mousejiggle.html`、`windows-clean.html`），不直接連 GitHub README。說明頁內容照該工具 repo 的 README 濃縮。**公開 repo** 的說明頁最下方加「GitHub 原始碼與完整說明」區塊（專案頁、Releases、完整 README）；**私人 repo**（滿載監控、病摘延長、同意書關閉、CXR 重新標註）不放 GitHub 連結，否則會 404。
 
 急診滿載監控是Chrome套件，公開下載包位於`releases/ed-overload-monitor/`；`DOWNLOADS`代理版本化GitHub Pages ZIP至固定短路徑`/ed-overload-monitor.zip`。根目錄另保留相同位元組的`ed-overload-monitor.zip`，讓尚未更新下載路由的備援Worker也能透過既有HUB靜態代理取用。更新版本時須同步兩份ZIP、確認Pages可下載，再更新卡片版號與路由。原始碼儲存庫保持私人；下載不需要GitHub登入。安裝說明為`ed-overload-monitor.html`。
 
