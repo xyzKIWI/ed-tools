@@ -13,7 +13,7 @@
 <a class="back" href="./#work-tools">← 回上班小工具</a>
 <h1>CXR 重新標註</h1>
 <p>Chrome／Edge 擴充功能：從急診清單一鍵回顧病人的 WebPACS 影像；在 AI 平台「急診胸部X光」結果頁、PACS 回顧或 WebPACS 上直接替胸部 X 光畫框標註，把原圖與 LabelMe 格式的標註存到本機，供模型重新訓練。</p>
-<p class="meta">版本 0.6.1 · 2026-11-21 · 附院與岡山 · 對院內系統唯讀</p>
+<p class="meta">版本 0.7.0 · 2026-11-22 · 附院與岡山 · 對院內系統唯讀</p>
 <a id="download" class="download" href="cxr-relabel.zip">下載擴充功能 ZIP</a>
 <section class="card">
 <h2>第一次安裝</h2>
@@ -56,13 +56,13 @@
 <section class="card">
 <h2>更新與排錯</h2>
 <p>更新套件時，替換原資料夾內容，在擴充功能管理頁按「重新載入」，再重新整理結果頁與 WebPACS 分頁。</p>
-<p>結果頁一直說沒用到 PACS 原圖、或 PACS 回顧說沒登入：確認同院區的 WebPACS 分頁開著且已登入；外掛更新後那個分頁要重新整理一次。（0.5.0 起，WebPACS 剛登入、還沒按過查詢也能用。）0.6.1 起，回顧視窗可以直接按「到 WebPACS 登入」，登入後自動列出這位病人，WebPACS 也會自動查好這位病人。</p>
+<p>結果頁一直說沒用到 PACS 原圖、或 PACS 回顧說沒登入：確認同院區的 WebPACS 分頁開著且已登入；外掛更新後那個分頁要重新整理一次。（0.5.0 起，WebPACS 剛登入、還沒按過查詢也能用。）0.6.1 起，回顧視窗可以直接按「到 WebPACS 登入」，登入後自動列出這位病人，WebPACS 也會自動查好這位病人。<b>0.7.0 起</b>，從急診清單按 🩻 時若沒有開著的 WebPACS 分頁，外掛會借用體系病歷「檢查」頁的一次性「開啟PACS」連結<b>免登入</b>接上（用你當下的身分、連結用完就丟）；借不到時才回到「自己登入」。</p>
 <p>套件只讀頁面內容、只發查詢與下載，不修改院內任何資料，不儲存帳號密碼或登入憑證，也不連任何外部網路。</p>
 </section>
 <footer>急診臨床小工具 · Chrome／Edge 擴充功能下載與安裝</footer>
 </main>
 <script>
-if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/cxr-relabel/cxr-relabel-0.6.1.zip";
+if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/cxr-relabel/cxr-relabel-0.7.0.zip";
 </script>
 </body>
 </html>
