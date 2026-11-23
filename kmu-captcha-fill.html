@@ -13,9 +13,10 @@
 <a class="back" href="./#work-tools">← 回上班小工具</a>
 <h1>KMU 體系驗證碼填入</h1>
 <p>在 KMU 體系登入頁於瀏覽器本機辨識 4 碼驗證碼並填入。</p>
-<p class="meta">版本 1.4 · 2026-11-24 · 網站直接下載</p>
+<p class="meta">版本 1.4.1 · 2026-11-24 · 網站直接下載</p>
 <a class="download" href="kmu-captcha-fill.zip" download>下載 Chrome／Edge／Comet 版</a>
 <a class="download" href="kmu-captcha-fill-safari.zip" download>下載 Safari macOS 開發版</a>
+<a class="download" href="kmu-captcha-fill.user.js">Safari Userscripts 腳本（Mac／iPhone／iPad）</a>
 
 <section class="card">
 <h2>第一次安裝</h2>
@@ -28,7 +29,19 @@
 </section>
 
 <section class="card">
-<h2>Safari 安裝（macOS 12.3 以上、Safari 16.4 以上）</h2>
+<h2>Safari：Userscripts 安裝（Mac／iPhone／iPad）</h2>
+<ol>
+<li>從 <a href="https://apps.apple.com/app/userscripts/id1463298887">App Store 安裝 Userscripts</a>，在 Safari 延伸功能設定中啟用。</li>
+<li>開啟上方「Safari Userscripts 腳本」連結，再打開 Userscripts 彈窗安裝；或將 <code>.user.js</code> 存到 Userscripts 設定的腳本資料夾。</li>
+<li>把目標網站的 Userscripts 權限設為「一律允許」，重新整理登入頁。</li>
+<li>停用舊 KMU Safari App 延伸功能，使用新腳本即可。</li>
+</ol>
+<p>不必每次重開 Safari 都勾選「允許未簽署的延伸功能」。首次安裝、增加網站或重設權限後仍需確認網站存取。</p>
+<p>自訂網域：在 Userscripts 編輯器的腳本標頭加入 <code>// @match https://*.example.org.tw/*</code>，儲存並允許網站存取；如有需要再加主網域規則。更新腳本時請保留自訂規則。腳本開關使用 Userscripts 的啟用切換，與原生插件的彈窗白名單分開。</p>
+</section>
+
+<section class="card">
+<h2>Safari App 安裝（macOS 12.3 以上、Safari 16.4 以上）</h2>
 <ol>
 <li>下載 Safari ZIP，將 <code>KMU Captcha Fill.app</code> 移到「應用程式」並開啟。</li>
 <li>目前為本機開發版，未以 Apple Developer ID 簽署／公證。如 macOS 阻擋，請在「系統設定 → 隱私權與安全性」查看「仍要打開」。</li>
@@ -42,6 +55,7 @@
 <h2>支援範圍</h2>
 <p>內建網域：<code>kmuh.org.tw</code>、<code>kmu.edu.tw</code>、<code>kmugh.org.tw</code>、<code>kmsh.org.tw</code>、<code>kmch.org.tw</code>。</p>
 <p>只有同時偵測到驗證碼圖片與輸入欄時才會動作。擴充功能只填入驗證碼，不會按下登入。</p>
+<p>開啟頁面與點圖換碼後均會自動辨識。換圖會清除外掛填入的舊碼，快速連點只填最新圖片；手動輸入內容會保留。</p>
 </section>
 
 <section class="card">
