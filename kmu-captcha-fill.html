@@ -12,19 +12,30 @@
 <main>
 <a class="back" href="./#work-tools">← 回上班小工具</a>
 <h1>KMU 體系驗證碼填入</h1>
-<p>資訊室核准測試用 Chrome 擴充功能：在 KMU 體系登入頁於瀏覽器本機辨識 4 碼驗證碼並填入。</p>
-<p class="meta">版本 1.3.2 · 2026-11-23 · private repo · 下載需 GitHub 授權</p>
-<a class="download" href="https://github.com/xyzKIWI/kmu-captcha-fill/releases/latest">前往授權下載頁</a>
-<p class="note">只有獲授權的 GitHub 帳號能開啟下載頁。請勿轉傳安裝包或用於未經核准的網站。</p>
+<p>在 KMU 體系登入頁於瀏覽器本機辨識 4 碼驗證碼並填入。</p>
+<p class="meta">版本 1.4 · 2026-11-24 · 網站直接下載</p>
+<a class="download" href="kmu-captcha-fill.zip" download>下載 Chrome／Edge／Comet 版</a>
+<a class="download" href="kmu-captcha-fill-safari.zip" download>下載 Safari macOS 開發版</a>
 
 <section class="card">
 <h2>第一次安裝</h2>
 <ol>
-<li>從授權下載頁下載最新版 ZIP，解壓到固定資料夾；Kiwi 本機固定使用 <code>/Users/kiwi/kiwi_cc/kmu-captcha-fill</code>。</li>
-<li>網址列輸入 <code>chrome://extensions</code>，開啟右上角「開發人員模式」。</li>
+<li>下載 Chrome／Edge／Comet 版 ZIP，解壓到固定資料夾。</li>
+<li>開啟瀏覽器擴充功能管理頁（Chrome／Comet：<code>chrome://extensions</code>；Edge：<code>edge://extensions</code>），開啟「開發人員模式」。</li>
 <li>點「載入未封裝項目」，選擇含有 <code>manifest.json</code> 的資料夾。</li>
 <li>重新整理已開啟的登入頁。</li>
 </ol>
+</section>
+
+<section class="card">
+<h2>Safari 安裝（macOS 12.3 以上、Safari 16.4 以上）</h2>
+<ol>
+<li>下載 Safari ZIP，將 <code>KMU Captcha Fill.app</code> 移到「應用程式」並開啟。</li>
+<li>目前為本機開發版，未以 Apple Developer ID 簽署／公證。如 macOS 阻擋，請在「系統設定 → 隱私權與安全性」查看「仍要打開」。</li>
+<li>Safari「設定 → 進階」開啟網頁開發者功能，再於「設定 → 開發者」勾選「允許未簽署的延伸功能」（舊版在「開發」選單）；Safari 重開後可能需重新勾選。</li>
+<li>Safari「設定 → 延伸功能」啟用 KMU Captcha Fill，允許目標網站存取後重新整理登入頁。</li>
+</ol>
+<p>各瀏覽器的白名單與開關分別儲存。Safari App 已通過雙架構建置；登入頁互動仍需啟用延伸功能後驗收。</p>
 </section>
 
 <section class="card">
@@ -34,13 +45,13 @@
 </section>
 
 <section class="card">
-<h2>加入獲授權的 HTTPS 測試網域</h2>
+<h2>加入 HTTPS 網域</h2>
 <ol>
 <li>點擊擴充功能圖示，在「允許網域」只輸入 HTTPS 網站的網域名稱，例如 <code>example.org.tw</code>；不要輸入 <code>https://</code>。</li>
-<li>按「加入」，確認 Chrome 權限提示只包含該網域及其子網域。</li>
+<li>按「加入」，允許瀏覽器存取該網域及其子網域；Safari 另需在網站存取設定中允許。</li>
 <li>重新整理登入頁；不再使用時，回到彈窗按「移除」。</li>
 </ol>
-<p class="note">只可加入已獲資訊室或網站管理者核准的 HTTPS 測試網域。完整網址、路徑、port、萬用字元、IP 與 localhost 都不接受。</p>
+<p class="note">只輸入網域名稱。完整網址、路徑、port、萬用字元、IP 與 localhost 都不接受。</p>
 </section>
 
 <section class="card">
@@ -49,7 +60,7 @@
 <li>驗證碼只在瀏覽器本機辨識，不傳送到外部服務。</li>
 <li>不讀取、不保存帳號或密碼。</li>
 <li>不自動送出登入表單，使用者仍需自行確認。</li>
-<li>自訂網域需由 Chrome 額外核准網站權限。</li>
+<li>自訂網域需由瀏覽器允許網站存取權限。</li>
 </ul>
 </section>
 
@@ -59,7 +70,7 @@
 <p>沒有自動填入時，先確認頁面確實有 4 碼驗證碼圖片與輸入欄；自訂網域另需確認網站權限仍有效。</p>
 </section>
 
-<footer>急診臨床小工具 · 僅供獲授權的軟體測試</footer>
+<footer>急診臨床小工具</footer>
 </main>
 </body>
 </html>
