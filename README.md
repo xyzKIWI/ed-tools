@@ -7,7 +7,7 @@
 備用：<https://xyzkiwi.github.io/ed-tools/>（GitHub Pages 原址；院內可開，另有「上班小工具」三個 Windows 程式）
 備援：<https://kiwi-ed-tools.pages.dev/>（Cloudflare Pages 跑同一支 Worker，網址路徑與主網址相同）
 
-> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把短路徑換成 GitHub 原址（腳本內 `GH` 對應表），其他網域（er／tools.kiwi-ai.uk、pages.dev）換成同站路徑；卡片連結一律寫 `https://er.kiwi-ai.uk/…`。「上班小工具」區最上方是雲端藥歷擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 與 er.kiwi-ai.uk 顯示**（2026-09-30 Kiwi 要求 er 也放；下載檔都在 GitHub，本網域不發檔），tools.kiwi-ai.uk 與 pages.dev 不放。每張下載卡統一兩顆等寬按鈕：［下載檔案］＋［使用說明］（公開 repo 連 GitHub README；私人 repo 用本 repo 的說明頁，例如 `kmuh-consent-autocloser.html`，避免同事點到 404）。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時，除 `PROGRAM_HOSTS`（er.kiwi-ai.uk）外整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
+> 首頁 `index.html` 會依開啟的網域自動換連結：github.io 版把站內短路徑換成 GitHub 原址（腳本內 `GH` 對應表），其他網域（er／tools.kiwi-ai.uk、pages.dev）換成同站路徑。「上班小工具」區最上方是瀏覽器擴充功能（三站都顯示）；其下三個 Windows 程式（`data-gh-only`）**只在 github.io 與 er.kiwi-ai.uk 顯示**（2026-09-30 Kiwi 要求 er 也放；下載檔都在 GitHub，本網域不發檔），tools.kiwi-ai.uk 與 pages.dev 不放。每張下載卡統一兩顆等寬按鈕：第一顆依工具權限提供公開下載或 private GitHub 授權下載，第二顆一律連本站使用說明。三個程式卡片夾在 `<!-- gh-only:start -->`／`<!-- gh-only:end -->` 之間，Worker 送出首頁時，除 `PROGRAM_HOSTS`（er.kiwi-ai.uk）外整段刪除（原始碼也不留）；新增 github.io 專屬卡片要放在這對標記內。
 
 > 2026-09-27 五個工具 repo 改短名對齊短路徑：`icd10-ed-quickref`→`icd10`、`abx-tool`→`abx`、`peds-dose`→`peds`、`heparin-tool`→`heparin`、`ed-calc`→`calc`。舊 github.io 網址已失效（GitHub repo 網址會自動轉址）；**不要再建立與舊名同名的 repo**，會搶走轉址。回饋表單前綴（`[peds-dose]`、`[ed-calc/頁名]`）刻意沿用舊名以保持 Sheet 資料連續。
 
@@ -24,6 +24,7 @@
 | 低血鈉快速分類診斷與 3% NaCl 治療換算 | [na](https://github.com/xyzKIWI/na) | <https://er.kiwi-ai.uk/na/> | <https://xyzkiwi.github.io/na/> |
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [calc](https://github.com/xyzKIWI/calc) | <https://er.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/calc/> |
 | 雲端藥歷整理小幫手 v1.6.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://er.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
+| [KMU 體系驗證碼填入 v1.3.1](https://github.com/xyzKIWI/kmu-captcha-fill/releases/latest)（Chrome 擴充功能；資訊室核准測試用；授權下載） | kmu-captcha-fill（私人原始碼） | [使用說明](https://er.kiwi-ai.uk/kmu-captcha-fill.html) | [備用說明](https://xyzkiwi.github.io/ed-tools/kmu-captcha-fill.html) |
 | 急診滿載監控 v0.2.4（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
 | 急診病摘使用中延長時間 v0.4.3（Chrome 擴充功能） | er-session-extension | <https://er.kiwi-ai.uk/er-session-extension.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/er-session-extension.html) |
 | CXR 重新標註 v0.7.0（Chrome／Edge 擴充功能；急診清單一鍵回顧 PACS、沒開 WebPACS 分頁也能免登入接上，AI 平台結果頁與 WebPACS 上標註胸部 X 光，附院＋岡山） | cxr-relabel（私人原始碼） | <https://er.kiwi-ai.uk/cxr-relabel.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/cxr-relabel.html) |
@@ -59,15 +60,16 @@
 
 ### 下載型工具（瀏覽器擴充功能等）
 
-不是網頁、要下載安裝的工具，走 `worker.js` 的 `DOWNLOADS` 對應表，代理到 GitHub Release 資產：
+不是網頁、要下載安裝且允許公開下載的工具，走 `worker.js` 的 `DOWNLOADS` 對應表，代理到 GitHub Release 資產：
 
 - 對應目標用 `releases/latest/download/<固定檔名>.zip` 永久連結，發新版不必改 Worker
 - **但每次發 release 都要附一份「不帶版號」的固定檔名 zip**，否則這條路由會 404。帶版號的那份照發，兩份內容相同
 - 卡片放在「瀏覽器擴充功能（需下載安裝）」區，名稱後加 `<span class="tag">下載 zip</span>` 讓人知道點下去是下載不是開頁面
+- 不允許公開下載的 private 工具不進 `DOWNLOADS`，卡片第一顆按鈕直接連 private GitHub Release，並標示需授權。
 
 ### 上班小工具（Windows 可攜式程式）
 
-**「使用說明」一律連站內說明頁**（2026-11-05）：每張上班小工具卡片的第二顆按鈕都連到本 repo 根目錄的 `<工具>.html`（`medcloud.html`、`ed-overload-monitor.html`、`er-session-extension.html`、`kmuh-consent-autocloser.html`、`chrome-dark-mode.html`、`mousejiggle.html`、`windows-clean.html`），不直接連 GitHub README。說明頁內容照該工具 repo 的 README 濃縮。**公開 repo** 的說明頁最下方加「GitHub 原始碼與完整說明」區塊（專案頁、Releases、完整 README）；**私人 repo**（滿載監控、病摘延長、同意書關閉、CXR 重新標註）不放 GitHub 連結，否則會 404。
+**「使用說明」一律連站內說明頁**（2026-11-05）：每張上班小工具卡片的第二顆按鈕都連到本 repo 根目錄的 `<工具>.html`（`medcloud.html`、`kmu-captcha-fill.html`、`ed-overload-monitor.html`、`er-session-extension.html`、`kmuh-consent-autocloser.html`、`chrome-dark-mode.html`、`mousejiggle.html`、`windows-clean.html`），不直接連 GitHub README。說明頁內容照該工具 repo 的 README 濃縮。**公開 repo** 的說明頁最下方加「GitHub 原始碼與完整說明」區塊（專案頁、Releases、完整 README）；**私人 repo**（驗證碼填入、滿載監控、病摘延長、同意書關閉、CXR 重新標註）不放原始碼連結。驗證碼填入工具的下載按鈕連 private GitHub Release，僅限獲授權帳號，不在公開站鏡像 ZIP。
 
 急診滿載監控是Chrome套件，公開下載包位於`releases/ed-overload-monitor/`；`DOWNLOADS`代理版本化GitHub Pages ZIP至固定短路徑`/ed-overload-monitor.zip`。根目錄另保留相同位元組的`ed-overload-monitor.zip`，讓尚未更新下載路由的備援Worker也能透過既有HUB靜態代理取用。更新版本時須同步兩份ZIP、確認Pages可下載，再更新卡片版號與路由。原始碼儲存庫保持私人；下載不需要GitHub登入。安裝說明為`ed-overload-monitor.html`。
 

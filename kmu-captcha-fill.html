@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KMU 體系驗證碼填入 — 安裝與使用</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;color:#243a43;background:#f6f4ef;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:28px 22px 40px}a{color:#176b67}h1{font-size:28px;line-height:1.3;margin:18px 0 8px}h2{font-size:19px;margin:0 0 12px}p{margin:8px 0}.meta{color:#67777b;font-size:14px}.download{display:inline-block;background:#176b67;color:white;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;margin:12px 0 8px}.card{background:white;border:1px solid #dde4e2;border-radius:12px;padding:20px 24px;margin:18px 0}li{padding-left:4px;margin:8px 0}ol,ul{padding-left:22px}code{font-family:Consolas,monospace;background:#edf2f0;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}.note{border-left:3px solid #caa95f;padding:10px 14px;background:#fff6df;border-radius:4px;font-size:14px}footer{font-size:13px;color:#738185;margin-top:24px}.back{display:inline-flex;align-items:center;min-height:44px}@media(max-width:480px){main{padding:18px 16px 28px}h1{font-size:25px}.card{padding:16px}li{margin:10px 0}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./#work-tools">← 回上班小工具</a>
+<h1>KMU 體系驗證碼填入</h1>
+<p>資訊室核准測試用 Chrome 擴充功能：在 KMU 體系登入頁於瀏覽器本機辨識 4 碼驗證碼並填入。</p>
+<p class="meta">版本 1.3.1 · 2026-11-23 · private repo · 下載需 GitHub 授權</p>
+<a class="download" href="https://github.com/xyzKIWI/kmu-captcha-fill/releases/latest">前往授權下載頁</a>
+<p class="note">只有獲授權的 GitHub 帳號能開啟下載頁。請勿轉傳安裝包或用於未經核准的網站。</p>
+
+<section class="card">
+<h2>第一次安裝</h2>
+<ol>
+<li>從授權下載頁下載最新版 ZIP，解壓到固定資料夾；Kiwi 本機固定使用 <code>/Users/kiwi/kiwi_cc/kmu-captcha-fill</code>。</li>
+<li>網址列輸入 <code>chrome://extensions</code>，開啟右上角「開發人員模式」。</li>
+<li>點「載入未封裝項目」，選擇含有 <code>manifest.json</code> 的資料夾。</li>
+<li>重新整理已開啟的登入頁。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>支援範圍</h2>
+<p>內建網域：<code>kmuh.org.tw</code>、<code>kmu.edu.tw</code>、<code>kmugh.org.tw</code>、<code>kmsh.org.tw</code>、<code>kmch.org.tw</code>。</p>
+<p>只有同時偵測到驗證碼圖片與輸入欄時才會動作。擴充功能只填入驗證碼，不會按下登入。</p>
+</section>
+
+<section class="card">
+<h2>加入獲授權的 HTTPS 測試網域</h2>
+<ol>
+<li>點擊擴充功能圖示，在「允許網域」只輸入 HTTPS 網站的網域名稱，例如 <code>example.org.tw</code>；不要輸入 <code>https://</code>。</li>
+<li>按「加入」，確認 Chrome 權限提示只包含該網域及其子網域。</li>
+<li>重新整理登入頁；不再使用時，回到彈窗按「移除」。</li>
+</ol>
+<p class="note">只可加入已獲資訊室或網站管理者核准的 HTTPS 測試網域。完整網址、路徑、port、萬用字元、IP 與 localhost 都不接受。</p>
+</section>
+
+<section class="card">
+<h2>隱私與安全</h2>
+<ul>
+<li>驗證碼只在瀏覽器本機辨識，不傳送到外部服務。</li>
+<li>不讀取、不保存帳號或密碼。</li>
+<li>不自動送出登入表單，使用者仍需自行確認。</li>
+<li>自訂網域需由 Chrome 額外核准網站權限。</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>更新與排錯</h2>
+<p>更新時保留同一個固定資料夾，替換裡面的檔案後，到 <code>chrome://extensions</code> 按「重新載入」，再重新整理登入頁。</p>
+<p>沒有自動填入時，先確認頁面確實有 4 碼驗證碼圖片與輸入欄；自訂網域另需確認網站權限仍有效。</p>
+</section>
+
+<footer>急診臨床小工具 · 僅供獲授權的軟體測試</footer>
+</main>
+</body>
+</html>
