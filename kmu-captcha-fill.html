@@ -13,17 +13,17 @@
 <a class="back" href="./#work-tools">← 回上班小工具</a>
 <h1>KMU 體系驗證碼填入</h1>
 <p>在 KMU 體系登入頁於瀏覽器本機辨識 4 碼驗證碼並填入。</p>
-<p class="meta">版本 1.4.1 · 2026-11-24 · 網站直接下載</p>
-<a class="download" href="kmu-captcha-fill.zip" download>下載 Chrome／Edge／Comet 版</a>
-<a class="download" href="kmu-captcha-fill-safari.zip" download>下載 Safari macOS 開發版</a>
+<p class="meta">版本 1.5 · 2026-11-24 · 網站直接下載</p>
+<a class="download" href="kmu-captcha-fill.zip?v=1.5.0" download>下載 1.5 整合包（Chrome＋Safari）</a>
 <a class="download" href="kmu-captcha-fill.user.js">Safari Userscripts 腳本（Mac／iPhone／iPad）</a>
+<p>同一個 ZIP 解壓成一個資料夾，內含 <code>Chrome/</code>、<code>Safari/</code>、<code>Userscripts/</code> 與 README；依瀏覽器選擇安裝方式。</p>
 
 <section class="card">
 <h2>第一次安裝</h2>
 <ol>
-<li>下載 Chrome／Edge／Comet 版 ZIP，解壓到固定資料夾。</li>
+<li>下載整合包 ZIP，將 <code>kmu-captcha-fill_1.5</code> 解壓到固定位置。</li>
 <li>開啟瀏覽器擴充功能管理頁（Chrome／Comet：<code>chrome://extensions</code>；Edge：<code>edge://extensions</code>），開啟「開發人員模式」。</li>
-<li>點「載入未封裝項目」，選擇含有 <code>manifest.json</code> 的資料夾。</li>
+<li>點「載入未封裝項目」，選擇整合包內的 <code>Chrome/</code> 子資料夾（含有 <code>manifest.json</code>）。</li>
 <li>重新整理已開啟的登入頁。</li>
 </ol>
 </section>
@@ -32,7 +32,7 @@
 <h2>Safari：Userscripts 安裝（Mac／iPhone／iPad）</h2>
 <ol>
 <li>從 <a href="https://apps.apple.com/app/userscripts/id1463298887">App Store 安裝 Userscripts</a>，在 Safari 延伸功能設定中啟用。</li>
-<li>開啟上方「Safari Userscripts 腳本」連結，再打開 Userscripts 彈窗安裝；或將 <code>.user.js</code> 存到 Userscripts 設定的腳本資料夾。</li>
+<li>開啟上方「Safari Userscripts 腳本」連結，再打開 Userscripts 彈窗安裝；或將整合包 <code>Userscripts/</code> 裡的 <code>.user.js</code> 存到 Userscripts 設定的腳本資料夾。</li>
 <li>把目標網站的 Userscripts 權限設為「一律允許」，重新整理登入頁。</li>
 <li>停用舊 KMU Safari App 延伸功能，使用新腳本即可。</li>
 </ol>
@@ -43,7 +43,7 @@
 <section class="card">
 <h2>Safari App 安裝（macOS 12.3 以上、Safari 16.4 以上）</h2>
 <ol>
-<li>下載 Safari ZIP，將 <code>KMU Captcha Fill.app</code> 移到「應用程式」並開啟。</li>
+<li>解壓整合包，將 <code>Safari/KMU Captcha Fill.app</code> 移到「應用程式」並開啟。</li>
 <li>目前為本機開發版，未以 Apple Developer ID 簽署／公證。如 macOS 阻擋，請在「系統設定 → 隱私權與安全性」查看「仍要打開」。</li>
 <li>Safari「設定 → 進階」開啟網頁開發者功能，再於「設定 → 開發者」勾選「允許未簽署的延伸功能」（舊版在「開發」選單）；Safari 重開後可能需重新勾選。</li>
 <li>Safari「設定 → 延伸功能」啟用 KMU Captcha Fill，允許目標網站存取後重新整理登入頁。</li>
