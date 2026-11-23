@@ -24,7 +24,7 @@
 | 低血鈉快速分類診斷與 3% NaCl 治療換算 | [na](https://github.com/xyzKIWI/na) | <https://er.kiwi-ai.uk/na/> | <https://xyzkiwi.github.io/na/> |
 | 急診臨床計算機（72 個評分／公式／決策規則，9 頁） | [calc](https://github.com/xyzKIWI/calc) | <https://er.kiwi-ai.uk/calc/> | <https://xyzkiwi.github.io/calc/> |
 | 雲端藥歷整理小幫手 v1.6.0（瀏覽器擴充功能，需下載安裝） | [CloudMedicationHelper](https://github.com/xyzKIWI/CloudMedicationHelper) | <https://er.kiwi-ai.uk/medcloud.zip>（直接下載） | [Releases](https://github.com/xyzKIWI/CloudMedicationHelper/releases/latest) |
-| [KMU 體系驗證碼填入 v1.3.1](https://github.com/xyzKIWI/kmu-captcha-fill/releases/latest)（Chrome 擴充功能；資訊室核准測試用；授權下載） | kmu-captcha-fill（私人原始碼） | [使用說明](https://er.kiwi-ai.uk/kmu-captcha-fill.html) | [備用說明](https://xyzkiwi.github.io/ed-tools/kmu-captcha-fill.html) |
+| [KMU 體系驗證碼填入 v1.3.2](https://github.com/xyzKIWI/kmu-captcha-fill/releases/latest)（Chrome 擴充功能；資訊室核准測試用；授權下載） | kmu-captcha-fill（私人原始碼） | [使用說明](https://er.kiwi-ai.uk/kmu-captcha-fill.html) | [備用說明](https://xyzkiwi.github.io/ed-tools/kmu-captcha-fill.html) |
 | 急診滿載監控 v0.2.4（Chrome 擴充功能） | ed-overload-monitor（私人原始碼） | <https://er.kiwi-ai.uk/ed-overload-monitor.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/ed-overload-monitor.html) |
 | 急診病摘使用中延長時間 v0.4.3（Chrome 擴充功能） | er-session-extension | <https://er.kiwi-ai.uk/er-session-extension.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/er-session-extension.html) |
 | CXR 重新標註 v0.7.0（Chrome／Edge 擴充功能；急診清單一鍵回顧 PACS、沒開 WebPACS 分頁也能免登入接上，AI 平台結果頁與 WebPACS 上標註胸部 X 光，附院＋岡山） | cxr-relabel（私人原始碼） | <https://er.kiwi-ai.uk/cxr-relabel.zip>（直接下載） | [安裝說明](https://er.kiwi-ai.uk/cxr-relabel.html) |
