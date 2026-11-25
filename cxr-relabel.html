@@ -13,7 +13,7 @@
 <a class="back" href="./#work-tools">← 回上班小工具</a>
 <h1>CXR 重新標註</h1>
 <p>Chrome／Edge 擴充功能：從急診清單一鍵回顧病人的 WebPACS 影像；在 AI 平台「急診胸部X光」結果頁、PACS 回顧或 WebPACS 上直接替胸部 X 光畫框標註，把原圖與 LabelMe 格式的標註存到本機，供模型重新訓練。</p>
-<p class="meta">版本 0.7.0 · 2026-11-22 · 附院與岡山 · 對院內系統唯讀</p>
+<p class="meta">版本 1.0.0 · 2026-11-25 · 附院與岡山 · 對院內系統唯讀</p>
 <a id="download" class="download" href="cxr-relabel.zip">下載擴充功能 ZIP</a>
 <section class="card">
 <h2>第一次安裝</h2>
@@ -39,7 +39,9 @@
 <tr><td>移動／改大小</td><td>拖框的邊／拖框的角落</td></tr>
 <tr><td>改類別</td><td>點選框後按數字鍵 1～0，或用右邊清單的下拉選單</td></tr>
 <tr><td>刪除框</td><td>點選後按 Delete</td></tr>
-<tr><td>縮放／平移</td><td>滾輪／右鍵拖曳；F 回到全圖</td></tr>
+<tr><td>縮放</td><td>滾輪（Ctrl 細調）、＋／－ 鍵；F 回到全圖</td></tr>
+<tr><td>平移</td><td>中鍵拖曳，或空白鍵＋左鍵拖曳</td></tr>
+<tr><td>亮度／對比（窗寬窗位）</td><td>右鍵在影像上拖曳（左右＝對比、上下＝亮度）；右側有滑桿與「骨窗／肺窗／軟組織／反白」預設（1.0.0；平片為亮度／對比近似，非真 HU 窗位）</td></tr>
 <tr><td>隱藏框／對照模型原圖</td><td>H／O</td></tr>
 <tr><td>儲存／關閉</td><td>Ctrl+S／Esc</td></tr>
 <tr><td>復原／取消復原</td><td>Ctrl+Z／Ctrl+Y（在備註欄打字時是復原文字）</td></tr>
@@ -62,7 +64,7 @@
 <footer>急診臨床小工具 · Chrome／Edge 擴充功能下載與安裝</footer>
 </main>
 <script>
-if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/cxr-relabel/cxr-relabel-0.7.0.zip";
+if(location.hostname.endsWith("github.io"))document.getElementById("download").href="releases/cxr-relabel/cxr-relabel-1.0.0.zip";
 </script>
 </body>
 </html>

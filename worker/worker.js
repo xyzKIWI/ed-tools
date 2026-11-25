@@ -137,7 +137,7 @@ const DOWNLOADS = {
   "/kmuh-consent-autocloser.zip":
     "https://xyzkiwi.github.io/ed-tools/kmuh-consent-autocloser.zip",
   "/cxr-relabel.zip":
-    "https://xyzkiwi.github.io/ed-tools/releases/cxr-relabel/cxr-relabel-0.7.0.zip",
+    "https://xyzkiwi.github.io/ed-tools/releases/cxr-relabel/cxr-relabel-1.0.0.zip",
 };
 
 export default {
